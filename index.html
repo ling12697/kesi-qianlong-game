@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#172d30">
+<title>御前观织 · 缂丝非遗互动游戏</title>
+<style>
+:root{--ink:#193537;--gold:#b68a4e;--cream:#f6ecd8;--mist:#d4c4a7}*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#111f23;color:#f8efdc;font-family:"Noto Sans CJK SC","PingFang SC","Microsoft Yahei",sans-serif}
+body{background:radial-gradient(ellipse at 50% -20%,#344d4e 0,#192c30 45%,#101c20 100%);overflow-x:hidden}
+#wrap{width:min(1290px,98vw);margin:0 auto;padding:15px 0 18px}
+header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 10px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;white-space:nowrap}.seal{width:45px;height:45px;border:1px solid #c69b65;border-radius:5px;display:grid;place-content:center;color:#dfc497;font-family:serif;font-size:15px;line-height:1.15;text-align:center;box-shadow:inset 0 0 0 3px #1a3335,inset 0 0 0 4px #aa8b63;transform:rotate(-3deg)}
+h1{font-size:26px;line-height:1;letter-spacing:4px;font-family:"Noto Serif CJK SC","Songti SC",serif;margin:0;color:#f7e8c7;font-weight:600}.sub{color:#d0b78f;font-size:10px;letter-spacing:2.2px;margin-top:8px}
+.steps{display:flex;gap:8px;align-items:center}.step{width:106px;border-radius:3px;border-top:2px solid #5d6964;background:#ffffff08;color:#8f9f9b;padding:8px 9px 6px;font-size:11px;text-align:center;transition:all .3s}.step b{display:block;font-size:14px;font-family:serif;margin-bottom:3px}.step.on{color:#ffebc1;border-color:#e3b56a;background:#cfa26b22}.step.done{color:#bce3ce;border-color:#89b4a2;background:#6cae8630}
+.topright{display:flex;gap:8px;align-items:center}.iconbtn{border:1px solid #7c877d55;border-radius:6px;color:#dfd1b7;background:#ffffff0b;padding:9px 11px;cursor:pointer;font-size:12px}.iconbtn:hover{background:#ffffff1a}
+#frame{position:relative;border:1px solid #a17c4a;background:#d7c39f;box-shadow:0 15px 40px #0008, inset 0 0 0 5px #4f5b4d;overflow:hidden;border-radius:7px}
+#frame:after{content:"";position:absolute;inset:5px;border:1px solid #dfc18875;pointer-events:none;border-radius:3px}
+canvas{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair}
+#curtain{position:absolute;inset:0;background:linear-gradient(90deg,#101f20b8,#12242442 53%,#0b1819af);display:flex;align-items:center;justify-content:center;z-index:4;transition:opacity .5s}
+#curtain.hidden{opacity:0;pointer-events:none}
+.intro{border:1px solid #dfbc83a6;text-align:center;width:min(550px,90%);padding:31px 26px 28px;background:linear-gradient(140deg,#203a3ac9,#122728f2);box-shadow:0 20px 65px #0009,inset 0 0 0 7px #f4deb710;position:relative}
+.intro:before,.intro:after{content:"◆";position:absolute;color:#d9ad6a;left:50%;transform:translateX(-50%);font-size:16px}.intro:before{top:-11px}.intro:after{bottom:-11px}
+.goldsmall{color:#ddc291;letter-spacing:5px;font-size:12px;margin:0 0 12px}.intro h2{font:normal 51px/1.3 "Noto Serif CJK SC","Songti SC",serif;letter-spacing:8px;color:#f8e5bd;margin:6px 0 13px;text-shadow:0 5px 15px #0009}.intro p{font-size:14px;color:#d6d6c7;line-height:2;margin:4px auto 18px;max-width:390px}.mainbtn{border:0;background:linear-gradient(120deg,#e6c38d,#b88c4b);color:#20322d;font-weight:700;font-size:16px;letter-spacing:3px;border-radius:4px;padding:12px 36px;cursor:pointer;box-shadow:0 5px 22px #0006;transition:transform .15s}.mainbtn:hover{transform:translateY(-2px)}.mainbtn:active{transform:scale(.98)}.disclaimer{font-size:11px;color:#a8a998;margin-top:17px}
+#bottom{margin-top:13px;display:grid;grid-template-columns:1fr 248px;gap:13px;min-height:105px}
+.mission{display:flex;align-items:center;background:#eae0c9;color:#233633;border:1px solid #b99f76;border-radius:6px;overflow:hidden;padding:16px 19px;gap:17px}
+.mission .symbol{width:63px;height:63px;flex-shrink:0;background:#1f4847;color:#e8c38c;border-radius:50%;display:grid;place-content:center;font:34px serif;box-shadow:0 0 0 4px #c9b58e}
+.mission h3{font-family:"Noto Serif CJK SC","Songti SC",serif;font-size:21px;margin:0 0 4px;color:#294b49}.mission p{font-size:14px;line-height:1.7;margin:0;color:#5f655c}.mission .tiny{font-size:12px;color:#9e7545;margin-top:3px}
+.side{border-radius:6px;background:#233c3d;border:1px solid #7e805c6b;display:flex;flex-direction:column;justify-content:center;padding:12px 15px;gap:8px}.hinthead{display:flex;align-items:center;justify-content:space-between;color:#dcc296;font-size:12px;letter-spacing:2px}.counter{font:24px Georgia,serif;color:#ffdf9c}.bar{height:6px;border-radius:10px;background:#102729;overflow:hidden}.bar>div{height:100%;width:0;background:linear-gradient(90deg,#7dbfa7,#e5ca83);transition:width .3s}.sidebtn{border:1px solid #bd995b;border-radius:4px;padding:8px 5px;background:#ac874e22;color:#ecd6a6;cursor:pointer;font-weight:700}.sidebtn:disabled{color:#97a39d;border-color:#526e63;background:#ffffff0a;cursor:not-allowed}.sidebtn:not(:disabled):hover{background:#b9935240}
+#toast{position:absolute;top:15px;left:50%;transform:translateX(-50%);padding:9px 17px;background:#1a3839e9;border:1px solid #d4af75;color:#ffe2a7;font-size:13px;white-space:nowrap;border-radius:20px;pointer-events:none;opacity:0;transition:opacity .25s;z-index:3}
+#toast.show{opacity:1}
+footer{color:#8eaaa6;text-align:center;font-size:11px;line-height:1.8;margin:13px auto 0}footer a{color:#ccb88d}kbd{background:#e9dbc2;border-radius:3px;padding:2px 4px;color:#253832}
+@media(max-width:900px){header{height:auto;flex-wrap:wrap;justify-content:center;padding:4px 8px 12px}.steps{order:3;width:100%;justify-content:center}.step{flex:1;max-width:170px}.brand{margin-right:auto}.topright{margin-left:auto}h1{font-size:22px}#bottom{grid-template-columns:1fr}.mission{padding:12px}.side{min-height:88px}.intro h2{font-size:36px}}
+@media(max-width:520px){.step{font-size:9px;width:auto;padding:5px 4px}.step b{font-size:12px}#wrap{padding-top:6px}.mission .symbol{width:44px;height:44px;font-size:24px}.mission h3{font-size:17px}.mission p{font-size:12px}.mission .tiny{font-size:11px}.intro{padding:13px 14px}.intro h2{font-size:26px;letter-spacing:3px}.intro p{font-size:11px}.goldsmall{font-size:10px}.mainbtn{font-size:13px;padding:9px 22px}.disclaimer{font-size:9px;margin-top:8px}}
+</style>
+</head>
+<body>
+<div id="wrap">
+<header>
+ <div class="brand"><div class="seal">缂<br>丝</div><div><h1>御前观织</h1><div class="sub">乾隆年间 · 非遗缂丝沉浸式工坊</div></div></div>
+ <div class="steps"><div class="step on"><b>壹</b>整经上机</div><div class="step"><b>贰</b>依样画稿</div><div class="step"><b>叁</b>投梭缂织</div><div class="step"><b>肆</b>修毛整理</div></div>
+ <div class="topright"><button id="sound" class="iconbtn" aria-label="声音">♫ 声音开</button><button id="help" class="iconbtn" aria-label="帮助">? 玩法</button></div>
+</header>
+<div id="frame">
+ <canvas id="game" width="1200" height="620" aria-label="可交互的清代缂丝工坊"></canvas>
+ <div id="toast" role="status"></div>
+ <div id="curtain"><section class="intro" id="intro"><div class="goldsmall">清代工艺 · 互动体验</div><h2>一丝入画</h2><p>乾隆观织，画师递稿。<br>化身缂丝织工，亲手完成经线、描稿、投梭与修整。<br>人物会行走、交流和织造，每一步由你操作。</p><button id="start" class="mainbtn">进入缂丝工坊 →</button><div class="disclaimer">历史主题教学情境 · 乾隆观织故事为艺术化虚构</div></section></div>
+</div>
+<div id="bottom"><section class="mission"><div class="symbol" id="glyph">经</div><div><h3 id="tasktitle">准备开始｜进入工坊</h3><p id="tasktext">点击上方“进入缂丝工坊”，开始完成属于你的缂丝作品。</p><div class="tiny" id="tasktip">支持鼠标、手机触摸与平板操作</div></div></section><div class="side"><div class="hinthead"><span id="progressLabel">关卡进度</span><span class="counter" id="progressCount">0 / 4</span></div><div class="bar"><div id="progressBar"></div></div><button class="sidebtn" id="next" disabled>完成当前工序后继续 →</button></div></div>
+<footer>工艺依据：<a target="_blank" rel="noopener" href="https://www.dpm.org.cn/lemmas/239962.html">故宫博物院 · 缂丝</a>　|　场景与角色动画为博物馆科普原型，非对乾隆巡访工坊史实的复原　|　无需联网即可游玩</footer>
+</div>
+<script>
+(()=>{'use strict';
+const C=document.getElementById('game'),g=C.getContext('2d');
+const $=id=>document.getElementById(id);
+const W=1200,H=620;
+const state={stage:-1,done:false,warp:[false,false,false,false],drag:null,hand:'wait',walk:0,trace:0,traceMoving:false,cycle:0,part:'pedal',color:-1,shuttleX:555,shuttleDragging:false,trim:[false,false,false,false],burst:[],time:0,flash:0,glow:0,win:false};
+const silk=['#b44c49','#d3a458','#507e69','#c87972','#507e69'];
+const colors=['#b44c49','#d3a458','#507e69'];
+const colSequence=[0,1,2,0,2];
+const warpTarget=[552,604,656,708];
+const spoolX=[500,575,650,725];
+const tracePts=[[629,445],[612,421],[623,396],[654,381],[682,392],[691,421],[672,446],[644,449]];
+const trimPts=[[547,375],[736,389],[604,468],[704,462]];
+let mute=false,audio=null,toastUntil=0,last=performance.now(),stageMarker=-10,hit=[],pointer={x:0,y:0,down:false};
+const rect=(x,y,w,h,fill)=>{g.fillStyle=fill;g.fillRect(x,y,w,h)};
+const circle=(x,y,r,fill)=>{g.beginPath();g.arc(x,y,r,0,Math.PI*2);g.fillStyle=fill;g.fill()};
+const line=(x1,y1,x2,y2,stroke='#444',w=2)=>{g.strokeStyle=stroke;g.lineWidth=w;g.lineCap='round';g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke()};
+function rr(x,y,w,h,r,fill,stroke,lw=1){g.beginPath();g.roundRect(x,y,w,h,r);if(fill){g.fillStyle=fill;g.fill()}if(stroke){g.lineWidth=lw;g.strokeStyle=stroke;g.stroke()}}
+function poly(p,fill,stroke,lw=2){g.beginPath();g.moveTo(p[0][0],p[0][1]);p.slice(1).forEach(q=>g.lineTo(q[0],q[1]));g.closePath();if(fill){g.fillStyle=fill;g.fill()}if(stroke){g.lineWidth=lw;g.strokeStyle=stroke;g.stroke()}}
+function txt(t,x,y,size=14,color='#4c4234',align='center',font='serif'){g.fillStyle=color;g.font=`${size}px ${font}`;g.textAlign=align;g.fillText(t,x,y)}
+function wood(x,y,w,h){rect(x+4,y+6,w,h,'#533b2c55');let q=g.createLinearGradient(x,y,x+w,y+h);q.addColorStop(0,'#b58251');q.addColorStop(.45,'#7e5135');q.addColorStop(1,'#5a382a');rr(x,y,w,h,3,q,'#704527',1);line(x+3,y+3,x+w-3,y+3,'#d5a36d',1.4)}
+const rad=(a)=>a*Math.PI/180;
+function dust(t){g.save();for(let i=0;i<18;i++){let x=(i*83+Math.sin(i*6)*100+1150)%1200,y=70+(i*43+Math.cos(i+t*.3)*9)%480;circle(x,y,1+(i%3)*.35,`rgba(255,233,172,${.09+.10*Math.sin(t+i)**2})`)}g.restore()}
+function curtain(x,y,w,h){let grad=g.createLinearGradient(x,y,x+w,y);grad.addColorStop(0,'#b59d76');grad.addColorStop(.5,'#efe1b9');grad.addColorStop(1,'#9c835f');rect(x,y,w,h,grad);for(let k=0;k<6;k++)line(x+k*w/6,y,x+k*w/6,y+h,'#95826438',2)}
+function drawRoom(t){
+ let grad=g.createLinearGradient(0,0,0,550);grad.addColorStop(0,'#eadbbb');grad.addColorStop(.72,'#cdb994');grad.addColorStop(1,'#b5a17c');rect(0,0,W,H,grad);
+ // watermark texture rays
+ g.fillStyle='#fff4da20';poly([[290,0],[650,0],[790,495],[380,485]],'#fff7e832');
+ rect(0,0,W,43,'#354e4a');rect(0,40,W,12,'#947a58');for(let i=0;i<9;i++){rect(i*149,0,13,215,'#7b5a40');line(i*149+4,52,i*149+4,214,'#d0a67570',2)}
+ for(let i=0;i<12;i++)line(0,4+i*3,1200,4+i*3,'#d0b08430',1);
+ // Back windows
+ for(const cx of [96,322,550,781]){rr(cx,82,174,233,3,'#6c6046','#533b2b',8);rect(cx+9,90,156,211,'#d7d6b7');
+  for(let k=1;k<4;k++)line(cx+9+k*39,90,cx+9+k*39,301,'#a58f6a',3);
+  for(let k=1;k<5;k++)line(cx+9,90+k*42,cx+165,90+k*42,'#a58f6a',3);
+  rect(cx+2,81,170,13,'#a88051');
+ }
+ curtain(955,76,193,236);rect(966,86,170,212,'#d4c09a60');
+ // decorative hanging long scroll
+ wood(877,58,62,13);rr(880,69,56,193,3,'#e9dabc','#9f865b');
+ txt('缂',909,116,32,'#786240');txt('丝',909,152,32,'#786240');txt('作',909,193,21,'#786240');txt('坊',909,221,21,'#786240');wood(877,258,62,8);
+ // hanging lanterns
+ for(const x of [112,1026]){line(x,44,x,100,'#7b5a47',2);rr(x-24,100,48,63,15,'#b75e45','#793d36',3);for(let k=0;k<5;k++)line(x-20+k*10,111,x-20+k*10,152,'#f0bb75aa',1);line(x,162,x,180,'#a14a39',2)}
+ // floor with plank perspective
+ poly([[0,434],[1200,430],[1200,620],[0,620]],'#9c815e');for(let j=0;j<9;j++){let yy=440+j*j*2.6;line(0,yy,1200,yy,'#705c48',1.5)}for(let j=0;j<13;j++){line(j*108,435,600+(j-6)*195,620,'#715d4485',1.4)}
+ // rug, little work baskets
+ g.beginPath();g.ellipse(633,555,270,45,0,0,Math.PI*2);g.fillStyle='#ddbc8772';g.fill();
+ // props and rolls
+ drawShelf(66,340,t);
+ dust(t);
+}
+function drawShelf(x,y,t){
+ wood(x,y,203,10);wood(x+12,y-96,12,108);wood(x+189,y-96,12,108);
+ for(let k=0;k<7;k++){let c=['#ae5647','#d7caa4','#4b7b6f','#cca065','#875549','#e8e0bb','#6f777d'][k];rr(x+19+k*25,y-72,20,61,5,c,'#624c3977');line(x+22+k*25,y-55,x+35+k*25,y-55,'#ffffff55',2)}
+ wood(x-15,y+10,227,12);rr(x+15,y+38,88,33,9,'#9e6b43','#684832');rr(x+122,y+39,58,30,9,'#aa7851','#684832');
+ for(let i=0;i<12;i++){let a=i/12*Math.PI*2;circle(x+55+24*Math.cos(a),y+52+11*Math.sin(a),2,'#e7b784')}
+}
+function vignette(){let gr=g.createRadialGradient(620,304,190,620,304,770);gr.addColorStop(0,'#20353200');gr.addColorStop(1,'#24352b8c');rect(0,0,1200,620,gr)}
+function farWorker(x,y,t,off){g.save();g.translate(x,y);g.globalAlpha=.58;const q=Math.sin(t*2+off);ellipse(0,0,35,8,'#41342d40');rect(-21,-84,42,66,'#576c62');circle(0,-103,17,'#bf9a78');poly([[-19,-114],[-12,-127],[10,-127],[20,-113]],'#35312e');line(-20,-65,10+q*12,-40,'#b59274',8);line(20,-64,-10-q*12,-37,'#b59274',8);rect(-21,-24,17,24,'#35332d');rect(5,-24,17,24,'#35332d');g.restore()}
+function ellipse(x,y,rx,ry,fill){g.beginPath();g.ellipse(x,y,rx,ry,0,0,2*Math.PI);g.fillStyle=fill;g.fill()}
+// Animated worker, short solid build, natural worker cotton clothes
+function worker(t){const active=state.stage===2&&state.part!=='pedal';const sw=(active?Math.sin(t*8)*15:Math.sin(t*1.5)*4);const breath=Math.sin(t*1.7)*2.3;
+ g.save();g.translate(330,487);
+ ellipse(32,75,91,18,'#282f2740');
+ // stool
+ wood(-32,17,100,16);wood(-18,30,12,58);wood(47,30,12,54);
+ // legs, foot pumps
+ poly([[-5,-12],[68,5],[83,40],[33,37]],'#363c3d','#2b3332');poly([[33,35],[95,38],[95,49],[32,47]],'#252b2d');
+ let foot=state.stage===2&&state.part!=='pedal'?Math.sin(t*6)*4:0;
+ poly([[57,8],[100,12],[105,55+foot],[78,57+foot]],'#262b31','#171e20');rr(77,48+foot,43,12,5,'#181d20');
+ // torso cotton sleeves and strong arms
+ g.save();g.translate(0,breath);poly([[-41,-114],[-10,-132],[39,-131],[66,-110],[72,-31],[29,-8],[-29,-17]],'#e1d7bf','#9b8c73',2);
+ for(let i=0;i<4;i++)line(-25+i*17,-91,-19+i*17,-24,'#a9988060',1);
+ // short sleeveless ivory vest
+ poly([[-24,-122],[-6,-131],[12,-95],[16,-23],[-24,-25]],'#faf0d9','#c7b492');poly([[10,-96],[32,-131],[48,-122],[54,-34],[19,-22]],'#ede0c3','#bcaa8b');
+ line(13,-93,16,-27,'#b99f7a',2);
+ // arms with dynamic elbow and hand
+ line(45,-111,95,-75-sw*.2,'#d5b292',21);line(95,-75-sw*.2,140+sw,-75+sw*.8,'#c99e80',18);circle(144+sw,-75+sw*.8,10,'#d3ac8e');
+ line(-32,-113,-11,-67,'#d2b08f',21);line(-11,-67,132-sw*.35,-39-sw*.4,'#cba184',17);circle(132-sw*.35,-39-sw*.4,9,'#d5ad90');
+ // neck head
+ rr(-6,-151,24,25,5,'#cda183');
+ ellipse(5,-174,33,41,'#d4ac8c');ellipse(-28,-169,5,9,'#bd9277');ellipse(37,-169,5,9,'#bd9277');
+ poly([[-27,-192],[-22,-211],[-3,-217],[24,-209],[34,-192],[24,-202],[-11,-202]],'#242923');
+ line(-10,-178,-1,-180,'#544337',2);line(16,-180,24,-178,'#544337',2);if(Math.sin(t*1.35+2)>.988){line(-11,-177,0,-177,'#573e36',2);line(14,-177,24,-177,'#573e36',2)}else{circle(-4,-176,1.6,'#33271f');circle(19,-176,1.6,'#33271f')}
+ line(7,-170,5,-159,'#a67862',1.8);line(-1,-150,10,-148,'#9a6658',1.5);
+ g.restore();g.restore();
+}
+function painter(t){let walk=state.stage===1?(state.walk)*(-107):0,step=state.stage===1&&state.walk<1?Math.sin(t*10)*Math.min(1,state.walk*4)*8:0,b=Math.sin(t*1.8)*2;
+ g.save();g.translate(897+walk,0);ellipse(0,541,58,11,'#262a2638');
+ // thin scholar, robe folds
+ poly([[-22,416],[-31,530],[34,533],[27,414]],'#354e55','#344347');
+ poly([[-33,329],[-48,457],[-37,513],[22,523],[41,485],[37,334],[16,311],[-11,311]],'#557277','#324e53',2);
+ poly([[-13,318],[9,328],[5,514],[-16,514]],'#8f9c91');line(2,341,12,485,'#d0b99488',2);
+ for(let i=0;i<5;i++)line(-32+i*13,453,-30+i*11,513,'#28444a52',1);
+ line(-38,388,-70,401+b,'#557277',17);circle(-71,402+b,9,'#caa384');
+ const handing=state.stage===1&&state.hand!=='wait';const armX=handing?(-76-10*Math.sin(t*2)):-45;
+ line(33,361,61,395,'#557277',17);line(61,395,armX+52,415+b,'#557277',16);circle(armX+52,415+b,9,'#d2a88a');
+ rr(-12,295,25,26,6,'#c8a080');ellipse(2,270,28,37,'#d6ad89');
+ poly([[-23,246],[-17,228],[20,228],[26,245],[14,242],[-12,242]],'#262e30');rect(-20,240,40,6,'#2d3233');
+ line(-14,266,-5,264,'#534137',2);line(10,264,18,266,'#534137',2);if(Math.sin(t+1)>.993){line(-13,268,-4,268,'#543c36',2);line(10,268,18,268,'#543c36',2)}else{circle(-6,270,1.5,'#322c27');circle(12,270,1.5,'#322c27')}
+ line(-4,286,8,286,'#916f5d',1.5);
+ if(!handing){wood(-80,419,83,8);rect(-76,402,74,17,'#e6ddc8');line(-69,409,-13,409,'#8d6f534a',1)}
+ g.restore();
+}
+function emperor(t){const breathe=Math.sin(t*1.7)*2,gest=Math.sin(t*1.4)*8;
+ g.save();g.translate(1052,0);
+ ellipse(0,546,70,14,'#252c283b');
+ // robe and boot
+ rect(-42,510,29,32,'#303335');rect(13,510,29,32,'#303335');
+ poly([[-45,355],[-61,520],[-33,532],[42,533],[70,519],[43,355]],'#ca9947','#92622e',3);
+ // dragons/cloud formal robe emblems
+ for(let k=0;k<3;k++){let yy=403+k*45;g.beginPath();g.moveTo(-42,yy);g.bezierCurveTo(-17,yy-12,19,yy+16,47,yy-4);g.strokeStyle='#f9da919e';g.lineWidth=2;g.stroke()}
+ circle(2,422,29,'#f1cf7a');g.save();g.translate(2,422);g.rotate(t*.015);g.beginPath();g.arc(0,0,17,-.8,3.5);g.strokeStyle='#8d5632';g.lineWidth=4;g.stroke();circle(12,-4,4,'#a76c37');g.restore();
+ poly([[-37,345],[-23,332],[25,332],[39,345],[46,382],[0,409],[-44,380]],'#dbb461','#9a713b',2);
+ poly([[-18,334],[0,360],[20,333]],'#e1d4af','#8c7958',2);
+ // sleeves and hands active
+ poly([[-35,364],[-66,407],[-90,429],[-69,454],[-26,399]],'#cca253','#a27432');
+ poly([[35,364],[68,391+gest*.2],[87,416+gest],[66,448+gest],[24,402]],'#d3a658','#a97832');
+ circle(67,434+gest,11,'#cda889');
+ // fan moves
+ g.save();g.translate(76,427+gest);g.rotate(Math.sin(t*1.6)*.11);poly([[0,0],[14,-54],[47,-46],[55,-18]],'#e6d9b7','#9a7e54',2);for(let k=0;k<5;k++)line(0,0,14+k*9,-55+k*5,'#b89457',1);g.restore();
+ // neck face shape references Qing formal portrait
+ rr(-13,318,27,27,5,'#bf987a');ellipse(0,288+breathe,31,39,'#dbb797');
+ // ear
+ ellipse(-30,293,5,10,'#cba187');ellipse(30,293,5,10,'#cba187');
+ // court cap with red finial; period iconography not literal reproductions
+ rr(-34,246,68,22,4,'#252d2d','#161e1e');poly([[-28,244],[-22,222],[17,221],[28,244]],'#273131');rr(-47,260,94,10,3,'#292f2e');
+ circle(0,208,8,'#9d3530');line(0,214,0,225,'#bb945d',3);rect(-17,243,34,7,'#d0ad5e');
+ // eyebrows eyes distinct calm expression
+ g.beginPath();g.moveTo(-18,284);g.quadraticCurveTo(-11,278,-3,283);g.strokeStyle='#4c3a2b';g.lineWidth=2;g.stroke();
+ g.beginPath();g.moveTo(5,283);g.quadraticCurveTo(13,279,20,284);g.stroke();
+ if(Math.sin(t*.92+.7)>.995){line(-17,293,-5,294,'#4f4034',2);line(6,294,18,293,'#4f4034',2)}else{circle(-12,292,1.8,'#352d29');circle(13,292,1.8,'#352d29')}
+ line(0,292,-2,307,'#b08e76',2);g.beginPath();g.moveTo(-9,314);g.quadraticCurveTo(0,317,9,314);g.strokeStyle='#9c7164';g.lineWidth=1.7;g.stroke();
+ g.restore();
+}
+function drawLoom(t){
+ // parts behind silk
+ wood(463,257,18,290);wood(813,260,19,288);wood(465,244,363,23);
+ wood(489,490,320,19);wood(486,512,332,15);
+ wood(497,287,316,14);
+ // rods and footbars
+ line(481,484,432,565,'#795437',10);line(822,486,862,566,'#795437',10);
+ wood(463,544,367,17);line(471,559,488,574,'#e0bd8390',2);line(820,559,836,574,'#e0bd8390',2);
+ wood(508,319,277,11);
+ // shadow behind silk
+ rr(542,327,219,174,3,'#4b3e303b');
+ cloth(t);
+ // upper loom frame and reed
+ wood(513,295,276,17);
+ for(let i=0;i<37;i++)line(526+i*7,306,526+i*7,325,'#533b2b8a',1.2);
+ wood(509,322,285,13);
+ wood(503,494,305,19);
+ wood(468,254,357,15);circle(476,261,6,'#c19660');circle(814,261,6,'#c19660');
+ // heddle ropes top
+ for(let k=0;k<5;k++)line(560+k*47,269,560+k*47,320,'#b19364',2);
+ // pedal right side & reed
+ wood(285,557,145,13);rect(339,560,80,10,'#6d4e36');
+ // shuttle shelf
+ wood(504,538,286,17);
+}
+function bloom(x,y,r,color,a=1){g.save();g.globalAlpha=a;g.translate(x,y);for(let i=0;i<5;i++){g.save();g.rotate(i*Math.PI*2/5);g.beginPath();g.ellipse(0,-r*.65,r*.40,r*.67,0,0,2*Math.PI);g.fillStyle=color;g.fill();g.strokeStyle='#e9c69b';g.lineWidth=.9;g.stroke();g.restore()}circle(0,0,r*.22,'#d3aa48');g.restore()}
+function cloth(t){const x=541,y=334,w=220,h=161;
+ let gr=g.createLinearGradient(x,y,x+w,y+h);gr.addColorStop(0,'#f7edd7');gr.addColorStop(.55,'#d9caab');gr.addColorStop(1,'#c0a681');rr(x,y,w,h,3,gr,'#bcab89',1.5);
+ // fine warp repeated vertical lines
+ for(let i=0;i<58;i++)line(x+i*w/58,y,x+i*w/58,y+h,'rgba(116,96,65,.28)',.8);
+ if(state.stage>=1){g.save();g.strokeStyle='#a68a6b84';g.lineWidth=2;flowerOutline();g.stroke();g.restore()}
+ if(state.stage===1&&state.hand==='trace'){
+  for(let i=0;i<tracePts.length;i++){const [px,py]=tracePts[i];circle(px,py,i===state.trace?9:4.5,i<state.trace?'#65a68c':i===state.trace?'#e2a354':'#dbc399');if(i<state.trace)circle(px,py,2.3,'#f5e9c5')}
+  if(state.trace>1){g.beginPath();g.moveTo(...tracePts[0]);for(let k=1;k<state.trace;k++)g.lineTo(...tracePts[k]);g.lineWidth=3;g.strokeStyle='#8d6846';g.stroke()}
+ }
+ const count=state.stage===2?state.cycle:(state.stage>=3?5:0);
+ if(count>0){g.save();g.beginPath();g.rect(x+1,y+1,w-2,h-2);g.clip();
+  // 5 petals appear one by one as woven units
+  const cx=658,cy=415;
+  for(let i=0;i<count;i++){const a=i*Math.PI*2/5-Math.PI/2;g.save();g.translate(cx,cy);g.rotate(a);g.beginPath();g.ellipse(0,-34,20,36,0,0,2*Math.PI);g.fillStyle=silk[i];g.fill();g.strokeStyle='#bb9b68';g.lineWidth=1;g.stroke();for(let n=-9;n<=9;n+=3){line(n,-60,n,-9,'#ffffff2d',1)}g.restore()}
+  if(count>=3){circle(cx,cy,17,'#cfa855');circle(cx,cy,10,'#e8cb78');for(let q=0;q<6;q++){let a=q*Math.PI/3;circle(cx+6*Math.cos(a),cy+6*Math.sin(a),1.7,'#8d5f31')}}
+  if(count>=4){line(659,430,660,480,'#59755a',5);poly([[661,460],[684,447],[691,464],[665,470]],'#587c65');poly([[653,466],[633,452],[620,468],[651,478]],'#4a745b')}
+  for(let j=0;j<36;j++)line(x,y+j*4.5,x+w,y+j*4.5,'#fff9e32e',.75);
+  g.restore();}
+ // turn ivory selvage
+ line(x+5,y,x+5,y+h,'#eae0bc',4);line(x+w-5,y,x+w-5,y+h,'#eae0bc',4);
+}
+function flowerOutline(){g.beginPath();g.moveTo(659,461);g.lineTo(659,470);g.moveTo(658,447);g.bezierCurveTo(612,442,604,394,643,384);g.bezierCurveTo(675,366,709,403,693,435);g.bezierCurveTo(682,451,663,456,658,447)}
+function progressHUD(){let p=0,main='';if(state.stage===0)p=state.warp.filter(Boolean).length,main=`${p} / 4`;
+ else if(state.stage===1){p=state.hand==='wait'?0:state.hand==='walking'?1:state.hand==='offered'?2:2+state.trace/tracePts.length*2;main=state.hand==='trace'?`${state.trace} / ${tracePts.length}`:`${Math.floor(p)} / 4`}
+ else if(state.stage===2)p=state.cycle+(['pedal','color','pass','beat'].indexOf(state.part))/4,main=`${state.cycle} / 5`;
+ else if(state.stage===3)p=state.trim.filter(Boolean).length,main=`${p} / 4`;
+ else if(state.stage===4)p=4,main='已完成';
+ $('progressCount').textContent=main;$('progressBar').style.width=((state.stage===2?Math.min(1,p/5):p/4)*100)+'%';
+ $('next').disabled=!state.done;$('next').textContent=state.stage===3?'欣赏缂丝作品 →':state.stage===4?'重新体验 ↻':'进入下一道工序 →';
+}
+const titles=['整经上机','依样画稿','投梭缂织','修毛整理'];
+function describe(){let title='',body='',tip='',glyph='经';
+ if(state.stage===-1){title='准备开始｜进入工坊';body='点击上方“进入缂丝工坊”，开始完成属于你的缂丝作品。';tip='支持鼠标、手机触摸与平板操作'}
+ if(state.stage===0){glyph='经';title='第一道｜整经上机';body=state.done?'四组经线已经排列整齐，织机准备就绪。':'把下方发光的 4 组丝线，分别拖到织机上方对应的圆形定位点。';tip='拖动丝线卷 → 对准同色编号的经线位置'}
+ if(state.stage===1){glyph='稿';title='第二道｜依样画稿';body=state.done?'花卉轮廓描样完成，准备拿起小梭。':state.hand==='wait'?'点击右侧画师，他会带着画稿走近织机。':state.hand==='walking'?'画师正走来，请稍候……':state.hand==='offered'?'点击画师递来的展开画稿，织工便会接过。':'按数字顺序描摹织物上的花朵轮廓，点击绿色光点也可以。';tip='点击画师 → 接稿 → 顺着轮廓描样'}
+ if(state.stage===2){glyph='织';title='第三道｜投梭缂织';body=state.done?'五组彩纬缂织完成，花卉已逐渐成形。':state.part==='pedal'?'① 点击织工脚下的发光脚踏，打开经线。':state.part==='color'?`② 点击闪光提示中的“${['朱红','金黄','石绿'][colSequence[state.cycle]]}”小梭。`:state.part==='pass'?'③ 拖动发光的小梭从织物左侧穿过，送至右侧。':'④ 点击右侧的拨子，将刚织入的彩纬打紧。';tip='踩踏 → 选梭 → 拖动穿纬 → 拨子打纬（重复 5 次）'}
+ if(state.stage===3){glyph='修';title='第四道｜修毛整理';body=state.done?'所有浮毛已修整，作品完成！':'找到织物上发光的细小线头，逐个点击，用剪刀修去。';tip='点击 4 处发光线头，完成最后整理'}
+ if(state.stage===4){glyph='成';title='恭喜｜缂丝花卉纹完成';body='你亲自完成了整经、描样、局部彩纬缂织与修毛整理。';tip='体验作品正反两面纹样，领取“初识缂丝”称号'}
+ $('glyph').textContent=glyph;$('tasktitle').textContent=title;$('tasktext').textContent=body;$('tasktip').textContent=tip;progressHUD();
+}
+function setStage(n){state.stage=n;state.done=false;state.flash=1;state.part='pedal';state.drag=null;state.traceMoving=false;state.shuttleX=555;
+ for(let i=0;i<4;i++){$$('.step',i).className='step'+(i<n?' done':i===n?' on':'')}
+ if(n===4){state.done=true;state.win=true;winOverlay();}else if(n===1){state.hand='wait';state.walk=0;state.trace=0;}
+ describe();}
+function $$(s,i){return document.querySelectorAll(s)[i]}
+let toastTimer;
+function say(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),1450)}
+function sound(freq=500,sec=.09,type='sine'){if(mute)return;try{if(!audio)audio=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();let o=audio.createOscillator(),v=audio.createGain();o.type=type;o.frequency.setValueAtTime(freq,audio.currentTime);o.frequency.exponentialRampToValueAtTime(freq*1.3,audio.currentTime+sec);v.gain.setValueAtTime(.035,audio.currentTime);v.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+sec);o.connect(v).connect(audio.destination);o.start();o.stop(audio.currentTime+sec)}catch(e){}}
+function success(msg){state.done=true;say(msg);burst(659,388,28);sound(520,.15);setTimeout(()=>sound(760,.24),120);describe();}
+function burst(x,y,n=15){for(let i=0;i<n;i++){let a=Math.PI*2*i/n;state.burst.push({x,y,vx:Math.cos(a)*(1.2+Math.random()*3),vy:Math.sin(a)*(1.5+Math.random()*3)-1,age:0,life:35+Math.random()*27,color:Math.random()>.5?'#fbe4a4':'#dcb771'})}}
+function drawS1(t){if(state.stage!==0)return;
+ for(let i=0;i<4;i++){const sx=spoolX[i],tx=warpTarget[i];
+  if(state.warp[i]){line(tx,280,tx,497,'#dbcda8',3);circle(tx,289,10,'#609b7b');txt('✓',tx,295,15,'#f4edcc');continue;}
+  pulse(tx,282,20,t+i,`0${i+1}`);
+  const dragged=state.drag?.kind==='warp'&&state.drag.i===i;let x=dragged?pointer.x:sx,y=dragged?pointer.y:565;
+  g.save();g.translate(x,y);g.rotate(dragged?t*.12:0);ellipse(0,9,22,6,'#00000032');rr(-19,-12,38,24,10,['#b96556','#daa55d','#547c6f','#d3b682'][i],'#705b43',2);rr(-5,-17,10,34,3,'#e6cf9f','#987851');line(-20,0,20,0,'#fff7d75c',1.5);g.restore();txt(''+(i+1),sx,605,14,'#eee0bd');
+ }
+ hintBanner('拖动丝卷至织机上方对应定位点',31,72,285);
+}
+function pulse(x,y,r,t,label){const k=.5+.5*Math.sin(t*3),R=r+k*4;g.beginPath();g.arc(x,y,R,0,Math.PI*2);g.fillStyle=`rgba(226,176,90,${.16+k*.14})`;g.fill();g.lineWidth=2;g.strokeStyle='#e8cc89';g.stroke();if(label)txt(label,x,y+4,13,'#573a28')}
+function hintBanner(text,x,y,w){rr(x,y,w,36,5,'#24484ccc','#e5c6946b');txt(text,x+w/2,y+23,13,'#f7ebcc')}
+function drawS2(t){if(state.stage!==1||state.done)return;
+ if(state.hand==='wait'){pulse(897,327,33,t,'画师');hintBanner('点击画师 · 领取缂丝稿本',32,73,282)}
+ if(state.hand==='walking'){hintBanner('画师正在递送纹样稿本',32,73,262)}
+ if(state.hand==='offered'){
+  // offered sheet follows painter
+  paper(730,346,t);
+  pulse(730,355,31,t,'接稿');hintBanner('点击画稿 · 织工接过稿本',32,73,275);
+ }
+ if(state.hand==='trace'){hintBanner('依照提示顺序，描出花卉轮廓',32,73,300);pulse(...tracePts[state.trace],16,t,'')}
+}
+function paper(x,y,t){g.save();g.translate(x,y+2*Math.sin(t*2));g.rotate(-.10);rr(-42,-34,82,62,2,'#e6d7b4','#876947',2);g.beginPath();g.moveTo(-18,15);g.bezierCurveTo(-25,-15,2,-27,14,-1);g.bezierCurveTo(26,20,4,25,-18,15);g.strokeStyle='#ab6e54';g.lineWidth=1.5;g.stroke();line(-34,-26,-25,24,'#8d6e51',2);line(29,-26,36,25,'#8d6e51',2);g.restore()}
+function drawShuttle(x,y,color,animated=false){g.save();g.translate(x,y);g.rotate(animated?Math.sin(state.time*8)*.07:0);ellipse(0,12,28,5,'#00000036');poly([[-42,0],[-21,-11],[24,-11],[43,0],[24,12],[-21,12]],'#825233','#503727');poly([[-34,-1],[-13,-7],[16,-7],[30,-1],[15,6],[-14,6]],color,'#dbd2a070');line(-37,0,37,0,'#eadab1',1);g.restore()}
+function drawS3(t){if(state.stage!==2||state.done)return;
+ hintBanner('技法要领：经线不断，彩纬按纹样局部往返',30,70,364);
+ // pedal
+ if(state.part==='pedal'){pulse(380,555,36,t,'脚踏');txt('① 点击脚踏',372,602,13,'#ffedc8')}
+ else {rect(344,552,78,11,'#91a76c');}
+ for(let i=0;i<3;i++){const x=531+i*93;let color=colors[i];g.save();g.globalAlpha=state.part==='color'&&i===colSequence[state.cycle]?1:.87;drawShuttle(x,570,color);g.restore();txt(['朱红','金黄','石绿'][i],x,605,12,'#f7e8c7');if(state.part==='color'&&i===colSequence[state.cycle])pulse(x,570,40,t,'')}
+ if(state.part==='pass'){
+  const x=state.shuttleDragging?pointer.x:state.shuttleX;
+  line(542,423,745,423,'#e4bf7650',4);line(736,416,747,423,'#e8cf98',3);line(747,423,736,430,'#e8cf98',3);
+  drawShuttle(x,423,colors[state.color],true);pulse(x,423,43,t,'');txt('向右拖动小梭 →',645,346,15,'#4b675a');
+ }
+ if(state.part==='beat'){pulse(798,333,38,t,'拨子');wood(779,295,17,104);txt('④ 点击拨子',844,362,14,'#435143');}
+ // weft cycle counters
+ for(let i=0;i<5;i++){rr(492+i*60,86,47,23,5,i<state.cycle?'#668a6f':'#fff4d8a6',i<state.cycle?'#9eb89c':'#c3a87a');txt(`第${i+1}梭`,515+i*60,101,11,i<state.cycle?'#f9edcf':'#806747')}
+}
+function drawS4(t){if(state.stage!==3||state.done)return;
+ hintBanner('放大观察 · 点击多余线头修毛整理',30,72,335);
+ for(let i=0;i<4;i++){if(state.trim[i])continue;const [x,y]=trimPts[i];
+  g.beginPath();g.moveTo(x,y);g.quadraticCurveTo(x-24,y-15,x-14,y-25);g.strokeStyle='#77664b';g.lineWidth=2;g.stroke();pulse(x,y,18,t+i,'✂')
+ }
+}
+function drawSpeech(t){if(state.stage<0)return;
+ let msg='';if(state.stage===0)msg='丝理须匀，方可起织。';if(state.stage===1)msg='依图落样，织中见画。';if(state.stage===2)msg='寸丝寸心，妙在断纬。';if(state.stage===3)msg='巧手细修，方见光华。';if(state.stage===4)msg='纹样清雅，巧夺天工。';
+ rr(975,126,191,68,9,'#f7eed8ee','#b99262',2);poly([[1030,191],[1051,210],[1057,187]],'#f7eed8ee','#b99262',1.3);
+ txt('乾隆 · 情境对白',1069,149,11,'#8c6b49');txt(msg,1069,177,15,'#3b514c');
+}
+function drawMarkers(t){if(state.stage<0)return;rr(23,19,226,36,4,'#183f42b8','#cfb87e7f');txt('御前工坊 · '+(state.stage<4?titles[state.stage]:'作品赏鉴'),36,42,18,'#f4dfad','left');
+ // side decorative site authenticity
+ if(state.stage===0||state.stage===1)rr(31,124,172,38,3,'#efe4c4cc','#9f845f');
+ if(state.stage===0||state.stage===1)txt('缂丝 · 通经断纬',117,148,15,'#6a513d');
+}
+function confetti(dt){for(let i=state.burst.length-1;i>=0;i--){let p=state.burst[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.04;p.age+=dt*60;p.vx*=.99;g.save();g.globalAlpha=Math.max(0,1-p.age/p.life);circle(p.x,p.y,2.5,p.color);g.restore();if(p.age>=p.life)state.burst.splice(i,1)}}
+function draw(t,dt){g.clearRect(0,0,W,H);drawRoom(t);farWorker(120,452,t,0);farWorker(212,455,t,1);
+ // embroidery items little ornamental
+ painter(t);emperor(t);worker(t);drawLoom(t);
+ drawS1(t);drawS2(t);drawS3(t);drawS4(t);drawSpeech(t);drawMarkers(t);confetti(dt);vignette();
+ if(state.stage===4){const glow=.5+.5*Math.sin(t*2.7);g.save();g.strokeStyle=`rgba(255,215,132,${.44+glow*.2})`;g.lineWidth=5;g.strokeRect(535,329,232,172);g.restore();}
+}
+function frame(now){let dt=Math.min(.05,(now-last)/1000);last=now;state.time+=dt;let t=state.time;
+ if(state.stage===1&&state.hand==='walking'){state.walk=Math.min(1,state.walk+dt*.65);if(state.walk===1){state.hand='offered';describe();sound(620,.1);say('画师已递上缂丝画稿')}}
+ draw(t,dt);requestAnimationFrame(frame)}
+function coords(e){let r=C.getBoundingClientRect();return{x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height}}
+function near(p,x,y,r=40){return Math.hypot(p.x-x,p.y-y)<r}
+function press(p){if(state.stage<0||state.done)return;
+ if(state.stage===0){for(let i=0;i<4;i++)if(!state.warp[i]&&near(p,spoolX[i],565,35)){state.drag={kind:'warp',i};sound(330,.055);return}}
+ if(state.stage===1){if(state.hand==='wait'&&near(p,897,320,85)){state.hand='walking';sound(420,.13);describe();return}
+ if(state.hand==='offered'&&near(p,730,355,70)){state.hand='trace';state.trace=0;burst(729,358,10);sound(570,.13);describe();return}
+ if(state.hand==='trace'){state.traceMoving=true;checkTrace(p);return}}
+ if(state.stage===2){if(state.part==='pedal'&&near(p,380,555,65)){state.part='color';sound(220,.12,'triangle');describe();return}
+ if(state.part==='color'){for(let i=0;i<3;i++)if(near(p,531+i*93,569,41)){if(i!==colSequence[state.cycle]){say('请按画稿选择闪光提示的彩纬');sound(190,.08);return}state.part='pass';state.color=i;state.shuttleX=555;describe();sound(580,.12);return}}
+ if(state.part==='pass'&&near(p,state.shuttleX,423,60)){state.shuttleDragging=true;state.drag={kind:'shuttle'};return}
+ if(state.part==='beat'&&near(p,798,333,71)){state.cycle++;state.part='pedal';burst(667,411,9);sound(370,.08,'triangle');setTimeout(()=>sound(480,.06,'triangle'),70);if(state.cycle===5){success('织成了！彩色纬线按区域交织完成')}else{say(`第 ${state.cycle} 组彩纬已织入`);describe()}return}}
+ if(state.stage===3){for(let i=0;i<4;i++){if(!state.trim[i]&&near(p,...trimPts[i],32)){state.trim[i]=true;burst(...trimPts[i],12);sound(740,.08,'triangle');say('线头修整完成');if(state.trim.every(Boolean))success('修整完成！你的缂丝作品已完成');else describe();return}}}
+}
+function checkTrace(p){if(state.stage!==1||state.hand!=='trace'||state.done)return;if(state.trace>=tracePts.length)return;let q=tracePts[state.trace];if(near(p,q[0],q[1],30)){state.trace++;sound(330+state.trace*53,.065);burst(q[0],q[1],4);if(state.trace===tracePts.length){success('画稿描样完成！');return}describe()}}
+function move(p){pointer.x=p.x;pointer.y=p.y;if(state.stage===1&&state.traceMoving)checkTrace(p)}
+function release(p){if(state.stage===0&&state.drag?.kind==='warp'){let i=state.drag.i;if(near(p,warpTarget[i],282,43)){state.warp[i]=true;burst(warpTarget[i],282,14);sound(590+i*77,.1);say('经线成功入位');if(state.warp.every(Boolean))success('经线排列完成！');else describe()}else{say('把丝卷拖至上方对应编号处')}state.drag=null;return}
+ if(state.stage===2&&state.drag?.kind==='shuttle'){if(p.x>713&&Math.abs(p.y-423)<98){state.part='beat';state.shuttleX=735;sound(520,.12);say('穿纬成功，点击右侧拨子打紧');describe()}else{state.shuttleX=555;say('沿水平箭头拖动小梭穿过经线')}state.drag=null;state.shuttleDragging=false;return}
+ state.traceMoving=false;state.drag=null}
+C.addEventListener('pointerdown',e=>{e.preventDefault();C.setPointerCapture?.(e.pointerId);pointer.down=true;let p=coords(e);move(p);press(p)});
+C.addEventListener('pointermove',e=>{let p=coords(e);move(p)});
+C.addEventListener('pointerup',e=>{e.preventDefault();pointer.down=false;let p=coords(e);move(p);release(p)});
+C.addEventListener('pointercancel',()=>{pointer.down=false;state.drag=null;state.traceMoving=false;state.shuttleDragging=false});
+$('start').addEventListener('click',()=>{$('curtain').classList.add('hidden');state.warp=[false,false,false,false];state.cycle=0;state.trim=[false,false,false,false];state.win=false;setStage(0);say('欢迎来到缂丝工坊！');sound(390,.17)});
+$('next').addEventListener('click',()=>{if(!state.done)return;sound(720,.15);if(state.stage===4){$('curtain').classList.remove('hidden');$('intro').innerHTML='<div class="goldsmall">清代工艺 · 互动体验</div><h2>一丝入画</h2><p>重返缂丝工坊，再织一幅花卉纹样。</p><button id="restart" class="mainbtn">再次进入工坊 →</button><div class="disclaimer">历史主题教学情境 · 并非实际乾隆观织事件</div>';$('restart').addEventListener('click',()=>{$('curtain').classList.add('hidden');state.warp=[false,false,false,false];state.cycle=0;state.trim=[false,false,false,false];state.win=false;setStage(0)});state.stage=-1;describe();return}setStage(state.stage+1)});
+$('sound').addEventListener('click',()=>{mute=!mute;$('sound').textContent=mute?'♪ 声音关':'♫ 声音开';if(!mute)sound(550,.14)});
+$('help').addEventListener('click',()=>{say('玩法：在场景中拖丝卷、点画师、描花、踩踏投梭、修线头');sound(400,.09)});
+function winOverlay(){setTimeout(()=>{say('初识缂丝 · 御前巧匠！');burst(659,413,52)},350)}
+requestAnimationFrame(frame);describe();
+})();
+</script>
+</body>
+</html>
