@@ -36,9 +36,16 @@ const wood='#95643e',wood2='#a9764b',woodLight='#bd8e5f',bamboo='#c5a776',rope='
 for(let x of [-1.5,1.5])for(let y of [-1.02,1.02]){box('frame',[x,y,1.3],[.19,.2,2.6],wood);box('frame',[x,y,.14],[.27,.25,.28],wood2)}
 for(let y of [-1.02,1.02]){beam('frame',[-1.52,y,2.46],[1.52,y,2.46],.17,.17,wood2);beam('frame',[-1.52,y,1.33],[1.52,y,1.33],.14,.14,wood);beam('frame',[-1.52,y,.39],[1.52,y,.39],.13,.13,wood2)}
 for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);beam('frame',[x,-1.02,1.3],[x,1.02,1.3],.14,.14,wood);beam('frame',[x,-.95,2.45],[x,.95,2.45],.14,.14,wood2);beam('frame',[x,-.92,.42],[x,1.0,1.18],.11,.11,wood2)}
-// Raised back frame and the top pivot support visible in the rear and oblique views.
-for(let x of [-.88,.88]){beam('frame',[x,.48,2.45],[x,.72,3.45],.18,.18,wood);beam('frame',[x,-.06,3.43],[x,1.02,3.43],.16,.16,wood2)}
-beam('frame',[0,-.06,3.43],[0,1.02,3.43],.15,.15,wood2);
+// Raised rear frame and transverse top rail. The rocking assembly is carried by
+// an upright pivot standard fixed on this rail, as shown in the reference drawing.
+for(let x of [-.88,.88])beam('frame',[x,.48,2.45],[x,.72,3.43],.18,.18,wood);
+beam('frame',[-.96,.72,3.43],[.96,.72,3.43],.16,.16,wood2);
+beam('frame',[-.88,-.06,3.43],[-.88,1.02,3.43],.14,.14,wood2);
+beam('frame',[.88,-.06,3.43],[.88,1.02,3.43],.14,.14,wood2);
+// Upright pivot standard, with two cheek plates and a real crosswise wooden pin.
+box('frame',[0,.24,3.68],[.17,.22,.58],wood);
+box('frame',[-.16,.24,3.78],[.07,.24,.38],wood2);
+box('frame',[.16,.24,3.78],[.07,.24,.38],wood2);
 // Front and rear winding rollers. Both are round wooden cylinders across the loom width.
 cylinder('rollers',[-1.43,-.79,1.55],[1.43,-.79,1.55],.12,wood2,48);cylinder('rollers',[-1.43,.91,2.05],[1.43,.91,2.05],.12,wood2,48);
 // Wrapped cloth / warp on the beams.
@@ -53,13 +60,18 @@ beam('reed',[-.94,-.08,1.91],[.94,-.08,1.91],.055,.075,woodLight);beam('reed',[-
 // Heddle / fliphead bar and hanging loops above the warp.
 beam('heddle',[-.92,.18,2.5],[.92,.18,2.5],.075,.07,woodLight);beam('heddle',[-.78,.38,2.27],[.78,.38,2.27],.055,.055,wood2);
 for(let i=0;i<27;i++){let x=-.82+i*1.64/26;line('heddle',[[x,.18,2.48],[x,.22,2.14],[x,.22,1.95]],.0035,'#d7c6a4')}
-// Pivoting rocking bar / toggle, suspended from the top support.
-beam('heddle',[0,-.36,3.05],[0,1.03,3.48],.14,.12,wood2);cylinder('heddle',[-.18,.31,3.26],[.18,.31,3.26],.07,'#725033',10);box('heddle',[0,.31,3.26],[.38,.24,.16],wood);
+// Twin rocking bars pivot on the cross pin. Their long ends rise toward the
+// rear of the loom; a crosspiece keeps the pair aligned without a bulky square hub.
+beam('heddle',[-.12,-.54,3.38],[-.12,1.12,4.26],.13,.12,wood2);
+beam('heddle',[.12,-.54,3.38],[.12,1.12,4.26],.13,.12,wood2);
+beam('heddle',[-.18,-.54,3.38],[.18,-.54,3.38],.11,.10,woodLight);
+beam('heddle',[-.18,1.12,4.26],[.18,1.12,4.26],.11,.10,woodLight);
+cylinder('heddle',[-.27,.24,3.80],[.27,.24,3.80],.045,'#725033',16);
 // Treadles shown as two long bamboo rods near the base.
 for(let x of [-.28,.28]){cylinder('pedals',[x,-.8,.23],[x,.72,.23],.045,bamboo,10);for(let y of [-.58,.46])line('pedals',[[x-.1,y,.23],[x+.1,y,.23]],.012,'#8c754b')}
 // Cord paths: rocker to fliphead, heddle, and both treadles. Keep cords visible against the wood.
-line('ropes',[[-.55,-.03,3.22],[-.64,.05,2.65],[-.82,.18,2.5]],.009,rope);line('ropes',[[.55,-.03,3.22],[.64,.05,2.65],[.82,.18,2.5]],.009,rope);
-line('ropes',[[-.55,.95,3.47],[-.68,.76,2.55],[-.28,.55,.23]],.009,rope);line('ropes',[[.55,.95,3.47],[.68,.76,2.55],[.28,.55,.23]],.009,rope);
+line('ropes',[[-.12,-.54,3.38],[-.62,-.25,2.66],[-.82,.18,2.5]],.009,rope);line('ropes',[[.12,-.54,3.38],[.62,-.25,2.66],[.82,.18,2.5]],.009,rope);
+line('ropes',[[-.12,1.12,4.26],[-.42,.91,3.02],[-.28,.55,.23]],.009,rope);line('ropes',[[.12,1.12,4.26],[.42,.91,3.02],[.28,.55,.23]],.009,rope);
 line('ropes',[[-.82,.18,2.5],[-.95,.05,1.9]],.007,'#ddcfb2');line('ropes',[[.82,.18,2.5],[.95,.05,1.9]],.007,'#ddcfb2');
 // Hanging shuttle board with a row of hand-held wooden shuttles.
 beam('shuttles',[-.85,.7,2.73],[.85,.7,2.73],.09,.08,wood2);for(let i=0;i<7;i++){let x=-.67+i*.223;beam('shuttles',[x-.075,.7,2.52],[x+.075,.7,2.52],.038,.035,gold);cylinder('shuttles',[x-.04,.7,2.52],[x+.04,.7,2.52],.018,'#d1b27c',7)}
