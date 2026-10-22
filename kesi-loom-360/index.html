@@ -73,19 +73,19 @@ for(let i=0;i<33;i++){let x=-.60+i*1.2/32;line('heddle',[[x,.16,2.94],[x,-.03,2.
 // Twin sloping rocker arms mounted at the shared crosswise pivot. Their raised
 // ends sit toward the rear; their lower ends face the operator.
 for(let x of [-.24,.24]){
-  beam('heddle',[x,-.66,3.15],[x,.84,3.48],.11,.09,wood2);
-  box('heddle',[x,-.68,3.17],[.16,.14,.12],woodLight);
-  box('heddle',[x,.84,3.49],[.16,.14,.12],woodLight);
+  beam('heddle',[x,-.66,3.08],[x,.84,3.56],.11,.09,wood2);
+  box('heddle',[x,-.68,3.10],[.16,.14,.12],woodLight);
+  box('heddle',[x,.84,3.57],[.16,.14,.12],woodLight);
 }
 cylinder('heddle',[-.38,-.10,3.27],[.38,-.10,3.27],.045,'#725033',16);
 // Treadles shown as two long bamboo rods near the base.
 for(let x of [-.28,.28]){cylinder('pedals',[x,-.9,.23],[x,.65,.23],.045,bamboo,10);for(let y of [-.72,.48])line('pedals',[[x-.1,y,.23],[x+.1,y,.23]],.012,'#8c754b')}
 // Twin cord paths lift the suspended frame and descend to the two longitudinal
 // treadles, keeping the hand-operated loom mechanism visible.
-line('ropes',[[-.24,-.64,3.16],[-.48,-.30,2.88],[-.55,-.05,2.74]],.009,rope);
-line('ropes',[[.24,-.64,3.16],[.48,-.30,2.88],[.55,-.05,2.74]],.009,rope);
-line('ropes',[[-.24,.82,3.48],[-.42,.70,2.9],[-.28,.38,.23]],.009,rope);
-line('ropes',[[.24,.82,3.48],[.42,.70,2.9],[.28,.38,.23]],.009,rope);
+line('ropes',[[-.24,-.64,3.09],[-.48,-.30,2.88],[-.55,-.05,2.74]],.009,rope);
+line('ropes',[[.24,-.64,3.09],[.48,-.30,2.88],[.55,-.05,2.74]],.009,rope);
+line('ropes',[[-.24,.82,3.56],[-.42,.70,2.9],[-.28,.38,.23]],.009,rope);
+line('ropes',[[.24,.82,3.56],[.42,.70,2.9],[.28,.38,.23]],.009,rope);
 line('ropes',[[-.55,-.05,2.74],[-.58,-.10,2.15]],.007,'#ddcfb2');
 line('ropes',[[.55,-.05,2.74],[.58,-.10,2.15]],.007,'#ddcfb2');
 // Hanging shuttle board with a row of hand-held wooden shuttles.
