@@ -16,7 +16,13 @@
     }));
     for(let i=0;i<count;i++){out.set(parts[i],i*chunk);bar.value=i+1;}
     const html=await new Blob([out]).text();
-    document.open(); document.write(html); document.close();
+    const frame=document.createElement('iframe');
+    frame.title='缂丝织机 V4 三维模型';
+    frame.allow='fullscreen';
+    frame.style.cssText='position:fixed;inset:0;width:100%;height:100%;border:0';
+    frame.srcdoc=html;
+    document.body.replaceChildren(frame);
+    document.body.style.cssText='margin:0;height:100vh;overflow:hidden';
   } catch(e) { msg.textContent='加载失败：'+e.message+'。请稍后刷新。'; }
 })();
 </script></html>
