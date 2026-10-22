@@ -23,7 +23,7 @@ body{overflow:hidden;background:#f4f0e7}.app{height:100dvh;display:block}.top,.s
 const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage');
 const groups={frame:[],rollers:[],warp:[],reed:[],heddle:[],ropes:[],shuttles:[],pedals:[],tray:[]};
 const meta=[
-['frame','木构机架','立柱、横梁与侧向撑杆','#855638'],['rollers','前后卷轴','经面张紧与织物卷绕','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','钢丝排列经线，供经面分绞','#71807c'],['heddle','翻头 / 摇摆杆','脚踏联动翻头，使经线交替开口','#976345'],['ropes','吊绳','连接摇摆杆、翻头与脚踏竹棒','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','足踏竹棒','手动踏动开梭口机构','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
+['frame','木构机架','立柱、横梁与侧向撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','钢丝排列经线，供经面分绞','#71807c'],['heddle','综框 / 筘框摆架','悬挂式矩形框架，承载综丝与钢筘','#976345'],['ropes','顶部翻头与吊绳','双侧斜置翻头杆经绳索联动综框和脚踏','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆带动吊绳开口','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
 ];
 const V=(x,y,z)=>[x,y,z], add=(g,o)=>groups[g].push(o);
 function box(g,c,s,color){const [x,y,z]=c,[a,b,d]=s,hx=a/2,hy=b/2,hz=d/2;let p=[[-hx,-hy,-hz],[hx,-hy,-hz],[hx,hy,-hz],[-hx,hy,-hz],[-hx,-hy,hz],[hx,-hy,hz],[hx,hy,hz],[-hx,hy,hz]].map(q=>[q[0]+x,q[1]+y,q[2]+z]);let f=[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]];let norms=[[0,0,-1],[0,0,1],[0,-1,0],[1,0,0],[0,1,0],[-1,0,0]];add(g,{type:'faces',polys:f.map((ix,i)=>({pts:ix.map(k=>p[k]),n:norms[i],color}))});}
@@ -36,20 +36,26 @@ const wood='#95643e',wood2='#a9764b',woodLight='#bd8e5f',bamboo='#c5a776',rope='
 for(let x of [-1.5,1.5])for(let y of [-1.02,1.02]){box('frame',[x,y,1.3],[.19,.2,2.6],wood);box('frame',[x,y,.14],[.27,.25,.28],wood2)}
 for(let y of [-1.02,1.02]){beam('frame',[-1.52,y,2.46],[1.52,y,2.46],.17,.17,wood2);beam('frame',[-1.52,y,1.33],[1.52,y,1.33],.14,.14,wood);beam('frame',[-1.52,y,.39],[1.52,y,.39],.13,.13,wood2)}
 for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);beam('frame',[x,-1.02,1.3],[x,1.02,1.3],.14,.14,wood);beam('frame',[x,-.95,2.45],[x,.95,2.45],.14,.14,wood2);beam('frame',[x,-.92,.42],[x,1.0,1.18],.11,.11,wood2)}
-// Raised rear frame and transverse top rail. The rocking assembly is carried by
-// an upright pivot standard fixed on this rail, as shown in the reference drawing.
-for(let x of [-.88,.88])beam('frame',[x,.48,2.45],[x,1.02,3.43],.18,.18,wood);
-beam('frame',[-.96,-.06,3.43],[.96,-.06,3.43],.16,.16,wood2);
-beam('frame',[-.96,1.02,3.43],[.96,1.02,3.43],.16,.16,wood2);
-beam('frame',[-.88,-.06,3.43],[-.88,1.02,3.43],.14,.14,wood2);
-beam('frame',[.88,-.06,3.43],[.88,1.02,3.43],.14,.14,wood2);
-beam('frame',[.18,-.06,3.43],[.18,1.02,3.43],.15,.15,wood2);
-// The connecting rod carries a single slotted upright standard. Its fork cheeks
-// straddle the rocker and the pin runs front-to-back, so the lever swings across
-// the loom's width rather than along its depth.
-box('frame',[.18,.24,3.59],[.17,.20,.32],wood);
-box('frame',[.18,.04,3.83],[.17,.08,.30],wood2);
-box('frame',[.18,.44,3.83],[.17,.08,.30],wood2);
+// Elevated bridge rails support the central suspended loom assembly.
+for(let x of [-.88,.88])beam('frame',[x,.48,2.45],[x,1.02,2.88],.17,.17,wood);
+beam('frame',[-.96,-.06,2.88],[.96,-.06,2.88],.15,.15,wood2);
+beam('frame',[-.96,1.02,2.88],[.96,1.02,2.88],.15,.15,wood2);
+beam('frame',[-.88,-.06,2.88],[-.88,1.02,2.88],.13,.13,wood2);
+beam('frame',[.88,-.06,2.88],[.88,1.02,2.88],.13,.13,wood2);
+// Separate suspended rectangular heddle/reed carrier, angled through the depth.
+const hx=.68;
+beam('heddle',[-hx,-.42,2.02],[-hx,.18,2.98],.075,.075,wood2);
+beam('heddle',[ hx,-.42,2.02],[ hx,.18,2.98],.075,.075,wood2);
+beam('heddle',[-hx,-.42,2.02],[ hx,-.42,2.02],.075,.075,woodLight);
+beam('heddle',[-hx,.18,2.98],[ hx,.18,2.98],.075,.075,woodLight);
+// The top linkage is a pair of front-to-back sloping arms, with slotted pivot
+// cheeks and a shared cross tie. It is not one broad crosswise lever.
+for(let x of [-.27,.27]){
+  beam('frame',[x,-.10,2.88],[x,-.10,3.22],.10,.12,wood);
+  box('frame',[x,-.11,3.13],[.14,.17,.22],wood2);
+  box('frame',[x,-.11,3.19],[.08,.12,.14],'#795033');
+}
+beam('ropes',[-.27,-.10,3.18],[.27,-.10,3.18],.055,.06,woodLight);
 // Front and rear winding rollers. Both are round wooden cylinders across the loom width.
 cylinder('rollers',[-1.43,-.79,1.55],[1.43,-.79,1.55],.12,wood2,48);cylinder('rollers',[-1.43,.91,2.05],[1.43,.91,2.05],.12,wood2,48);
 // Wrapped cloth / warp on the beams.
@@ -61,19 +67,27 @@ for(let i=0;i<55;i++){let x=-.84+i*1.68/54;line('warp',[[x,-.73,1.67],[x,-.15,1.
 box('warp',[0,-.57,1.69],[1.05,.31,.025],'#d5c39d');for(let i=0;i<16;i++){let x=-.5+i/15;line('warp',[[x,-.72,1.69],[x,-.42,1.69]],.004,'#ad8d5c')}
 // Reed: frame across the warp, thin upright steel dents and two cross bars.
 beam('reed',[-.94,-.08,1.91],[.94,-.08,1.91],.055,.075,woodLight);beam('reed',[-.94,-.08,2.28],[.94,-.08,2.28],.055,.075,woodLight);for(let i=0;i<45;i++){let x=-.88+i*1.76/44;line('reed',[[x,-.08,1.94],[x,-.08,2.25]],.003,metal)}
-// Heddle / fliphead bar and hanging loops above the warp.
-beam('heddle',[-.92,.18,2.5],[.92,.18,2.5],.075,.07,woodLight);beam('heddle',[-.78,.38,2.27],[.78,.38,2.27],.055,.055,wood2);
-for(let i=0;i<27;i++){let x=-.82+i*1.64/26;line('heddle',[[x,.18,2.48],[x,.22,2.14],[x,.22,1.95]],.0035,'#d7c6a4')}
-// One broad wooden rocking board sits inside the open fork. Its short tail
-// and longer raised end run across the loom width, as in the overhead reference.
-beam('heddle',[-.62,.24,3.55],[1.30,.24,4.02],.25,.12,wood2);
-cylinder('heddle',[.18,.02,3.745],[.18,.46,3.745],.043,'#725033',16);
+// Fine heddle threads descend from the upper crossbar through the carrier.
+beam('heddle',[-.61,-.08,2.72],[.61,-.08,2.72],.045,.05,woodLight);
+for(let i=0;i<33;i++){let x=-.60+i*1.2/32;line('heddle',[[x,.16,2.94],[x,-.03,2.64],[x,-.32,2.20]],.0032,'#d7c6a4')}
+// Twin sloping rocker arms mounted at the shared crosswise pivot. Their raised
+// ends sit toward the rear; their lower ends face the operator.
+for(let x of [-.24,.24]){
+  beam('heddle',[x,-.66,3.15],[x,.84,3.48],.11,.09,wood2);
+  box('heddle',[x,-.68,3.17],[.16,.14,.12],woodLight);
+  box('heddle',[x,.84,3.49],[.16,.14,.12],woodLight);
+}
+cylinder('heddle',[-.38,-.10,3.27],[.38,-.10,3.27],.045,'#725033',16);
 // Treadles shown as two long bamboo rods near the base.
-for(let x of [-.28,.28]){cylinder('pedals',[x,-.8,.23],[x,.72,.23],.045,bamboo,10);for(let y of [-.58,.46])line('pedals',[[x-.1,y,.23],[x+.1,y,.23]],.012,'#8c754b')}
-// Cord paths: rocker to fliphead, heddle, and both treadles. Keep cords visible against the wood.
-line('ropes',[[-.62,.15,3.55],[-.70,.16,2.88],[-.82,.18,2.5]],.009,rope);line('ropes',[[-.62,.33,3.55],[.70,.30,2.88],[.82,.18,2.5]],.009,rope);
-line('ropes',[[1.30,.15,4.02],[.88,.48,2.92],[-.28,.55,.23]],.009,rope);line('ropes',[[1.30,.33,4.02],[.94,.64,2.92],[.28,.55,.23]],.009,rope);
-line('ropes',[[-.82,.18,2.5],[-.95,.05,1.9]],.007,'#ddcfb2');line('ropes',[[.82,.18,2.5],[.95,.05,1.9]],.007,'#ddcfb2');
+for(let x of [-.28,.28]){cylinder('pedals',[x,-.9,.23],[x,.65,.23],.045,bamboo,10);for(let y of [-.72,.48])line('pedals',[[x-.1,y,.23],[x+.1,y,.23]],.012,'#8c754b')}
+// Twin cord paths lift the suspended frame and descend to the two longitudinal
+// treadles, keeping the hand-operated loom mechanism visible.
+line('ropes',[[-.24,-.64,3.16],[-.48,-.30,2.88],[-.55,-.05,2.74]],.009,rope);
+line('ropes',[[.24,-.64,3.16],[.48,-.30,2.88],[.55,-.05,2.74]],.009,rope);
+line('ropes',[[-.24,.82,3.48],[-.42,.70,2.9],[-.28,.38,.23]],.009,rope);
+line('ropes',[[.24,.82,3.48],[.42,.70,2.9],[.28,.38,.23]],.009,rope);
+line('ropes',[[-.55,-.05,2.74],[-.58,-.10,2.15]],.007,'#ddcfb2');
+line('ropes',[[.55,-.05,2.74],[.58,-.10,2.15]],.007,'#ddcfb2');
 // Hanging shuttle board with a row of hand-held wooden shuttles.
 beam('shuttles',[-.85,.7,2.73],[.85,.7,2.73],.09,.08,wood2);for(let i=0;i<7;i++){let x=-.67+i*.223;beam('shuttles',[x-.075,.7,2.52],[x+.075,.7,2.52],.038,.035,gold);cylinder('shuttles',[x-.04,.7,2.52],[x+.04,.7,2.52],.018,'#d1b27c',7)}
 // Removable pattern tray below the warp, as described in the patent.
