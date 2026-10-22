@@ -35,16 +35,13 @@ const wood='#95643e',wood2='#a9764b',woodLight='#bd8e5f',bamboo='#c5a776',rope='
 // Four heavy legs and the rectangular timber frame. Dimensions are normalized to the supplied photographs.
 for(let x of [-1.5,1.5])for(let y of [-1.02,1.02]){box('frame',[x,y,1.3],[.19,.2,2.6],wood);box('frame',[x,y,.14],[.27,.25,.28],wood2)}
 for(let y of [-1.02,1.02]){beam('frame',[-1.52,y,2.46],[1.52,y,2.46],.17,.17,wood2);beam('frame',[-1.52,y,1.33],[1.52,y,1.33],.14,.14,wood);beam('frame',[-1.52,y,.39],[1.52,y,.39],.13,.13,wood2)}
-for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);beam('frame',[x,-1.02,1.3],[x,1.02,1.3],.14,.14,wood);beam('frame',[x,-.95,2.45],[x,.95,2.45],.14,.14,wood2);beam('frame',[x,-.92,.42],[x,1.0,1.18],.11,.11,wood2)}
-// The top sits directly on the main frame rail. Short front/rear supports
-// carry one connecting rod; there is no tall raised portal above the loom.
-for(let y of [-.22,.88])for(let x of [-.88,.88])beam('frame',[x,y,2.45],[x,y,2.56],.12,.12,wood);
-beam('frame',[-.94,-.22,2.56],[.94,-.22,2.56],.13,.13,wood2);
-beam('frame',[-.94,.88,2.56],[.94,.88,2.56],.13,.13,wood2);
-beam('frame',[0,-.22,2.56],[0,.88,2.56],.11,.11,woodLight);
+for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);beam('frame',[x,-1.02,1.3],[x,1.02,1.3],.14,.14,wood);beam('frame',[x,-.95,2.45],[x,.95,2.45],.14,.14,wood2)}
+// One full-width rail supports a short central pivot post; no extra portal
+// or side braces are added above the loom's original rectangular frame.
+beam('frame',[-1.5,-.10,2.46],[1.5,-.10,2.46],.14,.14,wood2);
 // Short central upright carries the two vertically separated pivot points
 // visible in the reference mechanism; it rises only a little above the rail.
-box('frame',[0,-.10,2.83],[.18,.16,.54],wood);
+box('frame',[0,-.10,2.82],[.18,.16,.58],wood);
 box('frame',[-.14,-.10,3.08],[.08,.15,.12],wood2);
 box('frame',[ .14,-.10,3.08],[.08,.15,.12],wood2);
 // The steel reed is one tilted rectangular wooden frame with parallel dents.
