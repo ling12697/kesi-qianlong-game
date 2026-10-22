@@ -23,7 +23,7 @@ body{overflow:hidden;background:#f4f0e7}.app{height:100dvh;display:block}.top,.s
 const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage');
 const groups={frame:[],rollers:[],warp:[],reed:[],heddle:[],ropes:[],shuttles:[],pedals:[],tray:[]};
 const meta=[
-['frame','木构机架','前后支架、横梁及短上部支撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','矩形木框及平行钢丝，穿过经面','#71807c'],['heddle','翻头与摇摆杆','双侧臂摇摆组件在短槽座内销接，吊动翻头','#976345'],['ropes','吊绳','摇摆杆两端分别联动翻头和两根脚踏杆','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆；后端另以吊绳悬挂','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
+['frame','木构机架','前后支架、横梁及短上部支撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','矩形木框及平行钢丝，穿过经面','#71807c'],['heddle','翻头与摇摆杆','两根上下错位斜杆在中央支座处销接，绳索联动翻头','#976345'],['ropes','吊绳','摇摆杆两端分别联动翻头和两根脚踏杆','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆；后端另以吊绳悬挂','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
 ];
 const V=(x,y,z)=>[x,y,z], add=(g,o)=>groups[g].push(o);
 function box(g,c,s,color){const [x,y,z]=c,[a,b,d]=s,hx=a/2,hy=b/2,hz=d/2;let p=[[-hx,-hy,-hz],[hx,-hy,-hz],[hx,hy,-hz],[-hx,hy,-hz],[-hx,-hy,hz],[hx,-hy,hz],[hx,hy,hz],[-hx,hy,hz]].map(q=>[q[0]+x,q[1]+y,q[2]+z]);let f=[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]];let norms=[[0,0,-1],[0,0,1],[0,-1,0],[1,0,0],[0,1,0],[-1,0,0]];add(g,{type:'faces',polys:f.map((ix,i)=>({pts:ix.map(k=>p[k]),n:norms[i],color}))});}
@@ -42,10 +42,11 @@ for(let y of [-.22,.88])for(let x of [-.88,.88])beam('frame',[x,y,2.45],[x,y,2.5
 beam('frame',[-.94,-.22,2.56],[.94,-.22,2.56],.13,.13,wood2);
 beam('frame',[-.94,.88,2.56],[.94,.88,2.56],.13,.13,wood2);
 beam('frame',[0,-.22,2.56],[0,.88,2.56],.11,.11,woodLight);
-// Short fixed pivot board with an open slot and a crosswise pin.
-box('frame',[0,.10,2.72],[.15,.15,.32],wood);
-box('frame',[-.14,.10,2.91],[.08,.15,.17],wood2);
-box('frame',[ .14,.10,2.91],[.08,.15,.17],wood2);
+// Short central upright carries the two vertically separated pivot points
+// visible in the reference mechanism; it rises only a little above the rail.
+box('frame',[0,.10,2.83],[.18,.16,.54],wood);
+box('frame',[-.14,.10,3.08],[.08,.15,.12],wood2);
+box('frame',[ .14,.10,3.08],[.08,.15,.12],wood2);
 // The steel reed is one tilted rectangular wooden frame with parallel dents.
 const hx=.68;
 beam('reed',[-hx,-.42,1.96],[-hx,.18,2.88],.075,.075,wood2);
@@ -62,16 +63,17 @@ box('warp',[0,.07,1.91],[1.76,1.62,.018],'#eadfc9');
 for(let i=0;i<55;i++){let x=-.84+i*1.68/54;line('warp',[[x,-.73,1.67],[x,-.15,1.89],[x,.83,2.16]],.0035,i%5===0?'#b8a37f':warp)}
 // Woven cloth strip at the front of the working area.
 box('warp',[0,-.57,1.69],[1.05,.31,.025],'#d5c39d');for(let i=0;i<16;i++){let x=-.5+i/15;line('warp',[[x,-.72,1.69],[x,-.42,1.69]],.004,'#ad8d5c')}
-// Paired, parallel slats form the visible rocker assembly in the reference
-// object. They share the slotted fixed board and one crosswise pivot pin.
-for(let x of [-.13,.13]){
- beam('heddle',[x,-.70,2.73],[x,.96,3.14],.10,.09,wood2);
- box('heddle',[x,-.72,2.74],[.13,.12,.11],woodLight);
- box('heddle',[x,.96,3.15],[.13,.12,.11],woodLight);
-}
-beam('heddle',[-.18,-.70,2.73],[.18,-.70,2.73],.08,.08,woodLight);
-beam('heddle',[-.18,.96,3.14],[.18,.96,3.14],.08,.08,woodLight);
-cylinder('heddle',[-.23,.10,2.93],[.23,.10,2.93],.04,'#725033',16);
+// The top is a side-profile pair, one above the other, rather than two rails
+// spread across the loom width. Their slope and vertical spacing follow the
+// reference photographs; each is pinned through the short central upright.
+beam('heddle',[0,-.70,2.82],[0,.96,3.14],.16,.10,wood2);
+beam('heddle',[0,-.70,2.61],[0,.96,2.98],.16,.10,wood2);
+box('heddle',[0,-.72,2.82],[.20,.12,.12],woodLight);
+box('heddle',[0,.96,3.14],[.20,.12,.12],woodLight);
+box('heddle',[0,-.72,2.61],[.20,.12,.12],woodLight);
+box('heddle',[0,.96,2.98],[.20,.12,.12],woodLight);
+cylinder('heddle',[-.17,.10,2.98],[.17,.10,2.98],.04,'#725033',16);
+cylinder('heddle',[-.17,.10,2.80],[.17,.10,2.80],.04,'#725033',16);
 // The woven shed / flip-head bar is a separate crosswise member below the reed.
 beam('heddle',[-.72,-.12,2.42],[.72,-.12,2.42],.065,.06,woodLight);
 for(let i=0;i<27;i++){let x=-.64+i*1.28/26;line('heddle',[[x,-.10,2.40],[x,-.12,2.19]],.0032,'#d7c6a4')}
@@ -80,12 +82,10 @@ for(let x of [-.28,.28]){cylinder('pedals',[x,-.9,.23],[x,.65,.23],.045,bamboo,1
 // Patent cord routing: the front rocker end lifts both ends of the flip-head;
 // the opposite end pulls the two foot rods. Each foot rod's far end is hung
 // separately from a transverse frame beam by a third cord.
-for(let x of [-.13,.13]){
- line('ropes',[[x,-.68,2.73],[x*4,-.30,2.83],[-.68,-.12,2.42]],.009,rope);
- line('ropes',[[x,-.68,2.73],[x*4,-.30,2.83],[.68,-.12,2.42]],.009,rope);
-}
-line('ropes',[[-.13,.94,3.14],[-.28,.38,1.00],[-.28,.25,.23]],.009,rope);
-line('ropes',[[.13,.94,3.14],[.28,.38,1.00],[.28,.25,.23]],.009,rope);
+line('ropes',[[0,-.68,2.82],[-.62,-.30,2.83],[-.68,-.12,2.42]],.009,rope);
+line('ropes',[[0,-.68,2.82],[.62,-.30,2.83],[.68,-.12,2.42]],.009,rope);
+line('ropes',[[0,.94,3.14],[-.28,.38,1.00],[-.28,.25,.23]],.009,rope);
+line('ropes',[[0,.94,3.14],[.28,.38,1.00],[.28,.25,.23]],.009,rope);
 line('ropes',[[-.28,.65,.23],[-.28,.88,.78],[-.28,.88,1.33]],.009,rope);
 line('ropes',[[.28,.65,.23],[.28,.88,.78],[.28,.88,1.33]],.009,rope);
 // Hanging shuttle board with a row of hand-held wooden shuttles.
@@ -97,7 +97,7 @@ for(let x of [-1.1,1.1]){line('ropes',[[x,-.82,1.72],[x,-.77,1.47],[x,-.8,1.4]],
 cylinder('rollers',[1.05,-.79,1.55],[1.42,-.79,1.35],.055,woodLight,24);cylinder('rollers',[1.43,.91,2.05],[1.62,.91,2.05],.05,woodLight,24);
 
 // Default to the front three-quarter view: rear of the loom rises away to the left in perspective.
-let yaw=Math.PI-.68,pitch=.2,zoom=.96,panX=0,panY=0,wire=false,labelsOn=false,active=null,hidden=new Set(),drag=null,dpr=1;
+let yaw=.42,pitch=.035,zoom=1.12,panX=0,panY=0,wire=false,labelsOn=false,active=null,hidden=new Set(),drag=null,dpr=1;
 const target=[0,0,2.02],focal=6.2;
 function rgba(hex,shade=1,alpha=1){let h=hex.replace('#','');let n=parseInt(h,16),r=(n>>16)&255,g=(n>>8)&255,b=n&255;return `rgba(${Math.max(0,Math.min(255,r*shade|0))},${Math.max(0,Math.min(255,g*shade|0))},${Math.max(0,Math.min(255,b*shade|0))},${alpha})`}
 function camera(p){let x=p[0]-target[0],y=p[1]-target[1],z=p[2]-target[2],c=Math.cos(yaw),s=Math.sin(yaw),x1=x*c-y*s,depth=x*s+y*c,cp=Math.cos(pitch),sp=Math.sin(pitch),y2=z*cp-depth*sp,z2=depth*cp+z*sp;return [x1,y2,z2+focal]}
@@ -112,7 +112,7 @@ function setView(name,a,p){yaw=a;pitch=p;active=null;document.getElementById('vi
 function toast(t){let e=document.getElementById('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1400)}
 function buildParts(){const el=document.getElementById('parts');for(const [g,n,desc,col] of meta){let row=document.createElement('div');row.className='part';row.style.setProperty('--wood',col);row.innerHTML=`<span class="dot"></span><div><strong>${n}</strong><small>${desc}</small></div><input type="checkbox" checked aria-label="显示${n}">`;row.addEventListener('click',e=>{if(e.target.tagName==='INPUT'){if(e.target.checked)hidden.delete(g);else hidden.add(g);return}active=active===g?null:g;document.getElementById('viewName').textContent=active?n:'整机结构';document.getElementById('viewDesc').textContent=active?desc:'木构手工缂丝织机 · 静态结构示意';let aim={frame:[-.68,.2],rollers:[-.35,.1],warp:[-.4,.2],reed:[-.35,.15],heddle:[-.35,.15],ropes:[-.68,.2],shuttles:[.1,.2],pedals:[-.7,-.05],tray:[-.65,.05]}[g];if(aim){yaw=aim[0];pitch=aim[1]}toast(active?'聚焦：'+n:'已取消聚焦')});el.appendChild(row)}}
 buildParts();draw();
-document.getElementById('front').onclick=()=>setView('正面',Math.PI,.02);document.getElementById('side').onclick=()=>setView('侧面',Math.PI/2,.04);document.getElementById('back').onclick=()=>setView('背面',0,.02);document.getElementById('reset').onclick=()=>{yaw=Math.PI-.68;pitch=.2;zoom=1;panX=panY=0;active=null;setView('整机结构',yaw,pitch)};document.getElementById('wire').onclick=e=>{wire=!wire;e.currentTarget.classList.toggle('active',wire);toast(wire?'线框强调已开启':'线框强调已关闭')};document.getElementById('labels').onclick=()=>{labelsOn=!labelsOn;toast(labelsOn?'部件标注已开启':'部件标注已关闭')};document.getElementById('showAll').onclick=()=>{hidden.clear();document.querySelectorAll('.part input').forEach(x=>x.checked=true);toast('已显示全部部件')};document.getElementById('hideAll').onclick=()=>{hidden=new Set(['rollers','warp','reed','heddle','ropes','shuttles','pedals','tray']);document.querySelectorAll('.part').forEach((row,i)=>row.querySelector('input').checked=!hidden.has(meta[i][0]));toast('已突出显示木构机架')};
+document.getElementById('front').onclick=()=>setView('正面',0,.02);document.getElementById('side').onclick=()=>setView('侧面',Math.PI/2,.04);document.getElementById('back').onclick=()=>setView('背面',Math.PI,.02);document.getElementById('reset').onclick=()=>{yaw=.42;pitch=.035;zoom=1.12;panX=panY=0;active=null;setView('整机结构',yaw,pitch)};document.getElementById('wire').onclick=e=>{wire=!wire;e.currentTarget.classList.toggle('active',wire);toast(wire?'线框强调已开启':'线框强调已关闭')};document.getElementById('labels').onclick=()=>{labelsOn=!labelsOn;toast(labelsOn?'部件标注已开启':'部件标注已关闭')};document.getElementById('showAll').onclick=()=>{hidden.clear();document.querySelectorAll('.part input').forEach(x=>x.checked=true);toast('已显示全部部件')};document.getElementById('hideAll').onclick=()=>{hidden=new Set(['rollers','warp','reed','heddle','ropes','shuttles','pedals','tray']);document.querySelectorAll('.part').forEach((row,i)=>row.querySelector('input').checked=!hidden.has(meta[i][0]));toast('已突出显示木构机架')};
 canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,px:panX,py:panY,shift:e.shiftKey};canvas.setPointerCapture(e.pointerId)});canvas.addEventListener('pointermove',e=>{if(!drag)return;let dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(e.buttons===2||drag.shift){panX=drag.px+dx;panY=drag.py+dy}else{yaw+=dx*.009;pitch=Math.max(-1.0,Math.min(1.12,pitch+dy*.008))}});canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('contextmenu',e=>e.preventDefault());canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.58,Math.min(1.8,zoom*Math.exp(-e.deltaY*.001)))},{passive:false});window.addEventListener('keydown',e=>{if(e.key==='r'||e.key==='R')document.getElementById('reset').click();if(e.key==='l'||e.key==='L')document.getElementById('labels').click()});window.addEventListener('resize',()=>{});
 })();
 </script></body></html>
