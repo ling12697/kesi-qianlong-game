@@ -23,7 +23,7 @@ body{overflow:hidden;background:#f4f0e7}.app{height:100dvh;display:block}.top,.s
 const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage');
 const groups={frame:[],rollers:[],warp:[],reed:[],heddle:[],ropes:[],shuttles:[],pedals:[],tray:[]};
 const meta=[
-['frame','木构机架','立柱、横梁与侧向撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','钢丝排列经线，供经面分绞','#71807c'],['heddle','综框 / 筘框摆架','悬挂式矩形框架，承载综丝与钢筘','#976345'],['ropes','顶部翻头与吊绳','双侧斜置翻头杆经绳索联动综框和脚踏','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆带动吊绳开口','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
+['frame','木构机架','前后支架、横梁及上部支撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','矩形木框及平行钢丝，穿过经面','#71807c'],['heddle','翻头与摇摆杆','单根摇摆杆在槽座内销接，吊动翻头','#976345'],['ropes','吊绳','摇摆杆两端分别联动翻头和两根脚踏杆','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆；后端另以吊绳悬挂','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
 ];
 const V=(x,y,z)=>[x,y,z], add=(g,o)=>groups[g].push(o);
 function box(g,c,s,color){const [x,y,z]=c,[a,b,d]=s,hx=a/2,hy=b/2,hz=d/2;let p=[[-hx,-hy,-hz],[hx,-hy,-hz],[hx,hy,-hz],[-hx,hy,-hz],[-hx,-hy,hz],[hx,-hy,hz],[hx,hy,hz],[-hx,hy,hz]].map(q=>[q[0]+x,q[1]+y,q[2]+z]);let f=[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]];let norms=[[0,0,-1],[0,0,1],[0,-1,0],[1,0,0],[0,1,0],[-1,0,0]];add(g,{type:'faces',polys:f.map((ix,i)=>({pts:ix.map(k=>p[k]),n:norms[i],color}))});}
@@ -36,26 +36,24 @@ const wood='#95643e',wood2='#a9764b',woodLight='#bd8e5f',bamboo='#c5a776',rope='
 for(let x of [-1.5,1.5])for(let y of [-1.02,1.02]){box('frame',[x,y,1.3],[.19,.2,2.6],wood);box('frame',[x,y,.14],[.27,.25,.28],wood2)}
 for(let y of [-1.02,1.02]){beam('frame',[-1.52,y,2.46],[1.52,y,2.46],.17,.17,wood2);beam('frame',[-1.52,y,1.33],[1.52,y,1.33],.14,.14,wood);beam('frame',[-1.52,y,.39],[1.52,y,.39],.13,.13,wood2)}
 for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);beam('frame',[x,-1.02,1.3],[x,1.02,1.3],.14,.14,wood);beam('frame',[x,-.95,2.45],[x,.95,2.45],.14,.14,wood2);beam('frame',[x,-.92,.42],[x,1.0,1.18],.11,.11,wood2)}
-// Elevated bridge rails support the central suspended loom assembly.
-for(let x of [-.88,.88])beam('frame',[x,.48,2.45],[x,1.02,2.88],.17,.17,wood);
-beam('frame',[-.96,-.06,2.88],[.96,-.06,2.88],.15,.15,wood2);
-beam('frame',[-.96,1.02,2.88],[.96,1.02,2.88],.15,.15,wood2);
-beam('frame',[-.88,-.06,2.88],[-.88,1.02,2.88],.13,.13,wood2);
-beam('frame',[.88,-.06,2.88],[.88,1.02,2.88],.13,.13,wood2);
-// Separate suspended rectangular heddle/reed carrier, angled through the depth.
+// Raised front/rear support rods. Each pair spans the loom width; their upper
+// ends carry the transverse bars and the single front-to-back connecting rod.
+for(let y of [-.22,.88])for(let x of [-.88,.88])beam('frame',[x,y,2.45],[x,y,3.28],.13,.13,wood);
+beam('frame',[-.96,-.22,3.28],[.96,-.22,3.28],.15,.15,wood2);
+beam('frame',[-.96,.88,3.28],[.96,.88,3.28],.15,.15,wood2);
+beam('frame',[0,-.22,3.28],[0,.88,3.28],.12,.12,woodLight);
+// One vertical fixed rod rises from the connecting rod. Its two cheeks leave
+// the patent's open slot; the single rocker sits in the slot on a cross pin.
+box('frame',[0,.10,3.49],[.14,.14,.42],wood);
+box('frame',[-.14,.10,3.76],[.08,.14,.25],wood2);
+box('frame',[ .14,.10,3.76],[.08,.14,.25],wood2);
+// The steel reed is one tilted rectangular wooden frame with parallel dents.
 const hx=.68;
-beam('heddle',[-hx,-.42,2.02],[-hx,.18,2.98],.075,.075,wood2);
-beam('heddle',[ hx,-.42,2.02],[ hx,.18,2.98],.075,.075,wood2);
-beam('heddle',[-hx,-.42,2.02],[ hx,-.42,2.02],.075,.075,woodLight);
-beam('heddle',[-hx,.18,2.98],[ hx,.18,2.98],.075,.075,woodLight);
-// The top linkage is a pair of front-to-back sloping arms, with slotted pivot
-// cheeks and a shared cross tie. It is not one broad crosswise lever.
-for(let x of [-.27,.27]){
-  beam('frame',[x,-.10,2.88],[x,-.10,3.22],.10,.12,wood);
-  box('frame',[x,-.11,3.13],[.14,.17,.22],wood2);
-  box('frame',[x,-.11,3.19],[.08,.12,.14],'#795033');
-}
-beam('ropes',[-.27,-.10,3.18],[.27,-.10,3.18],.055,.06,woodLight);
+beam('reed',[-hx,-.42,1.96],[-hx,.18,2.88],.075,.075,wood2);
+beam('reed',[ hx,-.42,1.96],[ hx,.18,2.88],.075,.075,wood2);
+beam('reed',[-hx,-.42,1.96],[ hx,-.42,1.96],.075,.075,woodLight);
+beam('reed',[-hx,.18,2.88],[ hx,.18,2.88],.075,.075,woodLight);
+for(let i=0;i<41;i++){let x=-.64+i*1.28/40;line('reed',[[x,.15,2.83],[x,-.40,2.00]],.0032,metal)}
 // Front and rear winding rollers. Both are round wooden cylinders across the loom width.
 cylinder('rollers',[-1.43,-.79,1.55],[1.43,-.79,1.55],.12,wood2,48);cylinder('rollers',[-1.43,.91,2.05],[1.43,.91,2.05],.12,wood2,48);
 // Wrapped cloth / warp on the beams.
@@ -65,29 +63,26 @@ box('warp',[0,.07,1.91],[1.76,1.62,.018],'#eadfc9');
 for(let i=0;i<55;i++){let x=-.84+i*1.68/54;line('warp',[[x,-.73,1.67],[x,-.15,1.89],[x,.83,2.16]],.0035,i%5===0?'#b8a37f':warp)}
 // Woven cloth strip at the front of the working area.
 box('warp',[0,-.57,1.69],[1.05,.31,.025],'#d5c39d');for(let i=0;i<16;i++){let x=-.5+i/15;line('warp',[[x,-.72,1.69],[x,-.42,1.69]],.004,'#ad8d5c')}
-// Reed: frame across the warp, thin upright steel dents and two cross bars.
-beam('reed',[-.94,-.08,1.91],[.94,-.08,1.91],.055,.075,woodLight);beam('reed',[-.94,-.08,2.28],[.94,-.08,2.28],.055,.075,woodLight);for(let i=0;i<45;i++){let x=-.88+i*1.76/44;line('reed',[[x,-.08,1.94],[x,-.08,2.25]],.003,metal)}
-// Fine heddle threads descend from the upper crossbar through the carrier.
-beam('heddle',[-.61,-.08,2.72],[.61,-.08,2.72],.045,.05,woodLight);
-for(let i=0;i<33;i++){let x=-.60+i*1.2/32;line('heddle',[[x,.16,2.94],[x,-.03,2.64],[x,-.32,2.20]],.0032,'#d7c6a4')}
-// Twin sloping rocker arms mounted at the shared crosswise pivot. Their raised
-// ends sit toward the rear; their lower ends face the operator.
-for(let x of [-.24,.24]){
-  beam('heddle',[x,-.66,3.08],[x,.84,3.56],.11,.09,wood2);
-  box('heddle',[x,-.68,3.10],[.16,.14,.12],woodLight);
-  box('heddle',[x,.84,3.57],[.16,.14,.12],woodLight);
-}
-cylinder('heddle',[-.38,-.10,3.27],[.38,-.10,3.27],.045,'#725033',16);
+// A single long, broad rocker slopes clearly upward toward the rear. The
+// crosswise pin passes through the slot at the balance point.
+beam('heddle',[0,-.70,3.30],[0,.96,4.43],.20,.14,wood2);
+box('heddle',[0,-.72,3.31],[.24,.14,.14],woodLight);
+box('heddle',[0,.96,4.44],[.24,.14,.14],woodLight);
+cylinder('heddle',[-.20,.10,3.85],[.20,.10,3.85],.045,'#725033',16);
+// The woven shed / flip-head bar is a separate crosswise member below the reed.
+beam('heddle',[-.72,-.12,2.42],[.72,-.12,2.42],.065,.06,woodLight);
+for(let i=0;i<27;i++){let x=-.64+i*1.28/26;line('heddle',[[x,-.10,2.40],[x,-.12,2.19]],.0032,'#d7c6a4')}
 // Treadles shown as two long bamboo rods near the base.
 for(let x of [-.28,.28]){cylinder('pedals',[x,-.9,.23],[x,.65,.23],.045,bamboo,10);for(let y of [-.72,.48])line('pedals',[[x-.1,y,.23],[x+.1,y,.23]],.012,'#8c754b')}
-// Twin cord paths lift the suspended frame and descend to the two longitudinal
-// treadles, keeping the hand-operated loom mechanism visible.
-line('ropes',[[-.24,-.64,3.09],[-.48,-.30,2.88],[-.55,-.05,2.74]],.009,rope);
-line('ropes',[[.24,-.64,3.09],[.48,-.30,2.88],[.55,-.05,2.74]],.009,rope);
-line('ropes',[[-.24,.82,3.56],[-.42,.70,2.9],[-.28,.38,.23]],.009,rope);
-line('ropes',[[.24,.82,3.56],[.42,.70,2.9],[.28,.38,.23]],.009,rope);
-line('ropes',[[-.55,-.05,2.74],[-.58,-.10,2.15]],.007,'#ddcfb2');
-line('ropes',[[.55,-.05,2.74],[.58,-.10,2.15]],.007,'#ddcfb2');
+// Patent cord routing: the front rocker end lifts both ends of the flip-head;
+// the opposite end pulls the two foot rods. Each foot rod's far end is hung
+// separately from a transverse frame beam by a third cord.
+line('ropes',[[0,-.68,3.31],[-.62,-.30,2.83],[-.68,-.12,2.42]],.009,rope);
+line('ropes',[[0,-.68,3.31],[.62,-.30,2.83],[.68,-.12,2.42]],.009,rope);
+line('ropes',[[0,.94,4.42],[-.28,.38,1.00],[-.28,.25,.23]],.009,rope);
+line('ropes',[[0,.94,4.42],[.28,.38,1.00],[.28,.25,.23]],.009,rope);
+line('ropes',[[-.28,.65,.23],[-.28,.88,.78],[-.28,.88,1.33]],.009,rope);
+line('ropes',[[.28,.65,.23],[.28,.88,.78],[.28,.88,1.33]],.009,rope);
 // Hanging shuttle board with a row of hand-held wooden shuttles.
 beam('shuttles',[-.85,.7,2.73],[.85,.7,2.73],.09,.08,wood2);for(let i=0;i<7;i++){let x=-.67+i*.223;beam('shuttles',[x-.075,.7,2.52],[x+.075,.7,2.52],.038,.035,gold);cylinder('shuttles',[x-.04,.7,2.52],[x+.04,.7,2.52],.018,'#d1b27c',7)}
 // Removable pattern tray below the warp, as described in the patent.
@@ -97,8 +92,8 @@ for(let x of [-1.1,1.1]){line('ropes',[[x,-.82,1.72],[x,-.77,1.47],[x,-.8,1.4]],
 cylinder('rollers',[1.05,-.79,1.55],[1.42,-.79,1.35],.055,woodLight,24);cylinder('rollers',[1.43,.91,2.05],[1.62,.91,2.05],.05,woodLight,24);
 
 // Default to the front three-quarter view: rear of the loom rises away to the left in perspective.
-let yaw=Math.PI-.68,pitch=.2,zoom=1.12,panX=0,panY=0,wire=false,labelsOn=false,active=null,hidden=new Set(),drag=null,dpr=1;
-const target=[0,0,1.73],focal=6.2;
+let yaw=Math.PI-.68,pitch=.2,zoom=.96,panX=0,panY=0,wire=false,labelsOn=false,active=null,hidden=new Set(),drag=null,dpr=1;
+const target=[0,0,2.02],focal=6.2;
 function rgba(hex,shade=1,alpha=1){let h=hex.replace('#','');let n=parseInt(h,16),r=(n>>16)&255,g=(n>>8)&255,b=n&255;return `rgba(${Math.max(0,Math.min(255,r*shade|0))},${Math.max(0,Math.min(255,g*shade|0))},${Math.max(0,Math.min(255,b*shade|0))},${alpha})`}
 function camera(p){let x=p[0]-target[0],y=p[1]-target[1],z=p[2]-target[2],c=Math.cos(yaw),s=Math.sin(yaw),x1=x*c-y*s,depth=x*s+y*c,cp=Math.cos(pitch),sp=Math.sin(pitch),y2=z*cp-depth*sp,z2=depth*cp+z*sp;return [x1,y2,z2+focal]}
 function project(p){let [x,y,z]=camera(p),scale=Math.min(canvas.width,canvas.height)*.84*zoom/z;return [canvas.width/2+x*scale+panX*dpr,canvas.height*.53-y*scale+panY*dpr,z]}
