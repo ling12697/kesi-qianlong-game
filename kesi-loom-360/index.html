@@ -41,9 +41,9 @@ for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);b
 beam('frame',[-1.5,-.10,2.46],[1.5,-.10,2.46],.14,.14,wood2);
 // Short central upright carries the two vertically separated pivot points
 // visible in the reference mechanism; it rises only a little above the rail.
-box('frame',[0,-.10,2.82],[.18,.16,.58],wood);
-box('frame',[-.14,-.10,3.08],[.08,.15,.12],wood2);
-box('frame',[ .14,-.10,3.08],[.08,.15,.12],wood2);
+box('frame',[-.25,-.10,2.82],[.18,.16,.58],wood);
+box('frame',[-.39,-.10,3.08],[.08,.15,.12],wood2);
+box('frame',[-.11,-.10,3.08],[.08,.15,.12],wood2);
 // The steel reed is one tilted rectangular wooden frame with parallel dents.
 const hx=.68;
 beam('reed',[-hx,-.42,1.96],[-hx,.18,2.88],.075,.075,wood2);
@@ -60,18 +60,16 @@ box('warp',[0,.07,1.91],[1.76,1.62,.018],'#eadfc9');
 for(let i=0;i<55;i++){let x=-.84+i*1.68/54;line('warp',[[x,-.73,1.67],[x,-.15,1.89],[x,.83,2.16]],.0035,i%5===0?'#b8a37f':warp)}
 // Woven cloth strip at the front of the working area.
 box('warp',[0,-.57,1.69],[1.05,.31,.025],'#d5c39d');for(let i=0;i<16;i++){let x=-.5+i/15;line('warp',[[x,-.72,1.69],[x,-.42,1.69]],.004,'#ad8d5c')}
-// The top is a side-profile pair, one above the other, rather than two rails
-// spread across the loom width. Their slope and vertical spacing follow the
-// reference photographs; the pin is deliberately offset toward the short end.
-// This makes the long rear arm visibly longer, matching the photographed lever.
-beam('heddle',[0,-.68,2.85],[0,1.10,3.24],.16,.10,wood2);
-beam('heddle',[0,-.68,2.67],[0,1.10,3.06],.16,.10,wood2);
-box('heddle',[0,-.70,2.85],[.20,.12,.12],woodLight);
-box('heddle',[0,1.10,3.24],[.20,.12,.12],woodLight);
-box('heddle',[0,-.70,2.67],[.20,.12,.12],woodLight);
-box('heddle',[0,1.10,3.06],[.20,.12,.12],woodLight);
-cylinder('heddle',[-.17,-.10,2.98],[.17,-.10,2.98],.04,'#725033',16);
-cylinder('heddle',[-.17,-.10,2.80],[.17,-.10,2.80],.04,'#725033',16);
+// The two sloped rocker boards run left-to-right across the loom width.
+// Their pivot sits about one-third in from the short end, matching the views.
+beam('heddle',[-.85,-.10,2.83],[1.15,-.10,3.33],.16,.10,wood2);
+beam('heddle',[-.85,-.10,2.65],[1.15,-.10,3.15],.16,.10,wood2);
+box('heddle',[-.85,-.10,2.83],[.20,.12,.12],woodLight);
+box('heddle',[1.15,-.10,3.33],[.20,.12,.12],woodLight);
+box('heddle',[-.85,-.10,2.65],[.20,.12,.12],woodLight);
+box('heddle',[1.15,-.10,3.15],[.20,.12,.12],woodLight);
+cylinder('heddle',[-.25,-.28,2.98],[-.25,.08,2.98],.04,'#725033',16);
+cylinder('heddle',[-.25,-.28,2.80],[-.25,.08,2.80],.04,'#725033',16);
 // The woven shed / flip-head bar is a separate crosswise member below the reed.
 beam('heddle',[-.72,-.12,2.42],[.72,-.12,2.42],.065,.06,woodLight);
 for(let i=0;i<27;i++){let x=-.64+i*1.28/26;line('heddle',[[x,-.10,2.40],[x,-.12,2.19]],.0032,'#d7c6a4')}
@@ -80,10 +78,10 @@ for(let x of [-.28,.28]){cylinder('pedals',[x,-.9,.23],[x,.65,.23],.045,bamboo,1
 // Patent cord routing: the front rocker end lifts both ends of the flip-head;
 // the opposite end pulls the two foot rods. Each foot rod's far end is hung
 // separately from a transverse frame beam by a third cord.
-line('ropes',[[0,-.68,2.85],[-.62,-.30,2.83],[-.68,-.12,2.42]],.009,rope);
-line('ropes',[[0,-.68,2.85],[.62,-.30,2.83],[.68,-.12,2.42]],.009,rope);
-line('ropes',[[0,1.10,3.24],[-.28,.38,1.00],[-.28,.25,.23]],.009,rope);
-line('ropes',[[0,1.10,3.24],[.28,.38,1.00],[.28,.25,.23]],.009,rope);
+line('ropes',[[-.85,-.10,2.83],[-.72,-.22,2.61],[-.68,-.12,2.42]],.009,rope);
+line('ropes',[[-.85,-.10,2.83],[.62,-.22,2.61],[.68,-.12,2.42]],.009,rope);
+line('ropes',[[1.15,-.10,3.33],[.42,.38,1.00],[.28,.25,.23]],.009,rope);
+line('ropes',[[1.15,-.10,3.33],[-.42,.38,1.00],[-.28,.25,.23]],.009,rope);
 line('ropes',[[-.28,.65,.23],[-.28,.88,.78],[-.28,.88,1.33]],.009,rope);
 line('ropes',[[.28,.65,.23],[.28,.88,.78],[.28,.88,1.33]],.009,rope);
 // Hanging shuttle board with a row of hand-held wooden shuttles.
