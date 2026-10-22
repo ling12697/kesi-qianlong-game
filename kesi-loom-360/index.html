@@ -23,7 +23,7 @@ body{overflow:hidden;background:#f4f0e7}.app{height:100dvh;display:block}.top,.s
 const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),stage=document.getElementById('stage');
 const groups={frame:[],rollers:[],warp:[],reed:[],heddle:[],ropes:[],shuttles:[],pedals:[],tray:[]};
 const meta=[
-['frame','木构机架','前后支架、横梁及上部支撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','矩形木框及平行钢丝，穿过经面','#71807c'],['heddle','翻头与摇摆杆','单根摇摆杆在槽座内销接，吊动翻头','#976345'],['ropes','吊绳','摇摆杆两端分别联动翻头和两根脚踏杆','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆；后端另以吊绳悬挂','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
+['frame','木构机架','前后支架、横梁及短上部支撑杆','#855638'],['rollers','前后卷轴','圆柱经轴与织物卷轴，跨机架两侧','#9a6a3f'],['warp','经面与纬织区','经线保持张力；彩纬按图样分段织入','#c4ad83'],['reed','钢筘','矩形木框及平行钢丝，穿过经面','#71807c'],['heddle','翻头与摇摆杆','双侧臂摇摆组件在短槽座内销接，吊动翻头','#976345'],['ropes','吊绳','摇摆杆两端分别联动翻头和两根脚踏杆','#d5c4a4'],['shuttles','挂梭板与小梭','手工换梭、按色分区引纬','#b58952'],['pedals','双脚踏杆','两根纵向脚踏杆；后端另以吊绳悬挂','#b89762'],['tray','图样托盘','托放描样稿，位于经面下方','#bd9f70']
 ];
 const V=(x,y,z)=>[x,y,z], add=(g,o)=>groups[g].push(o);
 function box(g,c,s,color){const [x,y,z]=c,[a,b,d]=s,hx=a/2,hy=b/2,hz=d/2;let p=[[-hx,-hy,-hz],[hx,-hy,-hz],[hx,hy,-hz],[-hx,hy,-hz],[-hx,-hy,hz],[hx,-hy,hz],[hx,hy,hz],[-hx,hy,hz]].map(q=>[q[0]+x,q[1]+y,q[2]+z]);let f=[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]];let norms=[[0,0,-1],[0,0,1],[0,-1,0],[1,0,0],[0,1,0],[-1,0,0]];add(g,{type:'faces',polys:f.map((ix,i)=>({pts:ix.map(k=>p[k]),n:norms[i],color}))});}
@@ -36,17 +36,16 @@ const wood='#95643e',wood2='#a9764b',woodLight='#bd8e5f',bamboo='#c5a776',rope='
 for(let x of [-1.5,1.5])for(let y of [-1.02,1.02]){box('frame',[x,y,1.3],[.19,.2,2.6],wood);box('frame',[x,y,.14],[.27,.25,.28],wood2)}
 for(let y of [-1.02,1.02]){beam('frame',[-1.52,y,2.46],[1.52,y,2.46],.17,.17,wood2);beam('frame',[-1.52,y,1.33],[1.52,y,1.33],.14,.14,wood);beam('frame',[-1.52,y,.39],[1.52,y,.39],.13,.13,wood2)}
 for(let x of [-1.5,1.5]){beam('frame',[x,-1.02,.35],[x,1.02,.35],.14,.14,wood);beam('frame',[x,-1.02,1.3],[x,1.02,1.3],.14,.14,wood);beam('frame',[x,-.95,2.45],[x,.95,2.45],.14,.14,wood2);beam('frame',[x,-.92,.42],[x,1.0,1.18],.11,.11,wood2)}
-// Raised front/rear support rods. Each pair spans the loom width; their upper
-// ends carry the transverse bars and the single front-to-back connecting rod.
-for(let y of [-.22,.88])for(let x of [-.88,.88])beam('frame',[x,y,2.45],[x,y,3.28],.13,.13,wood);
-beam('frame',[-.96,-.22,3.28],[.96,-.22,3.28],.15,.15,wood2);
-beam('frame',[-.96,.88,3.28],[.96,.88,3.28],.15,.15,wood2);
-beam('frame',[0,-.22,3.28],[0,.88,3.28],.12,.12,woodLight);
-// One vertical fixed rod rises from the connecting rod. Its two cheeks leave
-// the patent's open slot; the single rocker sits in the slot on a cross pin.
-box('frame',[0,.10,3.49],[.14,.14,.42],wood);
-box('frame',[-.14,.10,3.76],[.08,.14,.25],wood2);
-box('frame',[ .14,.10,3.76],[.08,.14,.25],wood2);
+// The top sits directly on the main frame rail. Short front/rear supports
+// carry one connecting rod; there is no tall raised portal above the loom.
+for(let y of [-.22,.88])for(let x of [-.88,.88])beam('frame',[x,y,2.45],[x,y,2.56],.12,.12,wood);
+beam('frame',[-.94,-.22,2.56],[.94,-.22,2.56],.13,.13,wood2);
+beam('frame',[-.94,.88,2.56],[.94,.88,2.56],.13,.13,wood2);
+beam('frame',[0,-.22,2.56],[0,.88,2.56],.11,.11,woodLight);
+// Short fixed pivot board with an open slot and a crosswise pin.
+box('frame',[0,.10,2.72],[.15,.15,.32],wood);
+box('frame',[-.14,.10,2.91],[.08,.15,.17],wood2);
+box('frame',[ .14,.10,2.91],[.08,.15,.17],wood2);
 // The steel reed is one tilted rectangular wooden frame with parallel dents.
 const hx=.68;
 beam('reed',[-hx,-.42,1.96],[-hx,.18,2.88],.075,.075,wood2);
@@ -63,12 +62,16 @@ box('warp',[0,.07,1.91],[1.76,1.62,.018],'#eadfc9');
 for(let i=0;i<55;i++){let x=-.84+i*1.68/54;line('warp',[[x,-.73,1.67],[x,-.15,1.89],[x,.83,2.16]],.0035,i%5===0?'#b8a37f':warp)}
 // Woven cloth strip at the front of the working area.
 box('warp',[0,-.57,1.69],[1.05,.31,.025],'#d5c39d');for(let i=0;i<16;i++){let x=-.5+i/15;line('warp',[[x,-.72,1.69],[x,-.42,1.69]],.004,'#ad8d5c')}
-// A single long, broad rocker slopes clearly upward toward the rear. The
-// crosswise pin passes through the slot at the balance point.
-beam('heddle',[0,-.70,3.30],[0,.96,4.43],.20,.14,wood2);
-box('heddle',[0,-.72,3.31],[.24,.14,.14],woodLight);
-box('heddle',[0,.96,4.44],[.24,.14,.14],woodLight);
-cylinder('heddle',[-.20,.10,3.85],[.20,.10,3.85],.045,'#725033',16);
+// Paired, parallel slats form the visible rocker assembly in the reference
+// object. They share the slotted fixed board and one crosswise pivot pin.
+for(let x of [-.13,.13]){
+ beam('heddle',[x,-.70,2.73],[x,.96,3.14],.10,.09,wood2);
+ box('heddle',[x,-.72,2.74],[.13,.12,.11],woodLight);
+ box('heddle',[x,.96,3.15],[.13,.12,.11],woodLight);
+}
+beam('heddle',[-.18,-.70,2.73],[.18,-.70,2.73],.08,.08,woodLight);
+beam('heddle',[-.18,.96,3.14],[.18,.96,3.14],.08,.08,woodLight);
+cylinder('heddle',[-.23,.10,2.93],[.23,.10,2.93],.04,'#725033',16);
 // The woven shed / flip-head bar is a separate crosswise member below the reed.
 beam('heddle',[-.72,-.12,2.42],[.72,-.12,2.42],.065,.06,woodLight);
 for(let i=0;i<27;i++){let x=-.64+i*1.28/26;line('heddle',[[x,-.10,2.40],[x,-.12,2.19]],.0032,'#d7c6a4')}
@@ -77,10 +80,12 @@ for(let x of [-.28,.28]){cylinder('pedals',[x,-.9,.23],[x,.65,.23],.045,bamboo,1
 // Patent cord routing: the front rocker end lifts both ends of the flip-head;
 // the opposite end pulls the two foot rods. Each foot rod's far end is hung
 // separately from a transverse frame beam by a third cord.
-line('ropes',[[0,-.68,3.31],[-.62,-.30,2.83],[-.68,-.12,2.42]],.009,rope);
-line('ropes',[[0,-.68,3.31],[.62,-.30,2.83],[.68,-.12,2.42]],.009,rope);
-line('ropes',[[0,.94,4.42],[-.28,.38,1.00],[-.28,.25,.23]],.009,rope);
-line('ropes',[[0,.94,4.42],[.28,.38,1.00],[.28,.25,.23]],.009,rope);
+for(let x of [-.13,.13]){
+ line('ropes',[[x,-.68,2.73],[x*4,-.30,2.83],[-.68,-.12,2.42]],.009,rope);
+ line('ropes',[[x,-.68,2.73],[x*4,-.30,2.83],[.68,-.12,2.42]],.009,rope);
+}
+line('ropes',[[-.13,.94,3.14],[-.28,.38,1.00],[-.28,.25,.23]],.009,rope);
+line('ropes',[[.13,.94,3.14],[.28,.38,1.00],[.28,.25,.23]],.009,rope);
 line('ropes',[[-.28,.65,.23],[-.28,.88,.78],[-.28,.88,1.33]],.009,rope);
 line('ropes',[[.28,.65,.23],[.28,.88,.78],[.28,.88,1.33]],.009,rope);
 // Hanging shuttle board with a row of hand-held wooden shuttles.
@@ -96,7 +101,7 @@ let yaw=Math.PI-.68,pitch=.2,zoom=.96,panX=0,panY=0,wire=false,labelsOn=false,ac
 const target=[0,0,2.02],focal=6.2;
 function rgba(hex,shade=1,alpha=1){let h=hex.replace('#','');let n=parseInt(h,16),r=(n>>16)&255,g=(n>>8)&255,b=n&255;return `rgba(${Math.max(0,Math.min(255,r*shade|0))},${Math.max(0,Math.min(255,g*shade|0))},${Math.max(0,Math.min(255,b*shade|0))},${alpha})`}
 function camera(p){let x=p[0]-target[0],y=p[1]-target[1],z=p[2]-target[2],c=Math.cos(yaw),s=Math.sin(yaw),x1=x*c-y*s,depth=x*s+y*c,cp=Math.cos(pitch),sp=Math.sin(pitch),y2=z*cp-depth*sp,z2=depth*cp+z*sp;return [x1,y2,z2+focal]}
-function project(p){let [x,y,z]=camera(p),scale=Math.min(canvas.width,canvas.height)*.84*zoom/z;return [canvas.width/2+x*scale+panX*dpr,canvas.height*.53-y*scale+panY*dpr,z]}
+function project(p){let [x,y,z]=camera([p[0]*.78,p[1]*1.06,p[2]]),scale=Math.min(canvas.width,canvas.height)*.84*zoom/z;return [canvas.width/2+x*scale+panX*dpr,canvas.height*.53-y*scale+panY*dpr,z]}
 function draw(){let w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.clearRect(0,0,canvas.width,canvas.height);let faces=[];for(const [g,objs] of Object.entries(groups)){if(hidden.has(g))continue;for(const ob of objs){if(ob.type!=='faces')continue;for(const f of ob.polys){let pts=f.pts.map(project);let avg=pts.reduce((s,p)=>s+p[2],0)/pts.length;let n=f.n,[nx,ny,nz]=n;let light=Math.max(.43,Math.min(1.13,.68+(-.5*nx-.6*ny+.62*nz)*.38));faces.push({pts,depth:avg,color:f.color,light,group:g})}}}
 faces.sort((a,b)=>b.depth-a.depth);for(const f of faces){ctx.beginPath();ctx.moveTo(f.pts[0][0],f.pts[0][1]);for(let i=1;i<f.pts.length;i++)ctx.lineTo(f.pts[i][0],f.pts[i][1]);ctx.closePath();let highlighted=active===f.group;ctx.fillStyle=rgba(f.color,f.light,highlighted?.86:.99);ctx.fill();ctx.strokeStyle=wire?'#47372a88':(highlighted?'#a44327aa':'#48352320');ctx.lineWidth=wire?1.2*dpr:.65*dpr;ctx.stroke()}
 drawGround();drawLabels();requestAnimationFrame(draw)}
