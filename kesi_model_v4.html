@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>缂丝织机 V4 正在加载</title>
+<style>body{font:16px system-ui,sans-serif;background:#f7f4ed;color:#352b20;display:grid;place-items:center;height:100vh;margin:0}main{text-align:center;padding:2rem}progress{width:min(70vw,360px);accent-color:#9b603f}</style>
+<main><h1>缂丝织机 · V4</h1><p id="msg">正在加载三维查看器…</p><progress id="bar"></progress></main>
+<script>
+(async()=>{
+  const total=5873503, chunk=300000, count=20, out=new Uint8Array(total), bar=document.getElementById('bar'), msg=document.getElementById('msg');
+  bar.max=count; bar.value=0;
+  try {
+    const parts=await Promise.all(Array.from({length:count},async(_,i)=>{
+      const name='kesi-model-v4/viewer.part'+String(i).padStart(2,'0')+'.bin';
+      const res=await fetch(new URL(name,location.href));
+      if(!res.ok) throw new Error('读取模型数据失败（'+res.status+'）');
+      return new Uint8Array(await res.arrayBuffer());
+    }));
+    for(let i=0;i<count;i++){out.set(parts[i],i*chunk);bar.value=i+1;}
+    const url=URL.createObjectURL(new Blob([out],{type:'text/html;charset=utf-8'}));
+    location.replace(url);
+  } catch(e) {
+    msg.textContent='加载失败：'+e.message+'。请稍后刷新。';
+  }
+})();
+</script></html>
