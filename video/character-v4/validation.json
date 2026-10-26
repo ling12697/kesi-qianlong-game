@@ -1,0 +1,188 @@
+{
+  "rig_bones": 163,
+  "meshes": [
+    {
+      "name": "Anatomical ear -1",
+      "used_vertices": 85,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Anatomical ear 1",
+      "used_vertices": 85,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Black cloth shoe L",
+      "used_vertices": 160,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Black cloth shoe R",
+      "used_vertices": 160,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Central placket seam",
+      "used_vertices": 712,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Continuous reference fitted head",
+      "used_vertices": 1048,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button knot 0",
+      "used_vertices": 86,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button knot 1",
+      "used_vertices": 86,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button knot 2",
+      "used_vertices": 86,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button knot 3",
+      "used_vertices": 86,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button knot 4",
+      "used_vertices": 86,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 0 -1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 0 1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 1 -1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 1 1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 2 -1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 2 1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 3 -1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 3 1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 4 -1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Frog button loop 4 1",
+      "used_vertices": 264,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Full short-hair scalp v2",
+      "used_vertices": 2016,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Layered tousled black strands v2",
+      "used_vertices": 76800,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "LockedArtisan · anatomical skin",
+      "used_vertices": 9175,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Loose black trousers",
+      "used_vertices": 5201,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Mandarin shirt with half-length sleeves",
+      "used_vertices": 10858,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Natural neck below jaw",
+      "used_vertices": 144,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Natural swept short fringe",
+      "used_vertices": 63000,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Rolled sleeve cuff L",
+      "used_vertices": 64,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    },
+    {
+      "name": "Rolled sleeve cuff R",
+      "used_vertices": 64,
+      "unweighted_vertices": 0,
+      "armature_modifier": true
+    }
+  ],
+  "original_loom_sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd",
+  "likeness_status": "Initial reference-guided reconstruction; not yet an approved exact likeness",
+  "delivery_status": "GLB and BLEND saved locally; GitHub is not accessible to user, so show actual renders directly in chat"
+}

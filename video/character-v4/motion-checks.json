@@ -1,0 +1,59 @@
+{
+  "scope": "Six-second seated arm/finger and real camera movement test; no complete weaving process",
+  "sampled_seat_checks": [
+    {
+      "frame": 1,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 13,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 25,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 37,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 49,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 61,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 73,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 85,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 97,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 109,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 121,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 133,
+      "bench_intersections": {}
+    },
+    {
+      "frame": 144,
+      "bench_intersections": {}
+    }
+  ],
+  "feet": "Fixed on original treadles; unverified mechanical cycle is not animated",
+  "original_loom_sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd"
+}
