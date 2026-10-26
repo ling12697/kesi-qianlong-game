@@ -1,0 +1,58 @@
+{
+  "original-loom-verification.json": {
+    "bytes": 9640,
+    "sha256": "eb4f0ebd9cfd91fef063eaddd38b622d634ea343ceb4cd33daf612c17d89c1c7"
+  },
+  "grip-clearance.json": {
+    "bytes": 816,
+    "sha256": "980592bf3dd389cfb76b6591f60dc3471f584ea9752ed17e7cd9ba623962b643"
+  },
+  "motion-design.json": {
+    "bytes": 1845,
+    "sha256": "0e88beab710c507d5c413c323844d2d6a9a38bdda908924d8f15f2f7427ef876"
+  },
+  "A08-poster.png": {
+    "bytes": 953992,
+    "sha256": "1f2352107097a8fc7034952b456314db4aba93789c76294e7c0cffda617985fb"
+  },
+  "README.md": {
+    "bytes": 2058,
+    "sha256": "5466583987fe3b6be6c6d633deb9bd9132010b7ed1d1f5f7826fe221710ca558"
+  },
+  "动作核对记录.md": {
+    "bytes": 2981,
+    "sha256": "b5d94288b8059d5426ad7946e2bf4d5b8c23b2de905e496813fcd8106ad204ff"
+  },
+  "video-verification.json": {
+    "bytes": 3822,
+    "sha256": "cbfa5402a25c2ded7456245f11ba4ee58dafcf5b1670400eb423837f29788f04"
+  },
+  "contact-all-frames.json": {
+    "bytes": 97638,
+    "sha256": "9a630ef2c389d7c9d081ea3cc7e6fd939dfbc4b3570e03fe669402feb0878dfa"
+  },
+  "A08-comb-study.mp4": {
+    "bytes": 441555,
+    "sha256": "43fe713ff76c5887032888b96a358b540486becbd011d12693e866eca73a8324"
+  },
+  "joint-angles.json": {
+    "bytes": 1537,
+    "sha256": "a25c992ee80630dc0d24ce7f0db189e36eee70a8ba533e949db8d82f1c364ed8"
+  },
+  "MEDIAPIPE-LICENSE.txt": {
+    "bytes": 12331,
+    "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+  },
+  "MAKEHUMAN-ASSET-LICENSE.md": {
+    "bytes": 6962,
+    "sha256": "f6089cba01cb570a24712b41ab8a586ccd3cc5ef53dc266ca50b95c288956d2c"
+  },
+  "playback-verification.json": {
+    "bytes": 3010,
+    "sha256": "d69e4a7fea2d5b99c63cc16f4ee599f52c64c2f19688a49533ad6bfed9641d09"
+  },
+  "grip-calibration.json": {
+    "bytes": 540,
+    "sha256": "81ca45c98e047daa73fbb156be6298e88f8c17139648056842b4251b6c1a6ba8"
+  }
+}

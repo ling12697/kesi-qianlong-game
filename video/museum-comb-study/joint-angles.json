@@ -1,0 +1,85 @@
+{
+  "scope": "Geometric changes of direction, not a clinical joint-axis assessment",
+  "fingers": [
+    {
+      "side": "R",
+      "digit": 1,
+      "segment_turn_degrees": [
+        35.16344967753186,
+        23.081973724539647
+      ]
+    },
+    {
+      "side": "R",
+      "digit": 2,
+      "segment_turn_degrees": [
+        68.89344755395314,
+        31.15447355928746
+      ]
+    },
+    {
+      "side": "R",
+      "digit": 3,
+      "segment_turn_degrees": [
+        76.3157458231143,
+        37.89263276042346
+      ]
+    },
+    {
+      "side": "R",
+      "digit": 4,
+      "segment_turn_degrees": [
+        69.79263512799615,
+        34.219664383303254
+      ]
+    },
+    {
+      "side": "R",
+      "digit": 5,
+      "segment_turn_degrees": [
+        54.42605504273396,
+        20.27436470205067
+      ]
+    },
+    {
+      "side": "L",
+      "digit": 1,
+      "segment_turn_degrees": [
+        30.390482749675684,
+        8.837468215184547
+      ]
+    },
+    {
+      "side": "L",
+      "digit": 2,
+      "segment_turn_degrees": [
+        2.3742155904050986,
+        5.681720181831787
+      ]
+    },
+    {
+      "side": "L",
+      "digit": 3,
+      "segment_turn_degrees": [
+        14.958727291805934,
+        1.7008836959159
+      ]
+    },
+    {
+      "side": "L",
+      "digit": 4,
+      "segment_turn_degrees": [
+        26.533673000855416,
+        9.422393662873391
+      ]
+    },
+    {
+      "side": "L",
+      "digit": 5,
+      "segment_turn_degrees": [
+        28.09295908459243,
+        7.423278401307053
+      ]
+    }
+  ]
+}

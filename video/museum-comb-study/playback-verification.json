@@ -1,0 +1,93 @@
+{
+  "native_3d_checks": [
+    {
+      "frame": 1,
+      "max_world_error": 1.1496413727277524e-06,
+      "max_skin_error": 1.148963470745431e-06,
+      "errors": {
+        "R_Wrist_Probe": 1.0239694188418716e-06,
+        "R_Index_Probe": 1.1496413727277524e-06,
+        "L_Index_Probe": 9.912975144579247e-07,
+        "Independent double-ended wooden comb": 1.0130782824134644e-06
+      }
+    },
+    {
+      "frame": 43,
+      "max_world_error": 1.5608487269353407e-06,
+      "max_skin_error": 3.973289202661525e-06,
+      "errors": {
+        "R_Wrist_Probe": 1.0889228187470863e-06,
+        "R_Index_Probe": 1.3260784302815978e-06,
+        "L_Index_Probe": 1.5608487269353407e-06,
+        "Independent double-ended wooden comb": 1.0961814746071053e-06
+      }
+    },
+    {
+      "frame": 49,
+      "max_world_error": 1.4383174598594172e-06,
+      "max_skin_error": 3.6022332841538496e-06,
+      "errors": {
+        "R_Wrist_Probe": 8.627171704272342e-07,
+        "R_Index_Probe": 1.3492360052227684e-06,
+        "L_Index_Probe": 1.4383174598594172e-06,
+        "Independent double-ended wooden comb": 8.268174938535567e-07
+      }
+    },
+    {
+      "frame": 57,
+      "max_world_error": 1.6473086807526845e-06,
+      "max_skin_error": 4.271244307843378e-06,
+      "errors": {
+        "R_Wrist_Probe": 7.772584443064674e-07,
+        "R_Index_Probe": 1.038368828566412e-06,
+        "L_Index_Probe": 1.6473086807526845e-06,
+        "Independent double-ended wooden comb": 7.510812515722282e-07
+      }
+    },
+    {
+      "frame": 115,
+      "max_world_error": 1.8016149883254855e-06,
+      "max_skin_error": 5.272316384007343e-06,
+      "errors": {
+        "R_Wrist_Probe": 1.130272612820132e-06,
+        "R_Index_Probe": 1.8016149883254855e-06,
+        "L_Index_Probe": 1.6186947479482362e-06,
+        "Independent double-ended wooden comb": 1.1807087563135186e-06
+      }
+    },
+    {
+      "frame": 122,
+      "max_world_error": 1.761780507848439e-06,
+      "max_skin_error": 5.229521446755278e-06,
+      "errors": {
+        "R_Wrist_Probe": 8.524513924464011e-07,
+        "R_Index_Probe": 1.1490153998194053e-06,
+        "L_Index_Probe": 1.761780507848439e-06,
+        "Independent double-ended wooden comb": 7.243359777872834e-07
+      }
+    },
+    {
+      "frame": 129,
+      "max_world_error": 1.744373824882527e-06,
+      "max_skin_error": 5.911140256384103e-06,
+      "errors": {
+        "R_Wrist_Probe": 8.73688747973584e-07,
+        "R_Index_Probe": 1.0905870703247546e-06,
+        "L_Index_Probe": 1.744373824882527e-06,
+        "Independent double-ended wooden comb": 8.519550220722277e-07
+      }
+    },
+    {
+      "frame": 192,
+      "max_world_error": 1.2290526031756799e-06,
+      "max_skin_error": 1.4435211818108736e-06,
+      "errors": {
+        "R_Wrist_Probe": 1.167362310213791e-06,
+        "R_Index_Probe": 1.2290526031756799e-06,
+        "L_Index_Probe": 1.1894654554236623e-06,
+        "Independent double-ended wooden comb": 1.1308093406593527e-06
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,60 @@
+{
+  "reference_sources": {
+    "comb": "video-2",
+    "comb_time": 31.0,
+    "shuttle_support": "video-2",
+    "shuttle_time": 29.6667
+  },
+  "scope": "Eight-second local comb packing study; not a full weaving/treadle cycle",
+  "original_loom_sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd",
+  "original_loom_modified": false,
+  "active_grip_method": "Reference-informed fixed phalanx lengths with tool surface constraints",
+  "comb_thickness": 0.006,
+  "finger_endpoint_target_errors": {
+    "2": 1.6924465733171325e-07,
+    "3": 6.664001874625056e-08,
+    "4": 7.450580596923828e-09,
+    "5": 1.7943374184954607e-07,
+    "1": 1.3328003749250113e-07
+  },
+  "left_support_vertex": 8813,
+  "shuttle_thickness": 0.014,
+  "seat_initial": {},
+  "warp_plane": [
+    -6.541327374991036e-10,
+    0.2051280258958522,
+    1.4879576629622664
+  ],
+  "limitations": [
+    "Video depth is estimated, not calibrated motion capture",
+    "Feet remain fixed; uploaded clips do not resolve a full foot linkage cycle",
+    "Final face and art style remain unapproved; this camera studies male hands and tools"
+  ],
+  "bounded_active_finger_angles": {
+    "2": {
+      "mcp_signed": 4.872573261095618,
+      "pip_signed": 68.89447288618165,
+      "dip_signed": 31.15467617538745
+    },
+    "3": {
+      "mcp_signed": -1.4175121829335022,
+      "pip_signed": 76.31577970137727,
+      "dip_signed": 37.892357056763565
+    },
+    "4": {
+      "mcp_signed": -5.910322502499242,
+      "pip_signed": 69.79356069998457,
+      "dip_signed": 34.21894137149983
+    },
+    "5": {
+      "mcp_signed": -7.0943753088060335,
+      "pip_signed": 54.428629195080084,
+      "dip_signed": 20.27299237780294
+    },
+    "1": {
+      "mcp_signed": 61.77492900667949,
+      "pip_signed": -35.16590339126034,
+      "dip_signed": -23.080623419034293
+    }
+  }
+}

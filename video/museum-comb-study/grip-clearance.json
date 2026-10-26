@@ -1,0 +1,34 @@
+{
+  "thumb_side": {
+    "skin_minus_board_local": [
+      8.217990398406982e-06,
+      -0.0011001827660948038,
+      -0.00035808980464935303
+    ],
+    "gap": 0.001157046528533101,
+    "closest_skin_bone": "finger1-3.R",
+    "point": [
+      0.1165001317858696,
+      -0.6458384394645691,
+      1.5459891557693481
+    ]
+  },
+  "finger_side": {
+    "skin_minus_board_local": [
+      0.0004015788435935974,
+      0.0013720390852540731,
+      -0.0005601495504379272
+    ],
+    "gap": 0.001535395858809352,
+    "closest_skin_bone": "finger2-3.R",
+    "point": [
+      0.09141039103269577,
+      -0.6419280171394348,
+      1.5568338632583618
+    ]
+  },
+  "supporting_hand": {
+    "gap": 0.0008018683292903006
+  },
+  "scope": "Sampled rigid board faces against skinned hand; author units, not measured real-world metres"
+}

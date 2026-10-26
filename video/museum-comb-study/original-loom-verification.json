@@ -1,0 +1,404 @@
+{
+  "source_sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd",
+  "mesh_count": 66,
+  "expected_meshes": 66,
+  "mesh_checks": [
+    {
+      "name": "post_L_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "post_L_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "side_rail_L_low",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "side_rail_L_upper",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "post_R_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "post_R_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "side_rail_R_low",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "side_rail_R_upper",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "cross_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "cross_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rear_axle_support",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "front_edge_rod",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "pins_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "pins_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_post_L_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_post_L_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_post_R_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_post_R_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_cross_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_top_pins_front",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_cross_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "tower_top_pins_rear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "top_bridge",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "pivot_pedestal",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "pivot_post",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "pivot_axle",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rocker_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rocker_bindings_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "lift_cords_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_cord_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rocker_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rocker_bindings_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "lift_cords_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_cord_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rear_shuttle_rack",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rack_end_lashing_L",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "rack_end_lashing_R",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "cloth_roller_core",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "cloth_roller_silk",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "cloth_roller_bindings",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "warp_roller_core",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "warp_roller_silk",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "warp_roller_bindings",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "warp_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "warp_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "heddle_bar_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "heddle_strings_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "heddle_bar_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "heddle_strings_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_anchor_lashing_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_working_tie_0",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_anchor_lashing_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "treadle_working_tie_1",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "beater",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "beater_reed_dents",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "woven_cloth",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_seat",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_leg_Lfront",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_leg_Lrear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_brace_L",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_leg_Rfront",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_leg_Rrear",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_brace_R",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    },
+    {
+      "name": "bench_long_brace",
+      "geometry_same": true,
+      "materials_same": true,
+      "max_world_transform_error": 0.0
+    }
+  ],
+  "pass": true
+}
