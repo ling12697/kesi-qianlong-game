@@ -1,0 +1,31 @@
+{
+  "model_sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd",
+  "original_model_unchanged": true,
+  "original_meshes": 66,
+  "duration_seconds": 174,
+  "visual_method": "AI-generated photographic male poses composited with original 3D loom and workshop plate; smooth 2.5D plate movement and teaching diagrams; not continuous human performance",
+  "narration": "offline generic synthesized Chinese male narration, speaker 40, no lip sync",
+  "scope": "A01-A09",
+  "generated_assets": [
+    {
+      "file": "poses-a.png",
+      "sha256": "49119e531feb97b9e4c793950204658acc0f150f4644096e1d8c70f459902564"
+    },
+    {
+      "file": "poses-b.png",
+      "sha256": "f5a51efa0b127cf26a9f56209465adf3f8a9f065b9ca226d9557c98aea1487af"
+    },
+    {
+      "file": "poses-c.png",
+      "sha256": "363ca3d0776590739f6eeefe25f697d9443e7aeabeac57a1c9fdc5c825b19227"
+    },
+    {
+      "file": "workshop.png",
+      "sha256": "841dcdf15884b548e51a170e6ac96051217f7573c8446e73e6d14c4fe4622e40"
+    },
+    {
+      "file": "painter.png",
+      "sha256": "fcd6da43fbb4e85695ef0c110b9bc7ac6b45a9e06e0aea3d65b0424890e54b05"
+    }
+  ]
+}
