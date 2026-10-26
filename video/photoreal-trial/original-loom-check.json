@@ -1,0 +1,8 @@
+{
+  "source": "/workspace/attachments/7cc6e5b5-1fd5-46b8-b7bf-bd27a2934f4e/kesi_loom_peony.glb",
+  "source_sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd",
+  "source_edited": false,
+  "imported_meshes": 66,
+  "original_materials_replaced": false,
+  "notes": "Background render and depth pass are separate from the AI character image; no completed human/loom composite or video is claimed."
+}
