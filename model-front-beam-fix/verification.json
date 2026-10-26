@@ -1,0 +1,74 @@
+[
+  {
+    "source": "kesi_loom_peony_web.glb",
+    "output": "kesi_loom_peony_web.glb",
+    "changed_nodes": [
+      "front_edge_rod"
+    ],
+    "other_65_nodes_unchanged": true,
+    "original_binary_bytes_unchanged": true,
+    "materials_textures_unchanged": true,
+    "old_bounds": [
+      [
+        -0.6700000166893005,
+        1.3020000457763672,
+        0.6919999718666077
+      ],
+      [
+        0.6700000166893005,
+        1.3279999494552612,
+        0.7179999947547913
+      ]
+    ],
+    "new_bounds": [
+      [
+        -0.7250000238418579,
+        1.3600000143051147,
+        0.73499995470047
+      ],
+      [
+        0.7250000238418579,
+        1.40500009059906,
+        0.824999988079071
+      ]
+    ],
+    "roller_clearance": 0.038,
+    "sha256": "7e734ce8aa6072b580e974d5034642a4029a00719fd2d3ddd43ca9c4e2576db6"
+  },
+  {
+    "source": "kesi_loom_peony.glb",
+    "output": "kesi_loom_peony.glb",
+    "changed_nodes": [
+      "front_edge_rod"
+    ],
+    "other_65_nodes_unchanged": true,
+    "original_binary_bytes_unchanged": true,
+    "materials_textures_unchanged": true,
+    "old_bounds": [
+      [
+        -0.6700000166893005,
+        1.3020000457763672,
+        0.6919999718666077
+      ],
+      [
+        0.6700000166893005,
+        1.3279999494552612,
+        0.7179999947547913
+      ]
+    ],
+    "new_bounds": [
+      [
+        -0.7250000238418579,
+        1.3600000143051147,
+        0.73499995470047
+      ],
+      [
+        0.7250000238418579,
+        1.40500009059906,
+        0.824999988079071
+      ]
+    ],
+    "roller_clearance": 0.038,
+    "sha256": "87f606d26a477ef51a4a1143b8fcff11d34015f4a3bb2a374cb359e6e443557a"
+  }
+]

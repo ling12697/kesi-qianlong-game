@@ -1,0 +1,47 @@
+[
+  {
+    "scene": "scene-01.webp",
+    "changed_beam_pixels": 3060,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-02.webp",
+    "changed_beam_pixels": 2636,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-03.webp",
+    "changed_beam_pixels": 4837,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-04.webp",
+    "changed_beam_pixels": 2830,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-05.webp",
+    "changed_beam_pixels": 6147,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-06.webp",
+    "changed_beam_pixels": 3214,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-07.webp",
+    "changed_beam_pixels": 3158,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-08.webp",
+    "changed_beam_pixels": 4165,
+    "all_other_pixels_unchanged": true
+  },
+  {
+    "scene": "scene-09.webp",
+    "changed_beam_pixels": 3006,
+    "all_other_pixels_unchanged": true
+  }
+]
