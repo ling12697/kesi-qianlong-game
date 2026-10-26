@@ -1,0 +1,136 @@
+[
+  {
+    "file": "kesi_loom_peony_web.glb",
+    "changed_nodes": [
+      "post_L_front",
+      "post_R_front",
+      "front_edge_rod"
+    ],
+    "other_63_nodes_unchanged": true,
+    "materials_textile_unchanged": true,
+    "checks": {
+      "front_edge_rod": {
+        "bounds": [
+          [
+            -0.6450000405311584,
+            1.3600000143051147,
+            0.73499995470047
+          ],
+          [
+            0.6450000405311584,
+            1.40500009059906,
+            0.824999988079071
+          ]
+        ]
+      },
+      "post_L_front": {
+        "watertight": true,
+        "mortise_void_verified": true,
+        "head_top": 1.412,
+        "rail_top": 1.405,
+        "end_insertion": 0.07,
+        "solid_overlap_volume": 0.0,
+        "bounds": [
+          [
+            -0.7049999833106995,
+            0.0,
+            0.7149999737739563
+          ],
+          [
+            -0.574999988079071,
+            1.4119999408721924,
+            0.8450000286102295
+          ]
+        ]
+      },
+      "post_R_front": {
+        "watertight": true,
+        "mortise_void_verified": true,
+        "head_top": 1.412,
+        "rail_top": 1.405,
+        "end_insertion": 0.07,
+        "solid_overlap_volume": 0.0,
+        "bounds": [
+          [
+            0.574999988079071,
+            0.0,
+            0.7149999737739563
+          ],
+          [
+            0.7049999833106995,
+            1.4119999408721924,
+            0.8450000286102295
+          ]
+        ]
+      }
+    },
+    "sha256": "1e0fea367b319663c1c311aec4cf1eea8e80f602d133eb21d3b3fa09b9f83ece"
+  },
+  {
+    "file": "kesi_loom_peony.glb",
+    "changed_nodes": [
+      "post_L_front",
+      "post_R_front",
+      "front_edge_rod"
+    ],
+    "other_63_nodes_unchanged": true,
+    "materials_textile_unchanged": true,
+    "checks": {
+      "front_edge_rod": {
+        "bounds": [
+          [
+            -0.6450000405311584,
+            1.3600000143051147,
+            0.73499995470047
+          ],
+          [
+            0.6450000405311584,
+            1.40500009059906,
+            0.824999988079071
+          ]
+        ]
+      },
+      "post_L_front": {
+        "watertight": true,
+        "mortise_void_verified": true,
+        "head_top": 1.412,
+        "rail_top": 1.405,
+        "end_insertion": 0.07,
+        "solid_overlap_volume": 0.0,
+        "bounds": [
+          [
+            -0.7049999833106995,
+            0.0,
+            0.7149999737739563
+          ],
+          [
+            -0.574999988079071,
+            1.4119999408721924,
+            0.8450000286102295
+          ]
+        ]
+      },
+      "post_R_front": {
+        "watertight": true,
+        "mortise_void_verified": true,
+        "head_top": 1.412,
+        "rail_top": 1.405,
+        "end_insertion": 0.07,
+        "solid_overlap_volume": 0.0,
+        "bounds": [
+          [
+            0.574999988079071,
+            0.0,
+            0.7149999737739563
+          ],
+          [
+            0.7049999833106995,
+            1.4119999408721924,
+            0.8450000286102295
+          ]
+        ]
+      }
+    },
+    "sha256": "23caa52aaa02af6f9a0bd81529e7498821263cc11b89b83ba6d16397a1b2e8bd"
+  }
+]
