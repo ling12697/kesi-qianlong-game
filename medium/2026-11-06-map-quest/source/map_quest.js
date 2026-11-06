@@ -39,7 +39,7 @@ q('#start').addEventListener('click',()=>{setTimeout(()=>{map.classList.add('int
 // The scroll is a compact mission log, not a stack of reading cards.
 q('.quest-scroll-toggle').addEventListener('click',()=>q('.quest-ledger').classList.toggle('open'));
 q('#dockButton').addEventListener('click',()=>{const step=current();if(step===0){if(state.hints>=3){toast('方向提示已用完。仍可自由拖图、放大寻找。','try');play('bad');return}state.hints++;save();updateUI();const target=getMarker(0),r=target?.getBoundingClientRect();toast('方向提示 '+state.hints+'/3：目标在地图西北侧的准噶尔相关区域。用放大按钮寻找光点附近。');if(r)target.classList.add('hint-glow');setTimeout(()=>target?.classList.remove('hint-glow'),1100)}else if(step>0){spots[step]?.dispatchEvent(new MouseEvent('click',{bubbles:true,view:window}))}else showDossier()});
-q('.quest-ledger').addEventListener('click',e=>{const action=e.target.closest('[data-q-action]')?.dataset.qAction;if(action==='close')q('.quest-ledger').classList.remove('open');if(action==='reset'){if(confirm('重置第一关进度？第二、第三关不会改变。')){state={...defaults,done:[false,false,false,false]};save();updateUI();closeActivity();q('.quest-ledger').classList.remove('open');applyTransform();toast('第一关已重置。')}}});
+q('.quest-ledger').addEventListener('click',e=>{const action=e.target.closest('[data-q-action]')?.dataset.qAction;if(action==='close')q('.quest-ledger').classList.remove('open');if(action==='reset'){if(confirm('重置第一关进度？第二、第三关不会改变。')){state={...defaults,done:[false,false,false,false],links:[],timeline:[],scene:[],final:{},hints:0,zoom:1,panX:0,panY:0};save();updateUI();closeActivity();q('.quest-ledger').classList.remove('open');applyTransform();toast('第一关已重置。')}}});
 q('.activity-close').addEventListener('click',closeActivity);
 q('.quest-tools').addEventListener('click',e=>{const b=e.target.closest('[data-map-tool]');if(!b)return;const a=b.dataset.mapTool;if(a==='in')setZoom(state.zoom*1.22);if(a==='out')setZoom(state.zoom/1.22);if(a==='home'){state.zoom=1;state.panX=state.panY=0;save();applyTransform()}if(a==='sound'){state.muted=!state.muted;save();updateUI();play('ok')}if(a==='motion'){state.skip=!state.skip;save();updateUI()}});
 
@@ -65,7 +65,7 @@ function openTask(i){if(i===0){q('#dockTitle').textContent='寻找准噶尔相�
 // B: connect documentary evidence with the subject it supports, without drawing a causal chain.
 const linkPairs=[
  {id:'lama',label:'《喇嘛说》摘句',text:'“兴黄教，即所以安众蒙古”\n乾隆五十七年（1792）',target:'mongol',targetText:'蒙古相关宗教政策',explain:'这段话出自乾隆五十七年（1792）的《喇嘛说》，应归入蒙古相关宗教政策背景。'},
- {id:'records',label:'造办处档案',text:'乾隆十九年十二月\n下旨按旧样改制缂丝佛像',target:'work',targetText:'缂丝佛像制作记录',explain:'故宫研究引造办处档案，记录了乾隆十九年开始的画样调整。'},
+ {id:'records',label:'造办处档案',text:'乾隆十九年十二月\n按旧样着做缂丝佛像',target:'work',targetText:'缂丝佛像制作记录',explain:'故宫研究引造办处档案，记录了乾隆十九年开始的画样调整。'},
  {id:'punning',label:'承德寺院资料',text:'普宁寺始建于乾隆二十年（1755）',target:'chengde',targetText:'承德佛教建筑',explain:'承德文物部门资料记载普宁寺始建于1755年；这条建筑资料与画样档案分开记录。'}
 ];
 function buildConnections(){openActivity('历史关系连线','拖动左侧史料卡，接到它能说明的主题。错误连线会退回；三条线都只表示史料对应，不代表事件之间有因果。','蒙古区域 · 连接任务',sourceLink('故宫《喇嘛说》','https://www.dpm.org.cn/lemmas/243404.html')+' · '+sourceLink('故宫院刊改样档案研究',sourceUrls.archive)+' · '+sourceLink('承德文物局普宁寺资料',sourceUrls.chengde));body.innerHTML='<div class="connect-board"><div class="connect-cards"></div><svg class="connect-lines" viewBox="0 0 38 250" aria-hidden="true"></svg><div class="connect-targets"></div></div>';
