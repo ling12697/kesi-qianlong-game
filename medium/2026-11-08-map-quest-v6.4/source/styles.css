@@ -27,3 +27,6 @@
   .dossier-temple{left:67%;transform:rotate(3deg)}
   .prop-name{font-size:9px;bottom:-23%}
 }
+
+/* v6.4: correctly honor the reveal's hidden state despite its flex layout */
+.reveal-copy[hidden]{display:none!important}

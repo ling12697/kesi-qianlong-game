@@ -5,3 +5,16 @@
 @media(max-height:430px){.topbar{min-height:40px}.step-head{padding-top:4px;padding-bottom:4px}.explore-layout{padding-top:5px;padding-bottom:5px}.fact-card p{line-height:1.25}.inside-layout{padding-top:5px;padding-bottom:5px}.inside-copy h2{margin:5px 0}.inside-copy p{margin:5px 0;font-size:9px}.placement-layout{padding-top:5px;padding-bottom:5px}.finish-step{padding:6px}.finish-step h1{margin:0 0 4px}.finish-result img{height:52vh}.finish-actions{margin-top:5px}}
 .scroll-art.snap{animation:scroll-snap .34s cubic-bezier(.18,.9,.3,1.25)}@keyframes scroll-snap{0%{transform:scale(1.08);filter:drop-shadow(0 0 18px #ffe08a)}100%{transform:scale(1);filter:drop-shadow(0 0 9px #f6d878)}}
 .wall-scene.side-view{transform:none}.wall-scene.side-view .backboard{left:10%;right:23%}.wall-scene.side-view .statue-shape{left:61%;transform:translateX(-50%) scaleX(.76)}
+
+/* v6.4: visible clue sequence and clear active-object focus */
+.step-intro{margin:4px 0 0;color:#e0ceb0;font-size:clamp(11px,1vw,14px);line-height:1.4}
+.active-task{border-color:#d7b46e;box-shadow:0 0 0 1px #d7b46e44,0 5px 15px #0005}
+.queued-task{opacity:.64;transition:opacity .25s,border-color .25s,box-shadow .25s}
+.queued-task.active-task{opacity:1}
+.task-complete{border-color:#8eae7d}
+#turnGuide{max-width:82%;white-space:normal;line-height:1.35;text-align:center}
+.model-pin{transition:opacity .25s,filter .25s,transform .25s}
+.model-pin.approach{opacity:.58;animation:pin-approach 1.7s ease-in-out infinite}
+.model-pin.near{opacity:1;animation:pinPulse 1.8s ease-in-out infinite}
+@keyframes pin-approach{50%{opacity:.88;filter:brightness(1.15)}}
+@media(max-width:720px){.step-intro{max-width:72vw;font-size:10px}.task-rail .fact-card b{font-size:13px}}

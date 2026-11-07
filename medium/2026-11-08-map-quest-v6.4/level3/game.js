@@ -3,14 +3,14 @@
   const clues=new Set(),banner=q('#clueBanner');
   const targets={roof:{point:[0,-5.5,29.2],yaw:-.55,pitch:.34},volume:{point:[0,0,12],yaw:1.7,pitch:.68}};
   const modelViewer=window.PUNING_CREATE_VIEWER(q('#view'),({camera,project})=>{
-    const nextId=clues.has('roof')?'volume':'roof';let near=false;
+    const nextId=clues.has('roof')?'volume':'roof';let near=false,nextDistance=Math.PI,nextDelta=0;
     for(const [id,pin] of [['roof',q('#roofPin')],['volume',q('#volumePin')]]){
-      const t=targets[id],angle=Math.atan2(Math.sin(camera.yaw-t.yaw),Math.cos(camera.yaw-t.yaw)),distance=Math.abs(angle),pos=project(t.point),visible=id===nextId&&distance<1.15&&pos.x>34&&pos.x<canvasWidth()-34&&pos.y>45&&pos.y<canvasHeight()-35;
+      const t=targets[id],delta=Math.atan2(Math.sin(t.yaw-camera.yaw),Math.cos(t.yaw-camera.yaw)),distance=Math.abs(delta),pos=project(t.point),visible=id===nextId&&distance<1.15&&pos.x>34&&pos.x<canvasWidth()-34&&pos.y>45&&pos.y<canvasHeight()-35;
       pin.classList.toggle('show',visible);pin.classList.toggle('near',visible&&distance<.48);pin.classList.toggle('approach',visible&&distance>=.48);pin.disabled=!visible;
-      if(visible){pin.style.left=pos.x+'px';pin.style.top=pos.y+'px';near=distance<.48}
+      if(visible){pin.style.left=pos.x+'px';pin.style.top=pos.y+'px'}if(id===nextId){near=visible&&distance<.48;nextDistance=visible?distance:Math.PI;nextDelta=delta}
     }
     const guide=q('#turnGuide');
-    if(guide){guide.textContent=clues.size===2?'两处外部线索已观察 · 下一步查看内部空间':near?`已接近「${nextId==='roof'?'层叠屋檐':'柱架与回廊'}」· 点击金色标记聚焦`:nextId==='roof'?'拖动旋转模型，寻找逐渐显现的层叠屋檐标记':'继续旋转模型，寻找柱架与回廊的观察标记'}
+    if(guide){guide.textContent=clues.size===2?'两处外部线索已观察 · 下一步查看内部空间':near?`已接近「${nextId==='roof'?'层叠屋檐':'柱架与回廊'}」· 点击金色标记聚焦`:nextDistance<1.15?`继续转动，金色标记已在附近 · ${nextId==='roof'?'观察层叠屋檐':'观察柱架与回廊'}`:`向${nextDelta>=0?'右':'左'}拖动模型，转向${nextId==='roof'?'层叠屋檐':'柱架与回廊'}观察方向；标记接近后会亮起`}
   });
   function canvasWidth(){return q('#view').clientWidth}function canvasHeight(){return q('#view').clientHeight}
   let insideViewerInstance=null;
