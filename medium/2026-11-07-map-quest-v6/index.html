@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#21160e">
+  <title>御前观织｜第一关 v6</title>
+  <link rel="stylesheet" href="source/styles.css">
+</head>
+<body>
+<main class="game-shell" id="gameShell">
+  <section class="stage" id="stage" aria-label="御前观织游戏场景">
+    <div class="room" id="room">
+      <img class="room-image" src="assets/characters/pose-standing-scroll.png" alt="乾隆皇帝与太监场景图，保持原图">
+      <div class="room-vignette"></div>
+      <header class="brand"><span class="brand-seal">御</span><span><b>御前观织</b><small>御前议事 · 情境演绎</small></span></header>
+      <div class="scene-disclaimer">宫廷书房为情境化场景 · 非某日真实会议复原</div>
+      <div class="room-glint"></div>
+
+      <div class="desk" aria-label="书案">
+        <div class="desk-back"></div><div class="desk-top"></div><div class="desk-front"></div>
+        <div class="desk-inset"></div>
+        <div class="brush-pot" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="ink-stone" aria-hidden="true"></div>
+        <div class="small-papers" aria-hidden="true"><i></i><i></i><i></i></div>
+        <button class="prop scroll-prop" id="mapScroll" aria-label="打开舆图卷轴">
+          <span class="scroll-cap cap-a"></span><span class="scroll-paper"><b>御览</b><small>舆图</small></span><span class="scroll-cap cap-b"></span>
+          <span class="prop-pulse"></span><span class="prop-name">舆图卷轴</span>
+        </button>
+        <button class="prop temple-prop" id="templeScroll" aria-label="打开寺庙图样" hidden>
+          <span class="document-seal">图</span><span class="temple-prop-label">寺庙建筑资料</span>
+        </button>
+        <div class="archive-object" id="archiveObject" hidden aria-label="待整理卷宗">
+          <div class="archive-cover"><span>御览资料</span><small>案卷</small><i class="archive-tie"></i></div>
+          <div class="archive-inside"></div>
+        </div>
+        <div class="dossier-card dossier-map" id="dossierMap" hidden tabindex="0" role="button" aria-label="舆图调查记录；点击选择或拖入卷宗">
+          <b>舆图调查</b><small>两处线索已阅</small><span class="paper-mark">图</span>
+        </div>
+        <div class="dossier-card dossier-temple" id="dossierTemple" hidden tabindex="0" role="button" aria-label="寺庙图样调查记录；点击选择或拖入卷宗">
+          <b>寺庙图样</b><small>两处线索已阅</small><span class="paper-mark">寺</span>
+        </div>
+        <div class="art-scroll-prop" id="artScrollProp" hidden role="button" tabindex="0" aria-label="点击展开已呈上的佛像画样">
+          <span>画样</span><i></i><b>無量壽尊佛</b>
+        </div>
+      </div>
+
+      <div class="dialogue" id="dialogue" aria-live="polite"><b>太监 · 情境演绎</b><span id="dialogueText">先打开这份舆图，看看相关的历史线索。</span></div>
+      <div class="idle-hint" id="idleHint"><span>☝</span><b>点书案上的舆图</b><small>拖动、缩放后点亮两处资料标记</small><button id="dismissHint" aria-label="关闭提示">×</button></div>
+      <div class="room-toast" id="roomToast" role="status" aria-live="polite"></div>
+      <button class="restart" id="restart">↺ <span>重新开始</span></button>
+    </div>
+
+    <section class="explorer map-scene" id="mapScene" aria-label="舆图观察" hidden>
+      <header class="explorer-head"><div class="explorer-title"><span class="round-seal">图</span><span><b>御览舆图</b><small>历史关系示意 · 不表示疆界</small></span></div><div class="map-tools"><button id="mapMinus" aria-label="缩小">−</button><button id="mapPlus" aria-label="放大">＋</button><button id="mapReset" aria-label="重置视图">◎</button></div><div class="head-actions"><span id="mapProgress">0 / 2 已查看</span><button id="closeMap" disabled>收起舆图</button></div></header>
+      <div class="map-window" id="mapWindow">
+        <div class="map-zoom-layer" id="mapZoomLayer">
+          <svg class="map-art" viewBox="0 0 1200 700" role="img" aria-label="清代历史线索示意图">
+            <defs><pattern id="grain" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M0 8h12M23 29h10M27 2v7M6 21v5" stroke="#947652" stroke-opacity=".16"/></pattern><pattern id="ridges" width="105" height="72" patternUnits="userSpaceOnUse"><path d="m5 62 28-40 26 40 18-29 23 29M20 50l13-22 13 22m27 1 10-15 10 15" fill="none" stroke="#89745a" stroke-opacity=".5" stroke-width="2"/></pattern></defs>
+            <rect width="1200" height="700" rx="8" fill="#e9d8b7"/><rect width="1200" height="700" fill="url(#grain)"/>
+            <path d="M80 101Q204 45 318 82t215 1q117-36 224 0t221 16q105-15 160 35l-4 104q-77 40-118 107t-117 76q-98 12-126 97t-97 97q-91-29-177 11t-159-6q-55-37-128-45L175 478q36-66 6-135T89 231z" fill="#d6c49e" stroke="#876d4d" stroke-width="3"/>
+            <path d="M115 113h362v201H115zM170 351h377v220H170zM558 339h342v223H558zM903 153h232v232H903z" fill="url(#ridges)" opacity=".85"/>
+            <path d="M0 605q120-35 230-3t227 3 204 4 210-7 329 5" fill="none" stroke="#829b91" stroke-width="13" stroke-dasharray="3 10" opacity=".8"/>
+            <path d="M175 307q113-44 189 10t175-9 203 14 193-9" fill="none" stroke="#a36c38" stroke-width="4" stroke-dasharray="3 10" stroke-linecap="round"/>
+            <g fill="#554932" font-family="serif"><text x="483" y="190" font-size="34" letter-spacing="7">大 清</text><text x="229" y="158" font-size="26">蒙古诸部</text><text x="148" y="462" font-size="26">西藏</text><text x="591" y="441" font-size="28">京师</text><text x="766" y="382" font-size="21">热河·承德</text><text x="984" y="248" font-size="23">准噶尔</text><text x="796" y="548" font-size="20">江南</text><text x="78" y="642" font-size="17" letter-spacing="4">仅作叙事定位 · 非疆界或比例地图</text></g>
+            <g class="local-ring" data-ring="dzungar" transform="translate(1010 306)"><circle r="72"/><path d="m-48 18 27-40 26 40 18-28 26 28m-82-8 13-20 13 20m27 2 10-15 10 15"/></g>
+            <g class="local-ring" data-ring="puning" transform="translate(804 356)"><circle r="72"/><path d="m-43 3 43-29 43 29h-86zm8 5h70v26h-70zm-8 29h86v8h-86"/><path d="M-24 8v25m24-25v25m24-25v25"/></g>
+            <g class="map-marker" data-marker="dzungar" tabindex="0" role="button" aria-label="查看准噶尔历史档案" transform="translate(1010 306)"><circle class="pulse" r="30"/><circle class="dot" r="17"/><circle r="5" fill="#fff3d6"/><text y="59" text-anchor="middle">准噶尔</text></g>
+            <g class="map-marker" data-marker="puning" tabindex="0" role="button" aria-label="查看普宁寺历史资料" transform="translate(804 356)"><circle class="pulse" r="30"/><circle class="dot" r="17"/><circle r="5" fill="#fff3d6"/><text y="59" text-anchor="middle">承德·普宁寺</text></g>
+          </svg>
+        </div>
+      </div>
+      <div class="map-footer"><span id="mapGesture">拖动浏览 · 滚轮或双指缩放</span><span>可缩放的故事示意图</span></div>
+      <aside class="fact-strip" id="mapFact" hidden><span class="fact-tag" id="mapFactTag"></span><b id="mapFactLine"></b><details><summary>了解更多</summary><p id="mapFactMore"></p><small id="mapFactSource"></small></details><button id="closeMapFact" aria-label="关闭资料">×</button></aside>
+      <div class="explorer-hint" id="mapHint">点亮图上的两处标记，查看不同历史资料</div>
+    </section>
+
+    <section class="explorer temple-scene" id="templeScene" aria-label="寺庙建筑图像观察" hidden>
+      <header class="explorer-head temple-head"><div class="explorer-title"><span class="round-seal">寺</span><span><b>承德 · 普宁寺</b><small>现存建筑摄影 · 非乾隆时期原貌</small></span></div><div class="map-tools"><button id="templeMinus" aria-label="缩小">−</button><button id="templePlus" aria-label="放大">＋</button><button id="templeReset" aria-label="重置视图">◎</button></div><div class="head-actions"><span id="templeProgress">0 / 2 已观察</span><button id="closeTemple" disabled>收起图样</button></div></header>
+      <div class="temple-window" id="templeWindow">
+        <div class="temple-zoom-layer" id="templeZoomLayer">
+          <img src="assets/temple/puning-mahayana-pavilion-2025.jpg" alt="承德普宁寺大乘之阁，2025年现存状态摄影">
+          <button class="temple-hotspot temple-hotspot--pavilion" data-temple="pavilion" aria-label="观察普宁寺大乘之阁主体"><span>＋</span></button>
+          <button class="temple-hotspot temple-hotspot--site" data-temple="site" aria-label="观察普宁寺建筑群环境"><span>＋</span></button>
+        </div>
+      </div>
+      <div class="temple-caption"><span id="templeCaption">拖动查看照片，点两个光标观察相关线索</span><a href="https://commons.wikimedia.org/wiki/File:%E6%99%AE%E5%AE%81%E5%AF%BA%E5%A4%A7%E4%B9%98%E4%B9%8B%E9%98%812025.11.jpg" target="_blank" rel="noreferrer">照片来源与许可</a></div>
+      <aside class="fact-strip temple-fact" id="templeFact" hidden><span class="fact-tag" id="templeFactTag"></span><b id="templeFactLine"></b><details><summary>了解更多</summary><p id="templeFactMore"></p></details><button id="closeTempleFact" aria-label="关闭资料">×</button></aside>
+    </section>
+
+    <section class="art-reveal" id="artReveal" hidden aria-label="佛像画样展开">
+      <div class="reveal-topline"><span>画样呈览 · 情境演绎</span><button id="revealBack">返回书房</button></div>
+      <div class="art-scroll-frame" id="artScrollFrame"><img src="assets/artwork/kesi-amitayus-elaborate.jpg" alt="《缂丝无量寿尊佛》轴繁本，图像保持原样"><div class="reveal-mask" id="revealMask"><span>乾隆十九年十二月 · 画样已有修改记录</span></div><div class="reveal-roller" id="revealRoller"></div></div>
+      <div class="reveal-instruction" id="revealInstruction">点击画样卷轴，慢慢展开</div>
+      <div class="reveal-copy" id="revealCopy" hidden><b>繁本《缂丝无量寿尊佛》</b><span>档案记录了先行画样与修改；论文将繁本与普宁寺及须弥灵境的营建、悬挂用途相联系。</span><button id="enterChapter">进入第二关：佛像找不同 <small>入口占位 · 原关卡未拆分</small></button></div>
+    </section>
+
+    <section class="chapter-placeholder" id="chapterPlaceholder" hidden>
+      <div class="placeholder-card"><span class="round-seal">续</span><p class="eyebrow">第一关完成</p><h1>画样线索已呈现</h1><p>当前项目没有可直接进入的独立“佛像找不同”页面。现有中级关卡是整体页面，无法在不改变原关内容的前提下从这里跳入第二关。</p><p>此处为真实入口占位；原版游戏可另行打开，从中级章节首页进入。</p><a href="https://ling12697.github.io/kesi-qianlong-game/medium/2026-11-07-map-quest-v4/" target="_blank" rel="noreferrer">打开现有中级完整游戏（从首页开始）↗</a><button id="placeholderRestart">重新开始第一关</button></div>
+    </section>
+  </section>
+  <div class="rotate-note"><span>▱</span><b>请将设备横过来</b><small>本游戏为 16:9 横屏体验</small></div>
+</main>
+<script src="source/history.js"></script><script src="source/map.js"></script><script src="source/room.js"></script><script src="source/temple.js"></script><script src="source/archive.js"></script><script src="source/transition.js"></script><script src="source/main.js"></script>
+</body>
+</html>
