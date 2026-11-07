@@ -1,0 +1,17 @@
+/* Reuses the existing 194-object mesh data from the prior project script.
+   Geometry/topology is not regenerated. This is a Canvas mesh viewer, not a GLB loader. */
+window.PUNING_CREATE_VIEWER=function(canvas,onFrame=()=>{}){
+  const ctx=canvas.getContext('2d'), data=window.PUNING_MESH_DATA;
+  const camera={yaw:-.55,pitch:.37,scale:.8,reveal:0};let dragging=false,lastX=0,lastY=0,animation=0;
+  function transform(p){let[x,y,z]=p;let cy=Math.cos(camera.yaw),sy=Math.sin(camera.yaw),cp=Math.cos(camera.pitch),sp=Math.sin(camera.pitch),X=x*cy-y*sy,Y=x*sy+y*cy;return[X,Y*sp-z*cp,Y*cp+z*sp]}
+  function shade(color,k){let n=parseInt(color.slice(1),16),rgb=[n>>16&255,n>>8&255,n&255];return`rgb(${rgb.map(v=>Math.max(0,Math.min(255,Math.round(v*k)))).join(',')})`}
+  function project(p){let[w,h]=[canvas.clientWidth,canvas.clientHeight],mul=Math.min(w/40,h/45)*camera.scale*1.22,t=transform([p[0],p[1],p[2]-17.9]);return{x:w*.5+t[0]*mul,y:h*.56+t[1]*mul,z:t[2]}}
+  function draw(){let w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;ctx.clearRect(0,0,w,h);let faces=[],mul=Math.min(w/40,h/45)*camera.scale*1.22;
+    for(const o of data){let opacity=(o.group==='wall'||o.group==='window')?1-camera.reveal/100:1;if(opacity<=.015)continue;for(const f of o.faces){let pts=f.map(i=>transform([o.verts[i][0],o.verts[i][1],o.verts[i][2]-17.9])),z=pts.reduce((a,p)=>a+p[2],0)/pts.length,A=pts[0],B=pts[1],C=pts[2],cross=(B[0]-A[0])*(C[1]-A[1])-(B[1]-A[1])*(C[0]-A[0]),t=Math.min(1.1,Math.max(.70,.90+cross/280));faces.push({pts:pts.map(p=>[w*.5+p[0]*mul,h*.56+p[1]*mul]),z,color:o.color,light:t,opacity})}}
+    faces.sort((a,b)=>b.z-a.z);for(const f of faces){ctx.globalAlpha=f.opacity;ctx.beginPath();f.pts.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.closePath();ctx.fillStyle=shade(f.color,f.light);ctx.fill();ctx.strokeStyle='#4e382645';ctx.lineWidth=.55;ctx.stroke()}ctx.globalAlpha=1;onFrame({camera:{...camera},project,canvas});
+  }
+  function resize(){let dpr=Math.min(2,devicePixelRatio||1),r=canvas.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw()}
+  function setCamera(yaw,pitch=camera.pitch,ms=650){cancelAnimationFrame(animation);let start={yaw:camera.yaw,pitch:camera.pitch},dy=Math.atan2(Math.sin(yaw-start.yaw),Math.cos(yaw-start.yaw)),t0=performance.now();function frame(t){let a=Math.min(1,(t-t0)/ms),ease=1-Math.pow(1-a,3);camera.yaw=start.yaw+dy*ease;camera.pitch=start.pitch+(pitch-start.pitch)*ease;draw();if(a<1)animation=requestAnimationFrame(frame)}animation=requestAnimationFrame(frame)}
+  canvas.addEventListener('pointerdown',e=>{dragging=true;lastX=e.clientX;lastY=e.clientY;canvas.setPointerCapture(e.pointerId)});canvas.addEventListener('pointermove',e=>{if(!dragging)return;camera.yaw+=(e.clientX-lastX)*.008;camera.pitch=Math.max(-.14,Math.min(1.28,camera.pitch+(e.clientY-lastY)*.006));lastX=e.clientX;lastY=e.clientY;draw()});canvas.addEventListener('pointerup',()=>dragging=false);canvas.addEventListener('pointercancel',()=>dragging=false);canvas.addEventListener('wheel',e=>{e.preventDefault();camera.scale=Math.max(.58,Math.min(1.75,camera.scale*(e.deltaY<0?1.07:.93)));draw()},{passive:false});
+  new ResizeObserver(resize).observe(canvas);resize();return{draw,resize,project,setCamera,setReveal(v){camera.reveal=Math.max(0,Math.min(100,v));draw()},reset(){camera.yaw=-.55;camera.pitch=.37;camera.scale=.8;camera.reveal=0;draw()},getCamera:()=>({...camera})};
+};

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#2b1d13">
+  <title>御前观织｜第二关·佛像图像观察</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+<main class="game" id="game">
+  <header class="topbar">
+    <a class="back" href="../index.html">← 返回第一关</a>
+    <div class="heading"><span class="seal">织</span><span><b>佛像图像观察</b><small>第二关 · 找不同 / 拼图</small></span></div>
+    <button class="restart" id="restart">重玩本关</button>
+  </header>
+  <section class="screen active" id="findScreen" aria-label="佛像找不同">
+    <div class="find-toolbar"><span>点击两幅文物图像中的不同之处</span><div class="tools"><button id="hint">提示</button><button id="zoomOut" aria-label="缩小">−</button><button id="zoomIn" aria-label="放大">＋</button><button id="viewReset">重置视图</button></div></div>
+    <div class="find-viewport" id="findViewport">
+      <div class="art-pair" id="artPair">
+        <article class="art-panel" data-art="simple"><h2>简本 <small>故宫博物院藏</small></h2><div class="art-fit" id="simpleFit"><img src="assets/simple.jpg" alt="简本《缂丝无量寿尊佛》轴" draggable="false"><div class="hotspots" id="simpleHotspots"></div></div></article>
+        <article class="art-panel" data-art="elaborate"><h2>繁本 <small>故宫博物院藏</small></h2><div class="art-fit" id="elaborateFit"><img src="assets/elaborate.jpg" alt="繁本《缂丝无量寿尊佛》轴" draggable="false"><div class="hotspots" id="elaborateHotspots"></div></div></article>
+      </div>
+      <div class="drag-tip">拖动平移 · 滚轮或双指缩放</div>
+    </div>
+    <footer class="find-footer"><span id="progress">已发现 0 / 5</span><span id="feedback" role="status" aria-live="polite">观察题名、天空和佛像下方</span><button id="toPuzzle" disabled>进入佛像拼图</button></footer>
+    <aside class="fact" id="fact" aria-live="polite"><b id="factTitle"></b><span id="factText"></span><small>依据：乾隆朝造办处档案记载与两幅文物图像核对</small></aside>
+  </section>
+  <section class="screen puzzle-screen" id="puzzleScreen" aria-label="佛像拼图" hidden>
+    <div class="puzzle-heading"><div><span class="eyebrow">第二部分 · 依原图拼合</span><h1>把繁本佛像拼完整</h1><p>拖动图块交换位置，或依次点击两块进行交换。</p></div><label>难度 <select id="difficulty"><option value="6">简单 · 6 块</option><option value="12" selected>普通 · 12 块</option><option value="20">挑战 · 20 块</option></select></label></div>
+    <div class="puzzle-body"><div class="board-wrap"><div class="board" id="board" aria-label="佛像拼图板"></div><img class="reveal-image" id="revealImage" src="assets/elaborate.jpg" alt="繁本《缂丝无量寿尊佛》轴完整原图" hidden></div><aside class="puzzle-side"><div class="piece-status" id="pieceStatus">0 / 12 块在正确位置</div><div class="selected-note" id="selectedNote">选择一块，再选择另一块交换</div><button id="shuffleAgain">重新打乱</button></aside></div>
+    <div class="complete" id="complete" hidden><div class="complete-card"><span class="gold-star">✦</span><h2>佛像画面已拼合</h2><p>图块来自繁本原图的矩形裁切，画面本身未作修改。</p><button id="playAgain">重玩拼图</button><button id="chooseDifficulty">选择难度</button><a href="../level3/index.html">进入第三关：大乘阁·藏画之谜</a><small>下一关会把这幅繁本画样作为安置对象。</small></div></div>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</main>
+<script src="differences.js"></script><script src="game.js"></script>
+</body>
+</html>
