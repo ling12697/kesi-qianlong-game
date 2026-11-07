@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#24180f"><title>大乘阁·藏画之谜｜第三关测试版</title><link rel="stylesheet" href="game.css"></head>
+<body>
+<main class="game-shell">
+  <header class="topbar"><a href="../level2/index.html">← 返回第二关</a><div class="brand"><span class="seal">阁</span><span><b>大乘阁·藏画之谜</b><small>第三关 · 研究示意互动</small></span></div><button id="restart">重新开始</button></header>
+  <section class="step active" id="exploreStep">
+    <div class="step-head"><div><span class="eyebrow">01 · 探阁寻迹</span><h1>调查大乘阁空间，为巨幅佛像寻找可能的陈设位置</h1><p class="step-intro">你已在上一关拼出繁本画样。现在先看层叠屋檐，再观察内部空间；建筑与画样的联系属于研究推定。</p></div><span class="progress" id="clueProgress">0 / 2 已观察</span></div>
+    <div class="explore-layout">
+      <div class="model-stage" id="modelStage"><canvas id="view" aria-label="可旋转的大乘阁既有网格模型"></canvas><div class="orientation" id="turnGuide">拖动旋转建筑 · 找到淡金色屋檐标记</div><button class="model-pin" id="roofPin" aria-label="观察大乘阁层叠屋檐">✦<span>层叠屋檐</span></button><button class="model-pin" id="volumePin" aria-label="观察大乘阁内部柱架与回廊">✦<span>柱架与回廊</span></button><div class="model-caption">既有 JavaScript 网格研究模型 · 非 GLB / 非测绘复原</div></div>
+      <aside class="task-rail"><div class="fact-card active-task" id="roofTask"><span class="seal small">一</span><b>先看外观 · 层叠屋檐</b><p>拖动模型转向檐口。标记靠近后会亮起，点击可聚焦观察。</p><small class="found" id="roofFound">待观察</small></div><div class="fact-card queued-task" id="volumeTask"><span class="seal small">二</span><b>再看内部 · 柱架与回廊</b><p>完成屋檐观察后，继续旋转模型查看内部结构，为判断大型画轴可能使用的空间提供线索。</p><small class="found" id="volumeFound">待观察</small></div><button id="insideButton" class="primary" disabled>完成两处观察后查看内部</button><p class="model-note">建筑线索用于理解空间条件；它们不能单独证明佛像曾悬挂在某个具体位置。</p></aside>
+    </div>
+    <div class="clue-banner" id="clueBanner" role="status" aria-live="polite"></div>
+  </section>
+  <section class="step" id="insideStep" hidden>
+    <div class="step-head"><div><span class="eyebrow">02 · 外部与内部</span><h1>查看柱架与回廊，理解可能的陈设空间</h1></div><button id="backExplore">返回探阁</button></div>
+    <div class="inside-layout"><div class="inside-model"><canvas id="insideView" aria-label="可旋转并淡出围护墙窗的大乘阁研究网格"></canvas><div class="orientation">拖动旋转 · 滚轮或双指缩放</div><div class="blend-readout"><span>外部</span><input id="sectionSlider" type="range" min="0" max="100" value="0" aria-label="围护构件透明度"><span>内部</span><b id="sectionValue">0%</b></div></div><aside class="inside-copy"><span class="research-label">研究示意 · 网格构件观察</span><h2>从外观转向内部</h2><p>逐渐淡出围护墙窗，可以观察模型已有的柱架和回廊。这样的空间线索帮助理解巨幅画轴可能如何陈设，但不等于复原其真实悬挂位置。</p><p>模型沿用项目既有网格，未改建筑几何；它不是实测复原。</p><button id="toPlacement" class="primary">继续：尝试安置佛像画样</button></aside></div>
+  </section>
+  <section class="step placement-step" id="placementStep" hidden>
+    <div class="step-head"><div><span class="eyebrow">03 · 巨幅佛像安置</span><h1>把繁本画样放进研究示意空间</h1></div><button id="backInside">返回内部观察</button></div>
+    <div class="placement-layout">
+      <div class="room-stage" id="roomStage">
+        <div class="room-label"><span>研究示意 · 二层北向背板关系</span><button id="viewToggle">切换侧向关系</button></div>
+        <div class="wall-scene" id="wallScene"><div class="wall-title">二层面北挂画像佛一轴 · 研究推定的背板位置</div><div class="wall-beam"></div><div class="backboard" aria-label="北向背板示意"><button class="drop-zone" data-zone="A" style="left:23%" aria-label="背板候选挂位 A">A</button><button class="drop-zone probable" data-zone="B" style="left:50%" aria-label="背板候选挂位 B">B</button><button class="drop-zone" data-zone="C" style="left:77%" aria-label="背板候选挂位 C">C</button></div><div class="statue-shape" aria-label="大乘阁内原有千手千眼观音像示意"><span>观音像（独立文物）</span><i></i></div><div class="floor-line"></div><img id="scrollArt" class="scroll-art" src="../level2/assets/elaborate.jpg" alt="繁本《缂丝无量寿尊佛》原图，可拖动安置" draggable="false"><div class="snap-outline" id="snapOutline">可放置于北向背板</div></div>
+        <div class="placement-status" id="placementStatus" role="status" aria-live="polite">拖动画样至背板候选位置；可调整比例和高度。</div>
+      </div>
+      <aside class="placement-controls"><span class="research-label">档案记载 / 研究推测 / 游戏示意分开呈现</span><p><b>档案：</b>嘉庆二十四年陈设档记有“二层楼面北……面北挂画像佛一轴”。</p><p><b>研究推测：</b>论文认为这轴画像佛可能是繁本缂丝《无量寿尊佛》，并推测挂在观音像背后的北向背板。</p><p><b>游戏示意：</b>A、B、C 只是背板上的交互落点；档案没有记录横向准确坐标，不会判定某一点为唯一历史答案。</p><label>画样比例 <input id="scaleControl" type="range" min="60" max="130" value="90"><span id="scaleLabel">90%</span></label><label>悬挂高度 <input id="heightControl" type="range" min="0" max="100" value="50"><span id="heightLabel">中</span></label><button id="placeReset">重新布置</button><button id="completeThird" class="primary" disabled>完成本关</button></aside>
+    </div>
+  </section>
+  <section class="step finish-step" id="finishStep" hidden><span class="eyebrow">第三关完成 · 研究示意</span><h1>画样与大乘阁空间关系</h1><div class="finish-result"><img src="../level2/assets/elaborate.jpg" alt="《缂丝无量寿尊佛》繁本完整原图"><div><span class="research-label">事实与推测并列</span><p>清档记载二层面北挂画像佛一轴；论文将其与繁本缂丝画作联系起来，是研究者的推定，不是确定的原物认定。</p><p>大乘阁内供奉的千手千眼观音木雕像，与缂丝《无量寿尊佛》是不同文物。</p><small>本画面为研究示意，不是大乘阁室内复原。</small></div></div><div class="finish-actions"><button id="showFullArt">查看完整佛像</button><button id="redoPlacement">重新布置</button><button id="endGame" class="primary">完成中级游戏</button></div><div id="fullArtView" class="full-art" hidden><button id="closeFullArt">收起</button><img src="../level2/assets/elaborate.jpg" alt="完整繁本缂丝《无量寿尊佛》轴"></div></section>
+</main>
+<audio id="successTone" preload="none"></audio>
+<script src="models/mesh-data.js"></script><script src="viewer.js"></script><script src="game.js"></script>
+</body></html>
