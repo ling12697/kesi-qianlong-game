@@ -1,0 +1,8 @@
+window.createTempleObserver=function({windowEl,layer,hotspots,progress,caption,fact,closeButton,onComplete}){
+  const seen=new Set();
+  const pan=window.createPanZoom({windowEl,contentEl:layer,min:1,max:3.3});
+  const show=(key,button)=>{const data=window.GAME_HISTORY.temple[key];if(!data)return;button.classList.add('visited');seen.add(key);progress.textContent=`${seen.size} / 2 已观察`;caption.textContent=data.line;fact.hidden=false;document.getElementById('templeFactTag').textContent=data.tag;document.getElementById('templeFactLine').textContent=data.line;document.getElementById('templeFactMore').textContent=`${data.more} 来源：${data.source}`;if(seen.size===2){closeButton.disabled=false;onComplete?.()}};
+  hotspots.forEach(button=>button.addEventListener('click',e=>{e.stopPropagation();const r=windowEl.getBoundingClientRect();const x=e.clientX-r.left,y=e.clientY-r.top;pan.zoom(Math.max(1.7,pan.getScale()),x,y);show(button.dataset.temple,button)}));
+  document.getElementById('templePlus').addEventListener('click',()=>pan.zoom(pan.getScale()*1.2));document.getElementById('templeMinus').addEventListener('click',()=>pan.zoom(pan.getScale()*.84));document.getElementById('templeReset').addEventListener('click',()=>pan.reset());document.getElementById('closeTempleFact').addEventListener('click',()=>fact.hidden=true);
+  return{reset(){seen.clear();hotspots.forEach(b=>b.classList.remove('visited'));progress.textContent='0 / 2 已观察';caption.textContent='拖动查看照片，点两个光标观察相关线索';fact.hidden=true;closeButton.disabled=true;pan.reset()},restore(keys){(keys||[]).forEach(key=>{const button=hotspots.find(b=>b.dataset.temple===key);if(button&&!seen.has(key))show(key,button)})},getSeen:()=>seen.size};
+};
