@@ -9,22 +9,21 @@
 </head>
 <body>
   <main class="game">
-    <header class="topbar">
-      <a class="back" href="./index.html">缂丝文物拼图</a>
-      <div class="heading"><span class="seal">织</span><span><b>佛像拼图</b><small>繁本《缂丝无量寿尊佛》</small></span></div>
+    <header class="topbar" style="grid-template-columns:1fr auto">
+      <div class="heading"><span class="seal">织</span><span><b>佛像拼图</b></span></div>
       <button class="restart" id="restart" type="button">重新开始</button>
     </header>
     <section class="puzzle-screen" aria-label="佛像拼图游戏">
       <div class="puzzle-heading">
-        <div><span class="eyebrow">观察纹样 · 交换图块</span><h1>把佛像画拼完整</h1><p>拖动图块交换位置，也可以依次点击两块进行交换。</p></div>
+        <div><p>拖动或点选两块，交换位置。</p></div>
         <label>难度 <select id="difficulty"><option value="6">简单 · 6 块</option><option value="12" selected>普通 · 12 块</option><option value="20">挑战 · 20 块</option></select></label>
       </div>
       <div class="puzzle-body">
-        <div class="board-panel"><h2 class="panel-title">拼图区 <span>观察纹样，逐块拼合</span></h2><div class="board-wrap"><div class="board" id="board" aria-label="佛像拼图板"></div><img class="reveal-image" id="revealImage" src="assets/elaborate.jpg" alt="繁本《缂丝无量寿尊佛》轴完整原图" hidden></div>
-        <aside class="puzzle-side"><div class="piece-status" id="pieceStatus">0 / 12 块在正确位置</div><div class="selected-note" id="selectedNote">选择一块，再选择另一块交换</div><button id="shuffleAgain" type="button">重新打乱</button></aside></div>
-        <figure class="reference-panel" aria-label="完整参考图，所有难度均可对照"><figcaption class="panel-title">完整参考图 <a href="assets/elaborate.jpg" target="_blank" rel="noopener" aria-label="在新标签页放大完整参考图">放大查看 ↗</a></figcaption><a class="reference-image-link" href="assets/elaborate.jpg" target="_blank" rel="noopener" aria-label="放大查看繁本《缂丝无量寿尊佛》完整原图"><img class="reference-image" src="assets/elaborate.jpg" alt="故宫博物院藏繁本《缂丝无量寿尊佛》轴，完整拼图参考" width="980" height="1458"></a><p class="reference-note">故宫博物院藏 · 繁本《缂丝无量寿尊佛》<br>简单、普通、挑战均可随时对照</p></figure>
+        <div class="board-panel"><h2 class="panel-title">拼图</h2><div class="board-wrap"><div class="board" id="board" aria-label="佛像拼图板"></div><img class="reveal-image" id="revealImage" src="assets/elaborate.jpg" alt="繁本《缂丝无量寿尊佛》轴完整原图" hidden></div>
+        <aside class="puzzle-side"><div class="piece-status" id="pieceStatus">0 / 12 块在正确位置</div><div class="selected-note" id="selectedNote" hidden>选择一块，再选择另一块交换</div><button id="shuffleAgain" type="button">重新打乱</button></aside></div>
+        <figure class="reference-panel" aria-label="完整参考图，所有难度均可对照"><figcaption class="panel-title">参考图 <a href="assets/elaborate.jpg" target="_blank" rel="noopener" aria-label="在新标签页放大完整参考图">放大 ↗</a></figcaption><a class="reference-image-link" href="assets/elaborate.jpg" target="_blank" rel="noopener" aria-label="放大查看繁本《缂丝无量寿尊佛》完整原图"><img class="reference-image" src="assets/elaborate.jpg" alt="故宫博物院藏繁本《缂丝无量寿尊佛》轴，完整拼图参考" width="980" height="1458"></a></figure>
       </div>
-      <div class="complete" id="complete" hidden><div class="complete-card"><span class="gold-star">✦</span><h2>佛像画面已拼合</h2><p>拼图图块直接取自繁本原图，文物图像没有修改。</p><button id="playAgain" type="button">再玩一次</button><button id="chooseDifficulty" type="button">选择难度</button></div></div>
+      <div class="complete" id="complete" hidden><div class="complete-card"><span class="gold-star">✦</span><h2>拼图完成</h2><button id="playAgain" type="button">再玩一次</button><button id="chooseDifficulty" type="button">选择难度</button></div></div>
     </section>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </main>
