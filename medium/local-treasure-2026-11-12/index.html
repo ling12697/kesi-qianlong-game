@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#21160e">
+  <title>局部寻宝｜高清纹样 v6</title>
+  <link rel="stylesheet" href="style.css?v=clear-motifs-v6-11">
+</head>
+<body>
+  <main class="phone-shell" id="game">
+    <header class="topbar">
+      <div class="title-lockup"><span class="seal">织</span><span><b>局部寻宝</b><small>缂丝图像观察小游戏</small></span></div>
+      <div class="progress" aria-live="polite"><strong id="progressNumber">第1关 · 1 / 3</strong><span class="progress-rail"><i id="progressFill"></i></span></div>
+    </header>
+
+    <section class="play-area" id="playArea">
+      <div class="question-line"><div><h1>局部纹样寻宝</h1><p id="taskPrompt">逐个观察左侧纹样，点击右侧对应的完整画作。</p></div></div>
+      <div class="art-stage" id="artStage">
+        <div class="sample-label" id="sampleLabel">逐一匹配三处纹样</div><div class="clue-deck" id="clueDeck" aria-label="待匹配的三处纹样"></div>
+        <div class="locate-view" id="locateView" hidden>
+          <div class="locate-head"><b>点出这个局部的位置</b><span id="locateSubject"></span></div>
+          <div class="full-image-wrap" id="fullImageWrap">
+            <img id="fullImage" alt="所选馆藏原图">
+            <div class="target-box" id="targetBox" aria-hidden="true"></div>
+            <div class="hint-wash" id="hintWash" aria-hidden="true"></div>
+          </div>
+          <span class="image-tag" id="imageTag"></span>
+        </div>
+        <div class="stage-glint" aria-hidden="true"></div>
+      </div>
+      <div class="status-row"><span class="status-dot"></span><p id="feedback" aria-live="polite">这处纹样来自哪一张佛像？请点击对应画面。</p><button id="hintButton" class="hint-button" hidden>看提示</button></div>
+    </section>
+
+    <section class="choice-area" id="choiceArea" aria-label="选择完整佛像原图">
+      <div class="choice-heading"><span id="choiceCaption">三张完整佛像 · 点击选择纹样来源</span><span class="mini-note" id="miniNote">直接点击原图</span></div>
+      <div class="art-choices" id="artChoices"></div>
+    </section>
+
+    <section class="result-screen" id="resultScreen" hidden>
+      <div class="result-seal">寻宝完成</div>
+      <h1>三关纹样都找到了</h1>
+      <p class="result-score" id="resultScore"></p>
+      <div class="result-art"><img src="assets/artwork-cards/01-palace-museum-1.png" alt="故宫博物院藏 1 完整画面"><img src="assets/artwork-cards/02-palace-museum-2.png" alt="故宫博物院藏 2 完整画面"><img src="assets/artwork-cards/03-tsinghua-university.png" alt="清华大学藏完整画面"></div>
+      <button id="restartButton" class="primary-button">再玩一次</button>
+      <small>图像来源按随附资料标注 · 原图保持原样</small>
+    </section>
+  <div class="art-zoom" id="artZoom" hidden><button type="button" id="zoomClose" aria-label="关闭放大图">×</button><img id="zoomImage" alt="佛像完整原图放大查看"><span id="zoomLabel"></span></div>
+    <footer class="footer-note">原图完整呈现 · 特写直接取自原图 · 馆藏名称依素材标注</footer>
+  </main>
+  <script src="game.js?v=clear-motifs-v6-11"></script>
+</body>
+</html>
