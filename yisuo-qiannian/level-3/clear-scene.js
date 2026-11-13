@@ -1,0 +1,5 @@
+/* 准确排字的可缩放牌匾，保证大屏文字可辨识。 */
+function clearBoard(label){const official=label.includes('织造署'),word=official?'苏州织造署':'纱缎庄';return `<svg class="clear-sign-svg" viewBox="0 0 400 80" aria-hidden="true"><rect x="2" y="2" width="396" height="76" rx="1" fill="${official?'#514c3e':'#795c40'}" stroke="#b39c6b" stroke-width="2"/><path d="M8 8H392V72H8Z" fill="none" stroke="#a08e64" stroke-width=".65"/><text x="200" y="56" text-anchor="middle" font-family="STKaiti,KaiTi,Kaiti SC,Noto Serif CJK SC,serif" font-size="${official?56:76}" font-weight="600" letter-spacing="${official?3:10}" fill="${official?'#e6d5a5':'#f1e1bc'}">${word}</text></svg>`}
+easyPos.splice(0,6,[19.4,35],[35.3,58],[60,47.5],[70,28],[86.5,44],[90,74]);
+const clearPriorRender=easyRender;easyRender=function(){clearPriorRender();if(s.ch!==0)return;document.querySelectorAll('.living-loom').forEach(el=>el.remove());document.querySelectorAll('.architectural-plaque').forEach(el=>{el.classList.add('clear-lettering');el.querySelector('.clear-sign-svg')?.remove();el.insertAdjacentHTML('beforeend',clearBoard(el.getAttribute('aria-label')||''));})};
+easyRender();

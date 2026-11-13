@@ -1,0 +1,15 @@
+/* Paper rests on the desk; all box layers share the existing sprite geometry. */
+.west-entry.v33-document-scene .west-folded-order{left:46%!important;top:79%!important;width:18%!important;height:12%!important;min-width:0!important;min-height:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;transform:perspective(1000px) rotateX(21deg) rotateZ(-4deg)!important;transform-origin:50% 75%;filter:drop-shadow(.5px 1px .65px #635b4938)!important;cursor:grab;touch-action:none;animation:none!important}
+.v33-commission-paper{display:block;width:100%;height:100%;overflow:visible;pointer-events:none}
+.west-entry.v33-document-scene .west-folded-order:hover{filter:drop-shadow(.5px 1px .65px #635b4950)!important}
+.west-entry.v33-document-scene .west-folded-order:focus-visible{outline:1px dotted #69755e!important;outline-offset:3px}
+.west-entry.v33-document-scene .west-document-bag{isolation:isolate;overflow:visible}
+.west-entry.v33-document-scene .west-document-bag>.craft-chest{z-index:0;inset:-5% 0 0;width:100%;height:105%;aspect-ratio:auto}
+.west-entry.v33-document-scene .west-document-bag>.v33-case-interior{position:absolute;inset:-5% 0 0;width:100%;height:105%;z-index:1;pointer-events:none}
+.west-entry.v33-document-scene .west-document-bag>.v33-case-interior[hidden]{display:none!important}
+.west-entry.v33-document-scene .west-document-bag>.v33-case-front{z-index:2;pointer-events:none;clip-path:polygon(8% 56%,28% 76%,96% 61%,96% 91%,33% 100%,8% 84%)}
+.west-entry.v33-document-scene .west-document-bag>b{z-index:3;pointer-events:none}
+.west-entry.v33-document-scene .v33-case-interior .v33-paper-plane{filter:drop-shadow(.3px 1.3px .7px #65573e36)}
+.west-tool-ghost.stow.v33-paper-ghost{padding:0;background:none;border:0;box-shadow:none;transform:translate(-50%,-50%) rotate(-4deg);filter:drop-shadow(1px 2px 1px #635b4938)}
+.west-tool-ghost.stow.v33-paper-ghost svg{width:100%;height:100%;display:block}
+@media(prefers-reduced-motion:reduce){.v33-document-scene .v33-paper-plane{animation:none}}

@@ -1,0 +1,21 @@
+body.qing .easy-scene{background-image:url('gusu-volume.lite.webp')}
+body.qing .easy-scene.court-view{background-image:url('weaving-court-volume.lite.webp')}
+/* 近景仅保留绘制的织机与织工，不向经面粘贴任务照片。 */
+.detail-weaving .detail-fabric,.detail-weaving .detail-sample{display:none!important}
+.detail-inspection{width:min(62%,1100px);left:19%;top:12%}
+.detail-inspection .detail-picture{aspect-ratio:3/2}
+.detail-inspection .detail-interior{background-image:url('inspection-overhead.lite.webp');background-size:100% 100%;background-position:center;filter:none}
+.detail-inspection .detail-fabric{position:absolute;left:29%;top:25%;width:42%;height:63%;transform:none!important;transform-origin:center;will-change:auto;filter:none;box-shadow:0 1px 3px #3e2c2030;clip-path:inset(0 calc((1 - var(--reveal))*100%) 0 0)}
+.detail-inspection .detail-fabric .silk-panel{width:100%;height:100%;display:block;image-rendering:auto}
+.detail-inspection .detail-unroll{left:22%;width:56%!important;bottom:3%}
+.detail-inspection .detail-drag-hint{bottom:0;background:#f2e6cbd9;font-size:11px}
+.detail-inspection .detail-seal{right:12%;bottom:13%;transform:rotate(-5deg);font-size:23px;background:#efdfbecc}
+.detail-inspection footer{min-height:56px;font-size:13px}
+.detail-inspection footer button{padding:7px 10px}
+.easy-scene .living-skiff{display:none!important}
+.canal-water-layer{position:absolute;inset:0;z-index:1;pointer-events:none;clip-path:polygon(68% 91%,80% 91%,80% 97%,68% 97%)}
+.canal-boat{position:absolute;left:71%;top:95%;width:5.2%;height:auto;aspect-ratio:3/1;transform:translate(-50%,-94%);filter:drop-shadow(0 1px 1px #31463a40);pointer-events:none}
+.canal-boat img{display:block;width:100%;height:100%;object-fit:contain;transform:scaleX(var(--boat-facing,1))}
+.canal-wake{position:absolute;left:8%;right:8%;bottom:1%;height:2px;border-bottom:1px solid #d3e4d8aa;border-radius:50%;box-shadow:0 2px 0 #e3e7c570}
+@media(max-width:900px){.detail-inspection{width:56%;left:22%;top:10%}.detail-inspection footer{font-size:11px;min-height:44px}.detail-inspection footer button{font-size:11px;padding:5px 7px}}
+@media(prefers-reduced-motion:reduce){.canal-boat img{transform:none}}

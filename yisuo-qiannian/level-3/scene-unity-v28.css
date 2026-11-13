@@ -1,0 +1,33 @@
+body.qing .easy-scene.v28-approved-world:not(.court-view).season-0{background-image:url('gusu-approved-v28-spring.lite.webp')}
+body.qing .easy-scene.v28-approved-world:not(.court-view).season-1{background-image:url('gusu-approved-v28-summer.lite.webp')}
+body.qing .easy-scene.v28-approved-world:not(.court-view).season-2{background-image:url('gusu-approved-v28-autumn.lite.webp')}
+body.qing .easy-scene.v28-approved-world:not(.court-view).season-3{background-image:url('gusu-approved-v28-winter.lite.webp')}
+body.qing .easy-scene.v28-approved-world .easy-place.architectural-plaque.official{left:20.6%!important;top:36.5%!important;width:7%!important;min-width:0;filter:none;aspect-ratio:4.5/1}
+body.qing .easy-scene.v28-approved-world .easy-place.architectural-plaque.merchant{left:33.7%!important;top:59.2%!important;width:7.6%!important;min-width:0;filter:none}
+body.qing .easy-scene.v28-approved-world .easy-place.v27-ship-frame{left:85%!important;top:87.1%!important;width:24%!important;height:13.7%!important}
+.v28-approved-world .city-gate-lettering{left:86.6%!important;top:67.6%!important;width:3.3%!important;height:2.2%!important;font-size:clamp(8px,1vw,15px)!important;transform:translate(-50%,-50%)!important}
+.v28-approved-world .road-walker{scale:.82;transform-origin:bottom center}
+.v28-approved-world .canal-boat{width:10%!important;opacity:.92}
+.v28-approved-world .canal-water-layer{clip-path:polygon(43% 93%,67% 93%,67% 99.5%,43% 99.5%)!important}
+/* Keep the original seated river view as the voyage's main scene. Repair is a separate close-up. */
+.v28-voyage-mode>.easy-work{isolation:isolate}
+.v28-seated-voyage{position:absolute;inset:0;overflow:hidden;background:#e4e9e4}
+.v28-river-view{position:absolute;inset:0;background:url('pov-voyage.lite.webp') center/102% 102%;animation:v28-seated-sway 8s ease-in-out infinite alternate;transform-origin:center bottom}
+.v28-river-ripples{position:absolute;left:27%;top:43%;width:46%;height:30%;pointer-events:none;background:repeating-linear-gradient(178deg,transparent 0 23px,#f6f9f319 24px 25px);mask-image:radial-gradient(ellipse,#000,transparent 70%);animation:v28-river-drift 6s linear infinite}
+.v28-voyage-heading{position:absolute;left:29%;top:6%;width:42%;padding:10px 15px;display:block;text-align:center;background:#fafbf5eb;border:1px solid #c0c7b8;color:#415247}
+.v28-voyage-heading small{font:12px STKaiti,KaiTi,serif;letter-spacing:2px}.v28-voyage-heading h2{font:24px STKaiti,KaiTi,serif;margin:5px 0 0}
+.v28-ship-note{position:absolute;left:4%;top:24%;width:22%;padding:13px 16px;background:#fafbf5e8;border-left:2px solid #a5b394;color:#4a5b4d}
+.v28-ship-note small{font:13px STKaiti,KaiTi,serif}.v28-ship-note p{font:15px/1.9 STKaiti,KaiTi,serif;margin:6px 0 0}
+.v28-open-cloth{position:absolute;right:5%;bottom:15%;padding:12px 19px;background:#fafbf5eb;font:17px STKaiti,KaiTi,serif;color:#445440;border:1px solid #a6b394}
+.v28-capital{position:absolute;left:37%;bottom:7%;width:26%;font:17px STKaiti,KaiTi,serif;padding:12px}
+.v28-back-to-river{position:absolute;right:3%;top:18%;z-index:12;background:#fafbf5e8;font:14px STKaiti,KaiTi,serif;padding:8px 13px;border:1px solid #b4beaf}
+.v28-repair-closeup{animation:v28-open-detail .4s ease-out}.v28-repair-closeup .v26-repair-note h2{font-size:22px}.v28-repair-closeup .v26-beater span{font-size:11px}.v28-repair-closeup .v26-repair-footer{bottom:5%;max-width:33%}
+.v28-thread-settle .v26-repair-fabric{animation:v28-settle .45s ease-out}
+@keyframes v28-seated-sway{0%{transform:translateY(0) rotate(-.12deg)}100%{transform:translateY(2px) rotate(.12deg)}}
+@keyframes v28-river-drift{to{background-position:26px 24px}}
+@keyframes v28-open-detail{from{opacity:.3;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+@keyframes v28-settle{50%{filter:brightness(1.07)}}
+@media(max-width:900px){.v28-voyage-heading h2{font-size:18px}.v28-ship-note p{font-size:12px}.v28-open-cloth,.v28-capital{font-size:13px}.v28-back-to-river{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.v28-river-view,.v28-river-ripples,.v28-repair-closeup,.v28-thread-settle .v26-repair-fabric{animation:none}}
+.v28-approved-world .hands-hold{left:78%;top:83%;width:15%;height:8%;border-radius:5px}
+.v28-approved-world .hands-hold b{font-size:15px}.v28-approved-world .hands-ship-cargo{left:76%;top:86%}

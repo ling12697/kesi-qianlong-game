@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254">
+  <defs>
+    <filter id="penumbra" x="-22%" y="-60%" width="144%" height="220%"><feGaussianBlur stdDeviation="2.8"/></filter>
+    <filter id="rim" x="-12%" y="-45%" width="124%" height="190%"><feGaussianBlur stdDeviation="0.8"/></filter>
+  </defs>
+  <path d="M653 834 Q688 820 740 829 Q779 830 804 842 L870 874 Q879 880 861 885 Q829 887 780 876 L734 871 Q665 872 644 853 Z"
+        fill="#4a3b33" opacity=".38" filter="url(#penumbra)"/>
+  <path d="M644 846 Q662 863 719 864 Q772 867 805 846 Q799 860 766 866 Q686 875 652 858 Z"
+        fill="#38291f" opacity=".67" filter="url(#rim)"/>
+</svg>

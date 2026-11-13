@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254">
+  <defs>
+    <filter id="cast" x="-25%" y="-40%" width="150%" height="180%"><feGaussianBlur stdDeviation="1.5"/></filter>
+    <filter id="contact" x="-40%" y="-80%" width="180%" height="260%"><feGaussianBlur stdDeviation="0.55"/></filter>
+  </defs>
+  <g transform="translate(637 907) scale(.93) translate(-647 -922)">
+    <path d="M605 887 L627 874 L686 905 L702 916 L678 929 L619 902 Z"
+          fill="#413027" opacity=".42" filter="url(#cast)"/>
+    <g fill="#372920" opacity=".68" filter="url(#contact)">
+      <ellipse cx="608" cy="885" rx="4.8" ry="2.1"/>
+      <ellipse cx="667" cy="917" rx="5.6" ry="2.4"/>
+      <ellipse cx="685" cy="903" rx="4.4" ry="2"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+body.qing{background:#e8ece8}
+.easy-scene:after{box-shadow:none}
+body.qing .easy-scene.season-0{background-image:url('clean-gusu-spring.lite.webp')}
+body.qing .easy-scene.season-1{background-image:url('clean-gusu-summer.lite.webp')}
+body.qing .easy-scene.season-2{background-image:url('clean-gusu-autumn.lite.webp')}
+body.qing .easy-scene.season-3{background-image:url('clean-gusu-winter.lite.webp')}
+body.qing .easy-scene.court-view.season-0{background-image:url('clean-court-spring.lite.webp')}
+body.qing .easy-scene.court-view.season-1{background-image:url('clean-court-summer.lite.webp')}
+body.qing .easy-scene.court-view.season-2{background-image:url('clean-court-autumn.lite.webp')}
+body.qing .easy-scene.court-view.season-3{background-image:url('clean-court-winter.lite.webp')}
+.detail-weaving.worker-0 .detail-interior{background-image:url('clean-house-shen.lite.webp')}
+.detail-weaving.worker-1 .detail-interior{background-image:url('clean-house-zhou.lite.webp')}
+.detail-weaving.worker-2 .detail-interior{background-image:url('clean-house-lu.lite.webp')}
+.world-window{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.detail-view .window-view-caption{font-size:10px!important;color:#727c73;letter-spacing:1px;width:100%;text-align:right}
+.easy-scene .easy-guide,.easy-scene .easy-brand,.easy-scene .easy-path,.easy-scene .easy-season{background:#fafbf5ed;border-color:#bbc3b7;box-shadow:none;color:#3c4b43}
+.easy-scene .easy-dialog{background:#fbfbf5fa;border-top:2px solid #a8b3a3;box-shadow:0 4px 16px #34453820}
+.easy-scene .easy-place{background:#fafbf5eb;border-color:#a9b4a2;box-shadow:0 2px 6px #3445381a}
+.easy-scene .easy-bundle,.easy-scene .easy-cloth,.workshop-packages .easy-bundle.sent{background:#f4f3e9;border-color:#b0ad9b;box-shadow:0 3px 7px #34453820}
+.detail-view{background:#f8f9f1;border-color:#aab4a5;box-shadow:0 5px 23px #34453835}
+.detail-view header{border-color:#ccd2c4}.detail-view footer{background:#f8f9f1}
+.detail-inspection .detail-interior{filter:saturate(.5) brightness(1.06)}
+.road-walker .walk-sprite{filter:saturate(.65) brightness(1.03)}
+.canal-water-layer{clip-path:polygon(66.5% 90%,79.5% 90%,79.5% 97%,66.5% 97%)}
+.canal-boat{width:7.2%;aspect-ratio:3/1;filter:drop-shadow(0 1px .5px #536b6429)}
+.canal-wake{border-color:#d2e1dd99;box-shadow:0 1px 0 #e4eae780}
+@media(max-width:900px){.detail-view .window-view-caption{font-size:8px!important}}

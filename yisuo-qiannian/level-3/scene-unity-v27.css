@@ -1,0 +1,23 @@
+/* The untouched first-act courtyard is the reference: pale blue-grey, jade, ivory and light timber. */
+body.qing .easy-scene.v27-court-palette:not(.court-view).season-0{background-image:url('gusu-court-v27-spring.lite.webp')}
+body.qing .easy-scene.v27-court-palette:not(.court-view).season-1{background-image:url('gusu-court-v27-summer.lite.webp')}
+body.qing .easy-scene.v27-court-palette:not(.court-view).season-2{background-image:url('gusu-court-v27-autumn.lite.webp')}
+body.qing .easy-scene.v27-court-palette:not(.court-view).season-3{background-image:url('gusu-court-v27-winter.lite.webp')}
+.v27-court-palette .west-room-background,.v27-court-palette .west-desk-front,.v27-court-palette .boss-counter-back,.v27-court-palette .boss-counter-front,.v27-court-palette .boss-settled-back,.v27-court-palette .detail-interior{filter:saturate(.89) brightness(1.025) contrast(.98)}
+.v27-court-palette .craft-route-background{background-image:url('return-street-v27.lite.webp');filter:none}
+.v27-court-palette .craft-street-sign{display:none!important}
+.v27-court-palette .v26-boat-stage{filter:saturate(.85) brightness(1.05) contrast(.94)}
+.v27-court-palette .official-sprite,.v27-court-palette .fp-body-hands,.v27-court-palette .v22-held-case,.v27-court-palette .craft-workhands{filter:saturate(.91)}
+.v27-court-palette .easy-guide,.v27-court-palette .easy-brand,.v27-court-palette .easy-season,.v27-court-palette .easy-path,.v27-court-palette .easy-dialog,.v27-court-palette .hands-panel,.v27-court-palette .boss-paper,.v27-court-palette .west-order-sheet,.v27-court-palette .craft-route-note,.v27-court-palette .west-intent{background:#fafbf5ed;border-color:#bbc3b7;color:#3c4b43;box-shadow:none}
+/* This transparent hit area surrounds the painted ship, rather than illuminating a detached flag. */
+body.qing .easy-scene.v27-court-palette .easy-place.v27-ship-frame{left:88%!important;top:84%!important;width:23%!important;height:21%!important;min-width:0!important;min-height:0!important;padding:0!important;transform:translate(-50%,-50%)!important;border:1px solid transparent!important;border-radius:4px!important;background:none!important;background-image:none!important;outline:none!important;filter:none!important;box-shadow:none!important;animation:none!important;translate:0 0!important;z-index:4;overflow:visible;}
+.v27-ship-frame:before,.v27-ship-frame:after{display:none!important}
+.v27-ship-caption{position:absolute;left:50%;top:91%;transform:translateX(-50%);background:#fafbf5e6;border:1px solid #bbc3b7;color:#3c4b43;padding:2px 12px;font:clamp(11px,1vw,17px) STKaiti,KaiTi,serif;letter-spacing:3px;white-space:nowrap;pointer-events:none;}
+body.qing .easy-scene.v27-court-palette .easy-place.v27-ship-ready{border:2px solid #a6b394!important;outline:2px solid #a6b394!important;outline-offset:4px;animation:v27-ship-outline 2.1s ease-in-out infinite!important;}
+@keyframes v27-ship-outline{0%,100%{outline-color:#a6b39480;box-shadow:0 0 0 1px #b8c3a920}50%{outline-color:#8e9d7c;box-shadow:0 0 8px 2px #b2c39970}}
+body.qing .easy-scene.v27-court-palette .easy-place.v27-ship-frame:focus-visible{outline:2px solid #70835d!important;outline-offset:5px}
+@media(prefers-reduced-motion:reduce){body.qing .easy-scene.v27-court-palette .easy-place.v27-ship-ready{animation:none!important}}
+.easy-scene.v27-court-palette .court-village.v26-wall-inscription{left:60.4%!important;top:53.8%!important;width:4.1%!important;height:5.2%!important;overflow:visible;}
+.v27-court-palette .v26-wall-inscription b{font-size:clamp(10px,.85vw,15px);letter-spacing:1px;white-space:nowrap;line-height:1.15}
+.v27-court-palette .v26-wall-inscription small{font-size:clamp(5px,.43vw,8px);white-space:nowrap;line-height:1.3;margin:1px 0 0}
+.v27-court-palette .v26-village-top{font-size:clamp(6px,.5vw,9px);line-height:1.2}

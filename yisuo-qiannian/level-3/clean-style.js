@@ -1,0 +1,11 @@
+/* 窗外直接使用当前季节地图，三个视向分别对应实际河街、田畴、城门。 */
+const cleanViews=[
+ {name:'沈家',description:'南窗 · 河街与柳岸',crop:[825,610,315,235],opening:[1174,87,344,352],clip:'1174,87 1518,91 1518,439 1281,420 1281,391 1216,389 1216,413 1174,409'},
+ {name:'周家',description:'北窗 · 田畴与远山',crop:[1080,20,450,180],opening:[110,141,407,310],clip:'110,141 517,155 517,250 490,285 459,320 431,360 413,438 110,451'},
+ {name:'陆家',description:'南窗 · 城门与街巷',crop:[1390,500,280,215],opening:[1205,140,320,228]}
+];
+function cleanMapFile(season,court=false){return 'clean-'+(court?'court':'gusu')+'-'+['spring','summer','autumn','winter'][Math.max(0,Math.min(3,season))]+'.lite.webp'}
+function cleanWindowMarkup(worker,season){let v=cleanViews[worker],x=v.opening[0],y=v.opening[1],w=v.opening[2],h=v.opening[3],poly=v.clip||`${x},${y} ${x+w},${y} ${x+w},${y+h} ${x},${y+h}`;return `<svg class="world-window" viewBox="0 0 1536 1024" preserveAspectRatio="none" role="img" aria-label="${v.description}，取自当前${['春','夏','秋','冬'][season]}季地图"><defs><clipPath id="actual-window-${worker}"><polygon points="${poly}"/></clipPath></defs><g clip-path="url(#actual-window-${worker})"><svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${v.crop.join(' ')}" preserveAspectRatio="xMidYMid slice" overflow="hidden"><image href="${cleanMapFile(season)}" width="1672" height="941"/></svg></g></svg>`}
+const cleanPreviousRender=easyRender;
+easyRender=function(){cleanPreviousRender();if(s.ch!==0)return;let scene=document.querySelector('.easy-scene');if(!scene)return;let season=Math.max(0,Math.min(3,easy.seasonStage||0));let pane=scene.querySelector('.detail-weaving');if(pane&&detailView){let worker=Math.max(0,workshop().orders[detailView.index].worker);pane.querySelector('.detail-picture').insertAdjacentHTML('beforeend',cleanWindowMarkup(worker,season));pane.querySelector('.detail-interior').setAttribute('aria-label',cleanViews[worker].name+'缂丝织坊');pane.querySelector('footer').insertAdjacentHTML('beforeend','<small class="window-view-caption">'+cleanViews[worker].description+'</small>');pane.dataset.windowSource=cleanMapFile(season);pane.dataset.worker=worker}let boat=scene.querySelector('.canal-boat img');if(boat)boat.src='boat-clean.lite.webp';};
+easyRender();

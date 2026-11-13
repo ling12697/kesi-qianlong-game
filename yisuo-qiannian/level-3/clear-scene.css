@@ -1,0 +1,12 @@
+body.qing .easy-scene{background-image:url('gusu-clear.lite.webp')}
+body.qing .easy-scene.court-view{background-image:url('weaving-court-clear.lite.webp')}
+body.qing .easy-scene .architectural-plaque.clear-lettering{width:7%;height:auto;aspect-ratio:5/1;min-height:0;min-width:0;filter:none!important;overflow:visible}
+body.qing .easy-scene .court-plaque.gate.architectural-plaque.clear-lettering{width:7.6%;top:74%}
+body.qing .easy-scene .architectural-plaque.merchant.clear-lettering{width:6.5%;top:53.8%!important;aspect-ratio:5/1}
+.clear-sign-svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 1px 1px #4e3d2729)}
+body.qing .easy-scene .clear-lettering:after{bottom:calc(100% + 7px)}
+body.qing .easy-scene .clear-lettering.glow:before{inset:-4px;border-color:#bd9e5a77}
+body.qing .easy-scene .clear-lettering .easy-pointer{top:-23px;font-size:17px}
+@media(max-width:750px){body.qing .easy-scene .architectural-plaque.clear-lettering{width:9%}body.qing .easy-scene .court-plaque.gate.architectural-plaque.clear-lettering{width:10%}body.qing .easy-scene .architectural-plaque.merchant.clear-lettering{width:8%}.clear-sign-svg text{font-weight:700}}
+body.qing .easy-scene .architectural-plaque.clear-lettering{width:6.4%}body.qing .easy-scene .court-plaque.gate.architectural-plaque.clear-lettering{width:7.6%;left:49.7%;top:72.7%}body.qing .easy-scene .architectural-plaque.merchant.clear-lettering{width:6.5%;top:54.2%!important}
+@media(max-width:750px){body.qing .easy-scene .architectural-plaque.clear-lettering{width:9%}body.qing .easy-scene .court-plaque.gate.architectural-plaque.clear-lettering{width:10%}body.qing .easy-scene .architectural-plaque.merchant.clear-lettering{width:8%}}

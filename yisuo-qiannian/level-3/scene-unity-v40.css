@@ -1,0 +1,18 @@
+/* Preserve the original woven preview and live status above the lower controls. */
+body.qing .v40-clear-controls .v37-roof-group .house-work .house-frame{display:block!important;height:30px!important;min-height:30px;border-width:2px;margin:2px 0}
+.v40-clear-controls .house-work .hands-progress>i{width:calc(var(--woven)*100%)!important}
+.v40-clear-controls .house-work .v40-near-hint{display:block;font-size:10px;line-height:1.4;color:#59644f;white-space:normal;margin-top:2px}
+.v40-clear-controls .house-work .house-frame svg{clip-path:inset(calc((1 - var(--woven))*100%) 0 0 0)}
+.v40-clear-controls .house-work.weaving .house-shuttle{animation:detail-shuttle 1.2s ease-in-out infinite alternate!important}
+.v40-clear-controls .v37-roof-group{transform:translate(-50%,-65%)}
+.v40-material-instruction{font:inherit;font-size:12px;letter-spacing:0;margin-left:12px;font-style:normal;display:inline-block}
+.v40-clear-controls .craft-material-panel header>span{display:flex;align-items:baseline;flex-wrap:wrap;row-gap:4px}
+.v40-clear-controls .craft-material-panel footer{justify-content:flex-start;gap:12px}
+.v40-clear-controls .craft-material-panel footer>button[onclick^="handsMaterialRest"]{order:-1;margin-right:auto;margin-left:0}
+.v40-allocation{position:absolute;left:26%;top:25%;width:49%;z-index:90;background:#f6f2e7f7;border:1px solid #a59b82;box-shadow:0 9px 28px #34432d45;padding:16px}
+.v40-allocation header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:17px}
+.v40-allocation header button{border:0;background:none;font-size:22px;padding:0 8px}
+.v40-allocation>div{display:flex;gap:12px}.v40-allocation>div>button{flex:1;min-width:0;background:#faf7ee;border:1px solid #b5ad96;padding:9px;cursor:pointer}
+.v40-allocation svg{height:100px;width:100%}.v40-allocation b,.v40-allocation small{display:block;text-align:center}.v40-allocation small{font-size:11px;margin-top:4px}
+@media(max-width:1000px){.v40-material-instruction{font-size:12px;margin-left:7px}.v40-allocation{width:55%;left:23%;padding:10px}.v40-allocation svg{height:70px}.v40-allocation header{font-size:14px}.v40-clear-controls .house-work .v40-near-hint{font-size:9px}}
+.v40-progress-title{display:block;font-size:10px;line-height:1.3;letter-spacing:.03em;color:#606b55}

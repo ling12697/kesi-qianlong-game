@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254">
+  <defs><filter id="soft" x="-60%" y="-10%" width="220%" height="120%"><feGaussianBlur stdDeviation="3"/></filter></defs>
+  <path d="M874 444 L881 447 L880 764 L873 767 L728 694 L729 686 L874 756 Z"
+        fill="#38271d" opacity=".48" filter="url(#soft)"/>
+  <path d="M729 372 L878 449" stroke="#39271d" stroke-width="6" stroke-linecap="round"/>
+  <path d="M729 371 L878 448" stroke="#866044" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M750 386 L753 370 L757 369 L755 388 M849 435 L852 419 L856 418 L854 438"
+        fill="#624630" stroke="#39271d" stroke-width="1.2"/>
+</svg>
