@@ -19,47 +19,47 @@ body.qing .easy-scene .boss-options button{outline:2px solid #a87731;outline-off
 .report-weave-notice{color:#813d24;font-weight:600}
 @media(max-width:750px),(max-height:690px){body.qing .easy-scene .west-order-sheet{top:12%;left:13%;width:74%;max-height:79%;overflow:auto;overscroll-behavior:contain}.west-order-sheet .boss-patterns svg{max-height:54px}}
 @media(prefers-reduced-motion:reduce){body.qing .easy-scene .report-pointer .easy-pointer{animation:none!important}}
-</style><header><div><small>中国缂丝 · 互动叙事</small><h1>缂丝经纬 <span style="font-size:16px;letter-spacing:2px">承业之路</span></h1></div><nav id="nav"></nav><div><button onclick="full()">全屏</button> <button onclick="help()">玩法</button></div></header><main class="layout"><aside><div class="eyebrow" id="era"></div><h2 id="title"></h2><span class="badge" id="role"></span><div class="stats" id="stats"></div><div id="calendar"></div><button onclick="advance()" class="primary" style="width:100%">推进一日 →</button><p style="font-size:12px">操作会消耗时间。可自由走访地图节点，随时调整安排。</p><button onclick="restart()">重新体验本关</button></aside><section><div class="map" id="map"></div><div class="panel task" id="task"></div></section><aside class="right"><div><div class="eyebrow">当前委托</div><h3 id="goal"></h3><p id="objective"></p><div class="hint" id="principle"></div><div class="toast" id="toast" role="status"></div></div><div><h3 style="margin-top:18px">行事簿</h3><div class="log" id="log"></div></div></aside></main><footer>互动情境原型 · 根据用户提供的历史材料设计；人物对白、突发事件及数值为游戏化演绎。各时代案例经压缩串联，非真实订单复原。进度仅保存在当前浏览器。</footer><dialog id="intro"><small>THREE ERAS · ONE LIVING CRAFT</small><div class="hero">一丝成物<br>众手承业</div><p>从清代差货到海外订单，再到今日工作室。你将穿越三个时代，接洽需求、安排人手、应对变故，让一件缂丝抵达需要它的人。</p><p>点击地图自由走访。拖动滑块分配任务，制作样片，展开验货，安排工作与影像。每次行动都留下结果。</p><button class="primary" onclick="document.querySelector('#intro').close()">启程 · 进入工坊</button></dialog><dialog id="ending"></dialog><section id="qingApp"></section><dialog id="qmodal" class="qmodal"></dialog><link rel="stylesheet" href="qing.css"><script src="game.js"></script><script src="qing.js"></script><link rel="stylesheet" href="map-ui.css"><script src="map-ui.js"></script><link rel="stylesheet" href="simple.css"><script src="simple.js"></script><link rel="stylesheet" href="living.css"><script src="living.js"></script><link rel="stylesheet" href="compound.css"><script src="compound.js"></script><link rel="stylesheet" href="painted-assets.css"><script src="painted-assets.js"></script><link rel="stylesheet" href="road-walk.css"><script src="road-walk.js"></script><link rel="stylesheet" href="clear-scene.css"><script src="clear-scene.js"></script>
+</style><link rel="stylesheet" href="styles.v4.css"><script defer src="runtime.v4.js"></script><header><div><small>中国缂丝 · 互动叙事</small><h1>缂丝经纬 <span style="font-size:16px;letter-spacing:2px">承业之路</span></h1></div><nav id="nav"></nav><div><button onclick="full()">全屏</button> <button onclick="help()">玩法</button></div></header><main class="layout"><aside><div class="eyebrow" id="era"></div><h2 id="title"></h2><span class="badge" id="role"></span><div class="stats" id="stats"></div><div id="calendar"></div><button onclick="advance()" class="primary" style="width:100%">推进一日 →</button><p style="font-size:12px">操作会消耗时间。可自由走访地图节点，随时调整安排。</p><button onclick="restart()">重新体验本关</button></aside><section><div class="map" id="map"></div><div class="panel task" id="task"></div></section><aside class="right"><div><div class="eyebrow">当前委托</div><h3 id="goal"></h3><p id="objective"></p><div class="hint" id="principle"></div><div class="toast" id="toast" role="status"></div></div><div><h3 style="margin-top:18px">行事簿</h3><div class="log" id="log"></div></div></aside></main><footer>互动情境原型 · 根据用户提供的历史材料设计；人物对白、突发事件及数值为游戏化演绎。各时代案例经压缩串联，非真实订单复原。进度仅保存在当前浏览器。</footer><dialog id="intro"><small>THREE ERAS · ONE LIVING CRAFT</small><div class="hero">一丝成物<br>众手承业</div><p>从清代差货到海外订单，再到今日工作室。你将穿越三个时代，接洽需求、安排人手、应对变故，让一件缂丝抵达需要它的人。</p><p>点击地图自由走访。拖动滑块分配任务，制作样片，展开验货，安排工作与影像。每次行动都留下结果。</p><button class="primary" onclick="document.querySelector('#intro').close()">启程 · 进入工坊</button></dialog><dialog id="ending"></dialog><section id="qingApp"></section><dialog id="qmodal" class="qmodal"></dialog>
 
-<link rel="stylesheet" href="workshop-loop.css"><script src="workshop-loop.js"></script>
-<link rel="stylesheet" href="spatial-fixes.css"><script src="spatial-fixes.js"></script>
-<link rel="stylesheet" href="season-continuity.css"><script src="season-continuity.js"></script>
-<link rel="stylesheet" href="clean-style.css"><script src="clean-style.js"></script>
-<link rel="stylesheet" href="hands-on.css"><script src="hands-on.js"></script>
-<link rel="stylesheet" href="proprietor.css"><script src="proprietor.js"></script>
-<link rel="stylesheet" href="west-entry.css"><script src="west-entry.js"></script>
-<link rel="stylesheet" href="journey-craft.css"><script src="journey-craft.js"></script>
-<link rel="stylesheet" href="entry-refine.css">
-<link rel="stylesheet" href="material-detail.css">
-<link rel="stylesheet" href="signing-polish.css">
-<link rel="stylesheet" href="scene-unity-v22.css"><script src="scene-unity-v22.js"></script>
-<link rel="stylesheet" href="scene-unity-v23.css"><script src="scene-unity-v23.js"></script>
-<link rel="stylesheet" href="scene-unity-v24.css"><script src="scene-unity-v24.js"></script>
-<link rel="stylesheet" href="scene-unity-v25.css"><script src="scene-unity-v25.js"></script>
-<link rel="stylesheet" href="scene-unity-v26.css"><script src="scene-unity-v26.js"></script>
-<link rel="stylesheet" href="scene-unity-v27.css"><script src="scene-unity-v27.js"></script>
-<link rel="stylesheet" href="scene-unity-v28.css"><script src="scene-unity-v28.js"></script>
-<link rel="stylesheet" href="scene-unity-v29.css"><script src="scene-unity-v29.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
 
-<link rel="stylesheet" href="scene-unity-v30.css"><script src="scene-unity-v30.js"></script>
 
-<link rel="stylesheet" href="export-era/export-game.css"><script src="export-era/export-game.js"></script>
 
-<link rel="stylesheet" href="modern-era/modern-game.css"><script src="modern-era/modern-game.js"></script>
 
-<link rel="stylesheet" href="west-document-v33.css"><script src="west-document-v33.js"></script>
-<link rel="stylesheet" href="scene-unity-v35.css"><script src="scene-unity-v35.js"></script>
-<link rel="stylesheet" href="scene-unity-v36.css"><script src="scene-unity-v36.js"></script>
-<link rel="stylesheet" href="scene-unity-v37.css"><script src="scene-unity-v37.js"></script>
-<link rel="stylesheet" href="scene-unity-v39.css"><script src="scene-unity-v39.js"></script>
 
-<link rel="stylesheet" href="scene-unity-v40.css"><script src="scene-unity-v40.js"></script>
 
-<script src="scene-unity-v41.js"></script>
 
-<script src="scene-unity-v42.js"></script>
 
-<link rel="stylesheet" href="scene-unity-v44.css"><script src="scene-unity-v44.js"></script>
 
-<script src="scene-replay47.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
