@@ -373,3 +373,4 @@ if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>{if(syncCanvasReso
 
 update();if(migratedWeave&&state.stage===2)tell('织造顺序已改为自下而上。旧版第三关进度已单独重置，其他工序仍保留。');if(!saved)tell('此浏览器无法保存进度，请保持页面打开。');
 </script></body></html>
+<script>(()=>{const ready=()=>{if(parent!==window)parent.postMessage({type:'kesi-ready'},location.origin)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready,{once:true});else ready()})();</script>

@@ -1,11 +1,12 @@
 (()=>{'use strict';
-const levels=[{name:'第一关 · 苏州缂织',url:'level-1/index.html?v=perf4',end:'#finish[open]'},{name:'第二关 · 朕览经纬',url:'level-2/index.html?v=perf4',end:'.story-end'},{name:'第三关 · 承业之路',url:'level-3/index.html?v=perf4',end:null}];
+const levels=[{name:'第一关 · 苏州缂织',url:'level-1/index.html?v=perf5',end:'#finish[open]'},{name:'第二关 · 朕览经纬',url:'level-2/index.html?v=perf5',end:'.story-end'},{name:'第三关 · 承业之路',url:'level-3/index.html?v=perf5',end:null}];
 const frame=document.querySelector('#game'),next=document.querySelector('#next'),key='kesi-complete-current-level-v1';let current=0,observer;
 try{const saved=Number(localStorage.getItem(key));if(Number.isInteger(saved)&&saved>=0&&saved<3)current=saved}catch{}
 const requested=new URL(location.href).searchParams.get('level');if(['1','2','3'].includes(requested))current=Number(requested)-1;
 function fitPlayer(){const panel=document.querySelector('main');const framed=current===2&&window.innerWidth<1000;document.body.classList.toggle('framed-level',framed);if(framed)document.body.style.setProperty('--player-scale',String(Math.min(panel.clientWidth/1280,panel.clientHeight/720)));}
 window.addEventListener('resize',fitPlayer);if(typeof ResizeObserver!=='undefined')new ResizeObserver(fitPlayer).observe(document.querySelector('main'));
 function load(i){document.body.classList.remove('on-cover');document.querySelector('#cover').hidden=true;if(observer)observer.disconnect();current=i;fitPlayer();try{localStorage.setItem(key,String(i))}catch{}document.querySelectorAll('[data-level]').forEach(b=>{if(Number(b.dataset.level)===i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});frame.title=levels[i].name;next.textContent=i<2?'进入第'+['一','二','三'][i+1]+'关 →':'三关收卷';document.querySelector('#game-loading').hidden=false;frame.src=levels[i].url;document.title=levels[i].name+' · 一梭千年'}
+window.addEventListener('message',e=>{if(e.source===frame.contentWindow&&e.origin===location.origin&&e.data?.type==='kesi-ready')document.querySelector('#game-loading').hidden=true});
 function advance(){if(current<2)load(current+1);else document.querySelector('#complete').showModal()}
 document.querySelectorAll('[data-level]').forEach(b=>b.addEventListener('click',()=>load(Number(b.dataset.level))));next.addEventListener('click',advance);
 document.querySelector('#stay').onclick=()=>document.querySelector('#complete').close();document.querySelector('#restart').onclick=()=>{document.querySelector('#complete').close();load(0)};
