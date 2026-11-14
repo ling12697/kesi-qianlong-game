@@ -1,4 +1,4 @@
-const CACHE='yisuo-qiannian-smooth17',IMAGE_CACHE='yisuo-images-smooth17',pending=new Map();
+const CACHE='yisuo-qiannian-smooth18',IMAGE_CACHE='yisuo-images-smooth17',pending=new Map();
 self.addEventListener('install',()=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const key of await caches.keys())if((key.startsWith('yisuo-qiannian-')||key.startsWith('yisuo-images-'))&&key!==CACHE&&key!==IMAGE_CACHE)await caches.delete(key);await self.clients.claim()})()));
 async function network(request){let last;for(let attempt=0;attempt<2;attempt++){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{const response=await fetch(request,{signal:controller.signal,cache:attempt?'reload':'default'});if(response.ok||response.status<500)return response;last=new Error('HTTP '+response.status)}catch(error){last=error}finally{clearTimeout(timer)}}throw last}
