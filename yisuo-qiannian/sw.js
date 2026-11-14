@@ -1,5 +1,22 @@
-const CACHE='yisuo-qiannian-clean7';
+const CACHE='yisuo-qiannian-tvready16',IMAGE_CACHE='yisuo-images-v1';
+const pending=new Map();
 self.addEventListener('install',()=>self.skipWaiting());
-self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('yisuo-qiannian-')&&key!==CACHE)await caches.delete(key);await self.clients.claim();const root=new URL(self.registration.scope);for(const client of await self.clients.matchAll({type:'window',includeUncontrolled:true})){const u=new URL(client.url);if(client.frameType==='top-level'&&u.origin===root.origin&&(u.pathname===root.pathname||u.pathname===root.pathname+'index.html')&&u.searchParams.get('v')!=='clean7'){u.searchParams.set('v','clean7');client.navigate(u.href).catch(()=>{})}}})()));
-self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==location.origin||!u.pathname.startsWith(new URL(self.registration.scope).pathname))return;
- e.respondWith((async()=>{const c=await caches.open(CACHE);const hit=await c.match(r);if(r.mode==='navigate'||u.pathname.endsWith('.html')||u.pathname.endsWith('/')){try{const a=await fetch(r);if(a.ok)e.waitUntil(c.put(r,a.clone()).catch(()=>{}));return a}catch(err){if(hit)return hit;throw err}}if(hit)return hit;const a=await fetch(r);if(a.ok)e.waitUntil(c.put(r,a.clone()).catch(()=>{}));return a})());});
+self.addEventListener('activate',e=>e.waitUntil((async()=>{const images=await caches.open(IMAGE_CACHE);
+ for(const key of await caches.keys())if(key.startsWith('yisuo-qiannian-')&&key!==CACHE){
+  const old=await caches.open(key);
+  for(const request of await old.keys())if(/\.(webp|jpg|jpeg|png|svg)$/.test(new URL(request.url).pathname)&&!await images.match(request)){const response=await old.match(request);if(response?.ok)await images.put(request,response)}
+  await caches.delete(key);
+ }await self.clients.claim()})().catch(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{const request=e.request,u=new URL(request.url);if(request.method!=='GET'||u.origin!==location.origin)return;
+ // HTML restart tokens reset gameplay, not the cached image or document bytes.
+ const key=new URL(u);key.search='';
+ if(u.pathname.endsWith('/'))key.pathname+='index.html';
+ e.respondWith((async()=>{
+  const image=/\.(webp|jpg|jpeg|png|svg)$/.test(key.pathname);
+  let cache=null,hit;try{cache=await caches.open(image?IMAGE_CACHE:CACHE);hit=await cache.match(key.href)}catch{}
+  // The shell and loader must see future updates; chapter files are versioned by CACHE.
+  const shell=key.pathname===new URL('index.html',self.registration.scope).pathname||/\/(asset-loader\.js|assets-manifest\.json)$/.test(key.pathname);
+  if(hit&&!shell)return hit;
+  try{let task=pending.get(key.href);if(!task){task=fetch(request).then(response=>{if(response.ok&&cache)e.waitUntil(cache.put(key.href,response.clone()).catch(()=>{}));return response});pending.set(key.href,task);task.finally(()=>pending.delete(key.href)).catch(()=>{})}return (await task).clone()}catch(error){if(hit)return hit;throw error}
+ })());
+});
