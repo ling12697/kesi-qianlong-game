@@ -5,6 +5,6 @@ async function network(request){let last;for(let attempt=0;attempt<2;attempt++){
 self.addEventListener('fetch',e=>{const request=e.request,u=new URL(request.url);if(request.method!=='GET'||u.origin!==location.origin||!u.pathname.startsWith(new URL(self.registration.scope).pathname))return;
 const retry=u.searchParams.has('art-retry'),key=new URL(u);key.search='';if(key.pathname.endsWith('/'))key.pathname+='index.html';
 e.respondWith((async()=>{const image=/\.(webp|jpg|jpeg|png|svg)$/.test(key.pathname);let cache,hit;try{cache=await caches.open(image?IMAGE_CACHE:CACHE);hit=await cache.match(key.href)}catch{}
-const shell=key.pathname===new URL('index.html',self.registration.scope).pathname||/\/(asset-loader\.js|assets-manifest\.json)$/.test(key.pathname);
+const shell=key.pathname===new URL('index.html',self.registration.scope).pathname||/\/asset-loader\.js$/.test(key.pathname);
 if(hit&&!shell&&!retry)return hit;
 try{const taskKey=key.href+(retry?'#retry':'');let task=pending.get(taskKey);if(!task){task=network(request).then(response=>{if(response.ok&&cache)e.waitUntil(cache.put(key.href,response.clone()).catch(()=>{}));return response});pending.set(taskKey,task);task.finally(()=>pending.delete(taskKey)).catch(()=>{})}return(await task).clone()}catch(error){if(hit)return hit;throw error}})());});
