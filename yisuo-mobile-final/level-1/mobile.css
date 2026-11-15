@@ -1,0 +1,15 @@
+@media(max-width:999px) and (orientation:landscape),(pointer:coarse) and (max-height:600px){
+body.mobile-compact .shell{position:static;transform:none;width:100%;padding:4px 6px;height:100dvh}
+.mobile-compact .hero{display:none}.mobile-compact .steps{margin:0 0 4px;gap:4px}.mobile-compact .step{min-height:34px;font-size:12px;padding:5px}.mobile-compact .step b{font-size:12px}
+.mobile-compact .stage{display:grid;grid-template-columns:minmax(0,1fr) 29%;grid-template-rows:22px minmax(0,1fr) 36px;min-height:0}
+.mobile-compact .stagebar{grid-column:1/-1;grid-row:1;min-height:0;padding:3px 8px}
+.mobile-compact canvas{grid-column:1;grid-row:2;width:auto;height:100%;max-width:100%;aspect-ratio:1000/640;justify-self:center;align-self:center;min-height:0;touch-action:none}
+.mobile-compact .task-strip{grid-column:2;grid-row:2;overflow-y:auto;padding:5px;gap:5px;border-left:1px solid #d9bf96}
+.mobile-compact .task-strip .info-block{padding:5px}.mobile-compact .task-strip p,.mobile-compact #count,.mobile-compact #status{font-size:11px!important;line-height:1.45!important}
+.mobile-compact .task-strip h3{font-size:12px!important;margin:0 0 3px!important}
+.mobile-compact .stage>#next{grid-column:1/-1;grid-row:3;min-height:36px;margin:0;padding:5px;font-size:13px;width:100%}
+.mobile-compact .canvasfoot{display:none}.mobile-compact .shuttle-rack{gap:3px}.mobile-compact .shuttle-pick{min-height:32px;font-size:10px;padding:2px}.mobile-compact .shuttle-pick svg{height:16px}
+.mobile-compact #loom-loading{top:26px;right:31%}.mobile-compact dialog{max-height:90dvh;overflow:auto}
+}
+
+#phone-warp[hidden]{display:none}#phone-warp small{display:block;font-size:11px;line-height:1.4;margin-bottom:4px}#phone-warp>div{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}#phone-warp button{min-height:32px;padding:3px;font-size:12px}#phone-warp button[aria-pressed=true]{background:#d6b071;color:#203936;outline:2px solid #8b6532}

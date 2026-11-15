@@ -1,0 +1,18 @@
+/* Mobile viewport and safe areas; desktop layout is unchanged. */
+button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#rotate-notice{display:none}
+@media(max-width:1000px),(pointer:coarse) and (max-height:600px){
+body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom)}
+#journey{height:42px;min-height:42px;padding:3px 6px;gap:6px;flex-wrap:nowrap}
+#journey .brand{display:block;font-size:12px;letter-spacing:0;flex:none}
+#journey nav{width:auto;order:0;flex:1;flex-basis:auto;gap:4px}
+#journey nav button{flex:1;font-size:12px;min-height:34px;padding:4px;white-space:nowrap}
+#journey>[data-full]{font-size:11px;min-height:34px;padding:4px 7px}
+.cover-art{width:min(100vw,177.778dvh);height:min(100dvh,56.25vw)}
+.cover-content{top:8%;width:38%}.cover-content h1{font-size:6cqw;margin-bottom:1.5cqw}
+.level-choices{gap:1cqw;width:95%}.chapter{min-height:36px;font-size:clamp(13px,2cqw,20px);padding:5px}
+#cover .tv-full{min-height:32px;margin-top:6px;padding:4px;font-size:12px;width:95%}
+.cover-credit{font-size:10px;line-height:1.45;padding:5px 4% max(5px,env(safe-area-inset-bottom))}
+#game-loading{font-size:12px;padding:8px;bottom:8px;right:8px}
+}
+@media(max-width:1000px) and (orientation:portrait){#rotate-notice{display:flex;position:fixed;inset:0;z-index:1000;background:#102b2ef5;color:#f5dfae;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center;padding:30px}#rotate-notice b{font-size:24px}#rotate-notice span{font-size:14px}}

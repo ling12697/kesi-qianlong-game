@@ -1,0 +1,16 @@
+@media(max-height:600px) and (orientation:landscape){
+html,body,main,#app{height:100%;min-height:0;overflow:hidden}
+.pov-home,.pov-scene,.pov-ending,.desk-session{height:100dvh!important;min-height:0!important}
+.pov-title{top:8%!important;left:7%}.pov-title h1{font-size:38px!important;margin:10px 0;letter-spacing:6px}.pov-title p{font-size:13px!important;line-height:1.5;margin:10px 0 16px}
+.primary,.secondary{min-height:36px;padding:7px 16px;font-size:13px;touch-action:manipulation}
+.pov-heading{top:8px;left:12px;padding:6px 10px}.pov-heading small{font-size:11px}
+.pov-scene .audience-bubble{top:17%;right:30%;width:45%;padding:10px 14px;max-height:72%;overflow:auto}.audience-bubble p{font-size:13px;line-height:1.6;min-height:0;margin:6px 0}.audience-bubble .primary{padding:6px 16px;min-height:34px}
+.pov-scene .attendant{right:10%;bottom:28%;height:48%;width:18%}
+.pov-voice{bottom:8px;padding:7px 12px}.pov-voice p{font-size:12px;line-height:1.5;min-height:0}
+.pov-document{top:12%!important;max-height:84%;overflow:auto;padding:14px 22px!important}.pov-document p{font-size:13px!important;line-height:1.65!important}
+.presented-case,.desk-session-1 .presented-case,.desk-session-3 .presented-case{left:1%!important;top:4px!important;width:98%!important;height:calc(100% - 48px)!important;max-height:none!important;max-width:none!important;transform:none!important;border-width:2px;padding:0}
+.approve-model,.desk-session-3 .approve-model{bottom:4px!important;padding:5px 18px;font-size:12px;min-height:36px}
+.puzzle-size-tools{display:none}.intent.button-hint{display:none}.pov-note{display:none}
+.identity{top:10px;right:12px;padding:10px 7px;font-size:12px}.pov-ending{overflow-y:auto!important}
+#dragObject{touch-action:none}
+}
