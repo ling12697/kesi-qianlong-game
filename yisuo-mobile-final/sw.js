@@ -1,4 +1,4 @@
-const CACHE='yisuo-qiannian-mobile19',IMAGE_CACHE='yisuo-images-v1';
+const CACHE='yisuo-qiannian-landscape20',IMAGE_CACHE='yisuo-images-v1';
 const pending=new Map();
 self.addEventListener('install',()=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil((async()=>{const images=await caches.open(IMAGE_CACHE);
