@@ -1,0 +1,11 @@
+html,body{height:100%;height:100dvh;overflow:hidden}
+#app{height:100%;min-height:0;padding:0;max-width:none}
+#app .pov-home,#app .pov-scene,#app .pov-ending,#app .desk-session{height:100%;min-height:0}
+.pov-document{top:14%;max-height:70%;overflow:auto;overscroll-behavior:contain}
+.pov-final-scroll{min-height:0;overflow:auto}
+.pov-final-scroll>div{min-width:0}
+.pov-scene .pov-voice{max-height:24%;overflow:auto;pointer-events:auto}
+/* Reserve the lower strip for approval and hints, outside the playable tray. */
+.desk-session:not(.desk-session-3) .presented-case{left:5%;top:7%;width:90%;height:77%;max-width:none;max-height:none;transform:none}
+.desk-session .approve-model{bottom:2%;max-width:60%;min-height:40px;white-space:normal}
+.color-continue-hint{bottom:16%;max-width:80%;white-space:normal}

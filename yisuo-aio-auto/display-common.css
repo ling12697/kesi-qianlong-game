@@ -1,0 +1,3 @@
+/* Viewport limits also apply to native modal dialogs and long text. */
+dialog{box-sizing:border-box;max-width:calc(100vw - 32px)!important;max-height:calc(100vh - 32px)!important;max-height:calc(100dvh - 32px)!important;overflow:auto;overscroll-behavior:contain}
+button{overflow-wrap:break-word}
