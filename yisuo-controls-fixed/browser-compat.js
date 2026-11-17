@@ -1,0 +1,7 @@
+/* Feature fallbacks for Android browsers; preserves the existing game layout and drawing. */
+(function(){'use strict';
+if(typeof CanvasRenderingContext2D!=='undefined'&&!CanvasRenderingContext2D.prototype.roundRect){Object.defineProperty(CanvasRenderingContext2D.prototype,'roundRect',{configurable:true,writable:true,value:function(x,y,w,h,r){r=Number(r)||0;r=Math.max(0,Math.min(r,Math.abs(w)/2,Math.abs(h)/2));if(w<0){x+=w;w=-w}if(h<0){y+=h;h=-h}this.moveTo(x+r,y);this.lineTo(x+w-r,y);this.arcTo(x+w,y,x+w,y+r,r);this.lineTo(x+w,y+h-r);this.arcTo(x+w,y+h,x+w-r,y+h,r);this.lineTo(x+r,y+h);this.arcTo(x,y+h,x,y+h-r,r);this.lineTo(x,y+r);this.arcTo(x,y,x+r,y,r);this.closePath();}})}
+if(!Object.hasOwn)Object.hasOwn=function(obj,key){return Object.prototype.hasOwnProperty.call(obj,key)};
+if(!Array.prototype.at)Object.defineProperty(Array.prototype,'at',{configurable:true,writable:true,value:function(index){var n=Number(index)||0;n=n<0?Math.ceil(n):Math.floor(n);if(n<0)n+=this.length;return this[n]}});
+if(!String.prototype.replaceAll)Object.defineProperty(String.prototype,'replaceAll',{configurable:true,writable:true,value:function(search,replacement){if(search instanceof RegExp){if(!search.global)throw new TypeError('replaceAll requires a global RegExp');return this.replace(search,replacement)}search=String(search);var escaped='';for(var i=0;i<search.length;i++){var ch=search.charAt(i);if('\\^$.*+?()[]{}|'.indexOf(ch)!==-1)escaped+='\\';escaped+=ch}return this.replace(new RegExp(escaped,'g'),replacement)}});
+})();
