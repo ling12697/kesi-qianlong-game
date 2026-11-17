@@ -1,0 +1,23 @@
+/* Keep the complete 16:9 artwork inside the available screen, including browser chrome. */
+html,body{height:100%;height:100dvh;min-width:0;min-height:0}
+#journey{flex:none;min-width:0}
+#journey nav{min-width:0}
+main{flex:1 1 0;min-width:0;min-height:0;background:#102b2e}
+#cover{display:flex;flex-direction:column;overflow:hidden}
+.cover-stage{position:relative;flex:1 1 0;min-height:0;width:100%;overflow:hidden}
+.cover-credit{position:static;flex:none;background:#08282b;margin:0;padding:10px 4%;font-size:clamp(12px,1.05vw,19px);line-height:1.6}
+@media(orientation:landscape){
+ .cover-art{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform:translate(-50%,-50%) scale(var(--cover-scale,1));transform-origin:center;background-size:100% 100%}
+ .cover-content{left:6.8%;top:13.5%;width:33%}
+ .cover-content h1{font-size:96px;letter-spacing:3.2px;margin:0 0 46px}
+ .level-choices{gap:23px;width:87%}
+ .chapter{font-size:25px;line-height:1.4;letter-spacing:1.66px;padding:11px 6px;min-height:56px}
+ #cover .tv-full{font-size:19px;margin-top:14px;min-height:44px}
+ .tv-layout #journey{min-height:48px;padding:4px 16px;gap:10px;flex-wrap:nowrap}
+ .tv-layout #journey .brand{display:block;font-size:18px;letter-spacing:2px}
+ .tv-layout #journey nav{width:auto;order:0;flex:1;gap:5px}
+ .tv-layout #journey button{font-size:16px;min-height:36px;padding:6px 12px}
+ .tv-layout #journey nav button{flex:0 1 auto}
+}
+@media(orientation:landscape) and (max-width:1000px){.tv-layout #journey{padding:3px 8px;min-height:40px;gap:6px}.tv-layout #journey .brand{font-size:14px}.tv-layout #journey button{font-size:12px;min-height:32px;padding:4px 7px}.cover-credit{font-size:11px;padding:5px 3%}}
+#game-loading{right:auto;left:50%;bottom:12px;transform:translateX(-50%);max-width:90%;text-align:center}
