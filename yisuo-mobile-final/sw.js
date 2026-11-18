@@ -1,4 +1,4 @@
-const CACHE='yisuo-qiannian-landscape20',IMAGE_CACHE='yisuo-images-v1';
+const CACHE='yisuo-qiannian-fast21',IMAGE_CACHE='yisuo-images-v1';
 const pending=new Map();
 self.addEventListener('install',()=>self.skipWaiting());
 self.addEventListener('activate',e=>e.waitUntil((async()=>{const images=await caches.open(IMAGE_CACHE);
@@ -16,7 +16,7 @@ self.addEventListener('fetch',e=>{const request=e.request,u=new URL(request.url)
   let cache=null,hit;try{cache=await caches.open(image?IMAGE_CACHE:CACHE);hit=await cache.match(key.href)}catch{}
   // The shell and loader must see future updates; chapter files are versioned by CACHE.
   const shell=key.pathname===new URL('index.html',self.registration.scope).pathname||/\/(asset-loader\.js|assets-manifest\.json)$/.test(key.pathname);
-  if(hit&&!shell)return hit;
-  try{let task=pending.get(key.href);if(!task){task=fetch(request).then(response=>{if(response.ok&&cache)e.waitUntil(cache.put(key.href,response.clone()).catch(()=>{}));return response});pending.set(key.href,task);task.finally(()=>pending.delete(key.href)).catch(()=>{})}return (await task).clone()}catch(error){if(hit)return hit;throw error}
+  if(hit){if(shell)e.waitUntil(fetch(key.href,{cache:'no-cache'}).then(response=>{if(response.ok&&cache)return cache.put(key.href,response)}).catch(()=>{}));return hit;}
+  try{let task=pending.get(key.href);if(!task){task=fetch(key.href).then(response=>{if(response.ok&&cache)e.waitUntil(cache.put(key.href,response.clone()).catch(()=>{}));return response});pending.set(key.href,task);task.finally(()=>pending.delete(key.href)).catch(()=>{})}return (await task).clone()}catch(error){if(hit)return hit;throw error}
  })());
 });
