@@ -15,22 +15,3 @@ html.phone-player .m3-world {
   aspect-ratio:auto;
 }
 html.phone-player body.qing .easy-scene {background-size:100% 100%}
-
-/* Keep the material tray, chest and confirmation inside a short landscape view. */
-@media (orientation:landscape) and (max-height:650px){
-.craft-material-panel.hands-panel{
- left:50%!important;top:3vh!important;bottom:auto!important;
- transform:translateX(-50%)!important;
- width:min(720px,90vw)!important;max-height:94vh!important;
- display:flex!important;flex-direction:column;overflow-y:auto!important;
- box-sizing:border-box;
-}
-.craft-material-panel>header{flex:none;padding:8px 12px!important}
-.craft-material-panel .hands-material-layout{flex:none;max-height:38vh;padding:8px 12px!important;gap:10px!important}
-.craft-material-panel .hands-pattern{min-height:0;max-height:36vh}
-.craft-material-panel .hands-pattern img{max-height:34vh;width:auto;max-width:100%;object-fit:contain}
-.craft-material-panel .hands-skein{min-height:0!important;height:10vh!important;padding:3px!important}
-.craft-material-panel .craft-material-chest{flex:none;height:30vh!important;min-height:0!important;margin:0 auto!important}
-.craft-material-panel>footer{position:sticky;bottom:0;z-index:10;flex:none;min-height:44px!important;padding:6px 12px!important;background:#f6f7eff5}
-.craft-material-panel>footer button{min-height:36px!important;padding:6px 12px!important;font-size:15px!important}
-}
