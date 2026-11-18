@@ -5,3 +5,13 @@ html.phone-player button:not(.easy-place):not(.ex-marker):not(.m3-pin){min-heigh
 html.phone-player .west-walk-button,html.phone-player .craft-walk,html.phone-player .primary{min-height:48px;font-size:18px}
 html.phone-player .qmodal{max-height:92vh;overflow:auto}
 html.phone-player .west-intent p,html.phone-player .hands-event p{font-size:14px;line-height:1.5}
+
+/* Match the player viewport so map art and percentage-based hotspots stay aligned. */
+html.phone-player body.qing .easy-scene,
+html.phone-player .ex-world,
+html.phone-player .m3-world {
+  width:100vw;
+  height:100dvh;
+  aspect-ratio:auto;
+}
+html.phone-player body.qing .easy-scene {background-size:100% 100%}

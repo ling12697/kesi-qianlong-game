@@ -476,8 +476,21 @@ const craftResetBefore=easyReset;easyReset=function(){craftStop();craftPointer?.
 ;
 // scene-unity-v22.js
 /* v22: one connected commission route, physical objects, persistent next-action cues. */
-const tvWarmRooms=new Map();
-function tvWarmRoom(name){if(tvWarmRooms.has(name))return;const im=new Image();im.fetchPriority='low';im.decoding='async';tvWarmRooms.set(name,im);im.onload=()=>im.decode?.().catch(()=>{});im.onerror=()=>tvWarmRooms.delete(name);im.src=name}
+const tvWarmedRooms = new Set();
+const tvWarmingRooms = new Set();
+function tvWarmRoom(name) {
+  if (tvWarmingRooms.size >= 2 || tvWarmedRooms.has(name) || tvWarmingRooms.has(name)) return;
+  const image = new Image();
+  image.fetchPriority = 'low';
+  image.decoding = 'async';
+  tvWarmingRooms.add(name);
+  image.onload = () => {
+    tvWarmingRooms.delete(name);
+    tvWarmedRooms.add(name);
+  };
+  image.onerror = () => tvWarmingRooms.delete(name);
+  image.src = name;
+}
 const v22StateBefore=westState;
 westState=function(){let p=v22StateBefore();if(p.guideVersion!==22){p.guideVersion=22;if(easy.step===0&&!p.read){p.westStage='plan';p.walk=0;easy.courtInfo=null;easy.place=null}}return p};
 function v22GoWest(){westStop();let p=westState();p.westStage='courtyard';p.walk=0;easy.courtInfo=null;easy.place=null;easyRender()}

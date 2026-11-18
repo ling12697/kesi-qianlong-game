@@ -12,16 +12,33 @@ main{position:relative}#game-loading{position:fixed;right:14px;bottom:14px;z-ind
 .tv-layout #journey button{font-size:clamp(15px,1.1vw,22px);white-space:nowrap}
 .tv-layout #journey nav{justify-content:center}
 #cover .tv-full{margin-top:clamp(8px,1vw,18px);width:87%;color:#f5dfae;background:#082b2de8;font-size:clamp(14px,1.45vw,24px)}
-.cover-credit{position:absolute;left:0;right:0;bottom:0;padding:clamp(8px,1.5vh,24px) 5vw max(12px,2.5vh);text-align:center;line-height:1.55;color:#fff1cf;background:linear-gradient(transparent,#08282bf5 50%);font-size:clamp(10px,1vw,19px);text-shadow:0 1px 3px #071b1c}
+.cover-credit{position:absolute;left:0;right:0;bottom:0;padding:clamp(8px,1.5vh,24px) 14vw max(12px,2.5vh);text-align:center;text-wrap:balance;line-height:1.5;color:#fff1cf;background:linear-gradient(transparent,#08282bf5 50%);font-size:clamp(12px,1.05vw,20px);text-shadow:0 1px 3px #071b1c}
 @supports not (font-size:1cqw){.cover-content h1{font-size:clamp(32px,7vw,110px)}.chapter{font-size:clamp(14px,2vw,32px)}}
-.preparing main{pointer-events:none}.preparing #game{pointer-events:none}#game-loading{max-width:90vw;border:1px solid #b69762;box-shadow:0 3px 18px #0005}</style><script src="asset-loader.js?v=fast21"></script><link rel="stylesheet" href="mobile-shell.css?v=landscape20"></head>
-<body class="on-cover"><div id="rotate-notice" role="status"><b>请将手机横过来</b><span>横屏可完整显示织机和操作区域</span></div><section id="cover" aria-label="一梭千年游戏封面"><div class="cover-art"><div class="cover-content"><h1>一梭千年</h1><div class="level-choices" role="group" aria-label="选择关卡"><button class="chapter" data-choice="0" aria-pressed="true">壹 苏州缂织</button><button class="chapter" data-choice="1" aria-pressed="false">贰 朕览经纬</button><button class="chapter" data-choice="2" aria-pressed="false">叁 承业之路</button></div><button class="tv-full" data-full>全屏体验</button></div></div><footer class="cover-credit">本游戏为AI辅助情景模拟作品，获《江苏传统手工艺沉浸式科普内容设计与传播效能研究》项目资助，由江南大学设计学博士生陈颖、费灵灵完成。资料搜集承蒙马惠娟、王玉祥、陈文等缂丝传承人相助，谨致谢忱。</footer></section><button id="mobile-menu" type="button" aria-controls="journey" aria-expanded="false">菜单</button><header id="journey"><a class="brand" href="#" id="home" aria-label="返回封面">一梭千年</a><nav aria-label="游戏关卡"><button data-level="0">壹 苏州缂织</button><button data-level="1">贰 朕览经纬</button><button data-level="2">叁 承业之路</button></nav><button class="tv-full" data-full>全屏体验</button></header><main><div id="game-loading" role="status" hidden>正在进入游戏，请稍候…</div><iframe id="game" title="壹 苏州缂织" allow="fullscreen; autoplay" allowfullscreen></iframe></main><script>(()=>{'use strict';
-const levels=[{name:'壹 苏州缂织',url:'level-1/index.html?v=mobile19',end:'#finish[open]'},{name:'贰 朕览经纬',url:'level-2/index.html?v=mobile19',end:null},{name:'叁 承业之路',url:'level-3/index.html?v=mobile19',end:null}];
+.preparing main{pointer-events:none}.preparing #game{pointer-events:none}#game-loading{max-width:90vw;border:1px solid #b69762;box-shadow:0 3px 18px #0005}</style><script src="asset-loader.js?v=landscape1"></script><link rel="stylesheet" href="mobile-shell.css"></head>
+<body class="on-cover"><div id="rotate-notice" role="status"><b>请将手机横过来</b><span>烦请先解除锁屏功能</span></div><section id="cover" aria-label="一梭千年游戏封面"><div class="cover-art"><div class="cover-content"><h1>一梭千年</h1><div class="level-choices" role="group" aria-label="选择关卡"><button class="chapter" data-choice="0" aria-pressed="true">壹 苏州缂织</button><button class="chapter" data-choice="1" aria-pressed="false">贰 朕览经纬</button><button class="chapter" data-choice="2" aria-pressed="false">叁 承业之路</button></div><button class="tv-full" data-full>全屏体验</button></div></div><footer class="cover-credit">本游戏为AI辅助情景模拟作品，获《江苏传统手工艺沉浸式科普内容设计与传播效能研究》项目资助，由江南大学设计学博士生陈颖、费灵灵完成。资料搜集承蒙马惠娟、王玉祥、陈文等缂丝传承人相助，谨致谢忱。</footer></section><header id="journey"><a class="brand" href="#" id="home" aria-label="返回封面">一梭千年</a><nav aria-label="游戏关卡"><button data-level="0">壹 苏州缂织</button><button data-level="1">贰 朕览经纬</button><button data-level="2">叁 承业之路</button></nav><button class="tv-full" data-full>全屏体验</button></header><main><div id="game-loading" role="status" hidden>正在进入游戏，请稍候…</div><iframe id="game" title="壹 苏州缂织" allow="fullscreen; autoplay" allowfullscreen></iframe></main><script>(()=>{'use strict';
+const levels=[{name:'壹 苏州缂织',url:'level-1/index.html?v=landscape1',end:'#finish[open]'},{name:'贰 朕览经纬',url:'level-2/index.html?v=landscape1',end:null},{name:'叁 承业之路',url:'level-3/index.html?v=landscape1',end:null}];
 let frame=document.querySelector('#game');const key='kesi-complete-current-level-v1';let current=0,observer,run=0;
 try{const saved=Number(window.gameStore.getItem(key));if(Number.isInteger(saved)&&saved>=0&&saved<3)current=saved}catch{}
 const requested=new URL(location.href).searchParams.get('level');if(['1','2','3'].includes(requested))current=Number(requested)-1;
-function fitPlayer(){const panel=document.querySelector('main');const phone=innerWidth<1000||matchMedia('(pointer:coarse) and (max-height:600px)').matches;const tv=!phone&&matchMedia('(min-width:1000px) and (min-aspect-ratio:4/3)').matches;document.body.classList.toggle('phone-layout',phone);document.body.classList.toggle('tv-layout',tv);const framed=tv||(phone&&current===2);document.body.classList.toggle('framed-level',framed);const w=phone?1024:1280,h=phone?576:720;document.body.style.setProperty('--player-width',w+'px');document.body.style.setProperty('--player-height',h+'px');if(framed)document.body.style.setProperty('--player-scale',String(Math.min(panel.clientWidth/w,panel.clientHeight/h)));try{frame.contentDocument?.documentElement.classList.toggle('phone-player',phone)}catch{}}
-const mobileMenu=document.querySelector('#mobile-menu');mobileMenu.addEventListener('click',()=>{const open=document.body.classList.toggle('menu-open');mobileMenu.setAttribute('aria-expanded',String(open));mobileMenu.textContent=open?'收起':'菜单'});document.querySelectorAll('[data-level],#home').forEach(b=>b.addEventListener('click',()=>{document.body.classList.remove('menu-open');mobileMenu.setAttribute('aria-expanded','false');mobileMenu.textContent='菜单'}));
+function fitPlayer(){
+ const panel=document.querySelector('main');
+ const phone=matchMedia('(max-width:999px), (pointer:coarse) and (max-height:600px), (max-width:1350px) and (max-height:600px)').matches;
+ const tv=!phone&&matchMedia('(min-width:1000px) and (min-aspect-ratio:4/3)').matches;
+ const framed=tv||(phone&&current===2);
+ document.body.classList.toggle('phone-layout',phone);
+ document.body.classList.toggle('tv-layout',tv);
+ document.body.classList.toggle('framed-level',framed);
+ if(framed&&panel.clientWidth&&panel.clientHeight){
+  // Chapter three keeps its minimum working area while using the shape of the phone.
+  const ratio=panel.clientWidth/panel.clientHeight;
+  const h=phone?Math.max(576,1024/ratio):720;
+  const w=phone?h*ratio:1280;
+  document.body.style.setProperty('--player-width',w+'px');
+  document.body.style.setProperty('--player-height',h+'px');
+  document.body.style.setProperty('--player-scale',String(Math.min(panel.clientWidth/w,panel.clientHeight/h)));
+ }
+ try{frame.contentDocument?.documentElement.classList.toggle('phone-player',phone)}catch{}
+}
 window.addEventListener('resize',fitPlayer);window.visualViewport?.addEventListener('resize',fitPlayer);if(typeof ResizeObserver!=='undefined')new ResizeObserver(fitPlayer).observe(document.querySelector('main'));
 let transition=0,loadingLevel=-1,pendingFrame=null;
 const status=document.querySelector('#game-loading');
@@ -37,7 +54,7 @@ async function load(i){
  let pending;
  try{
   // Fetch the document and its opening art concurrently.
-  window.gameAssets.prepare(i).catch(()=>{});
+  window.gameAssets?.prepare(i);
   if(ticket!==transition)return;
   pending=document.createElement('iframe');pendingFrame=pending;pending.title=levels[i].name;pending.allow='fullscreen; autoplay';pending.allowFullscreen=true;pending.loading='eager';pending.setAttribute('aria-hidden','true');
   // Keep the cover/current frame visible while the new document paints offscreen.
@@ -57,7 +74,7 @@ async function load(i){
    // Never discard an otherwise valid chapter because a load event is delayed.
    timer=setTimeout(done,4000);
   });
-  pending.src=levels[i].url+'&restart=1';document.querySelector('main').append(pending);
+  pending.src=levels[i].url+'&restart='+encodeURIComponent(Date.now()+'-'+(++run));document.querySelector('main').append(pending);
   await loaded;
   if(ticket!==transition){pending.remove();return}
   if(observer)observer.disconnect();
@@ -67,7 +84,7 @@ async function load(i){
   try{window.gameStore.setItem(key,String(i))}catch{}
   document.querySelectorAll('[data-level]').forEach(b=>{if(Number(b.dataset.level)===i)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
   document.title=levels[i].name+' · 一梭千年';
-  loadingLevel=-1;pendingFrame=null;status.hidden=true;attachProgress();window.gameAssets.background(i);
+  loadingLevel=-1;pendingFrame=null;status.hidden=true;attachProgress();
  }catch(error){pending?.remove();if(ticket!==transition)return;loadingLevel=-1;pendingFrame=null;document.body.classList.remove('preparing');report('图片尚未准备完成：'+error.message+'。请再次点击关卡重试。');status.setAttribute('role','alert')}
 }
 window.addEventListener('message',event=>{if(event.origin!==location.origin||event.source!==frame.contentWindow||current!==1||event.data?.type!=='kesi-enter-third')return;load(2)});
@@ -86,6 +103,5 @@ fitPlayer();
 const full=[...document.querySelectorAll('[data-full]')];
 full.forEach(b=>b.onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();else b.textContent='请用浏览器全屏'}catch{b.textContent='请用浏览器全屏'}});
 document.addEventListener('fullscreenchange',()=>{full.forEach(b=>b.textContent=document.fullscreenElement?'退出全屏':'全屏体验');fitPlayer()});
-// Prepare the default chapter while the visitor is on the cover.
-if(new URL(location.href).searchParams.get('enter')==='1'&&['1','2','3'].includes(requested))load(current);else window.gameAssets.prepare(selected).catch(()=>{});
+if(new URL(location.href).searchParams.get('enter')==='1'&&['1','2','3'].includes(requested))load(current);
 })();</script></body></html>
