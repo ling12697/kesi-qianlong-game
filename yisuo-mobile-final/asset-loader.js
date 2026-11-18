@@ -1,7 +1,7 @@
 /* Critical art first. Optional prefetch must never control navigation. */
 (()=>{'use strict';
- const VERSION='mobile19',CACHE='yisuo-images-v1';
- const openings=[['level-1/loom-first.jpg'],['level-2/assets/pov-study.webp','level-2/assets/pov-study-preview.webp'],['level-3/clean-court-spring.lite.webp']];
+ const VERSION='fast21',CACHE='yisuo-images-v1';
+ const openings=[['level-1/loom-first.jpg'],['level-2/assets/pov-study-preview.webp'],['level-3/clean-court-spring.lite.webp']];
  const warmed=new Map();let active=-1,manifest;
  if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js?v='+VERSION,{updateViaCache:'none'}).catch(()=>{});
  function warm(src){if(warmed.has(src))return warmed.get(src);const im=new Image();im.fetchPriority='high';
